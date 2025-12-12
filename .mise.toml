@@ -1,0 +1,11 @@
+# SAFAN Environment Configuration
+# Full-stack project: Python (OCR backend) + Node.js (Next.js frontend)
+[tools]
+python = "3.12"
+node = "20"
+uv = "latest"
+
+[env]
+# Automatically activate the virtual environment
+VIRTUAL_ENV = "{{config_root}}/.venv"
+PATH = "{{config_root}}/.venv/bin:$PATH"

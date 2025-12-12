@@ -1,0 +1,35 @@
+# OCR and Computer Vision Libraries
+# paddlepaddle>=2.6.0,<3.0.0  # Uncomment if needed - large download
+# paddleocr>=2.7.0,<3.0.0     # Uncomment if needed - requires paddlepaddle
+pdf2image>=1.17.0
+# opencv-python>=4.8.0  # Removed to avoid conflict with opencv-contrib-python
+opencv-contrib-python>=4.8.0
+
+# Image processing and PDF handling
+Pillow>=10.0.0
+pytesseract>=0.3.10  # Alternative OCR engine
+poppler-utils>=0.1.0  # Required for pdf2image on some systems
+
+# Data processing and utilities
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Text processing (json and re are built-in, but adding utilities)
+regex>=2023.0.0  # Enhanced regex functionality
+
+# Development and testing
+pytest>=7.0.0
+ruff>=0.1.0  # Linter and formatter
+black>=23.0.0  # Code formatter
+
+# HTTP and file handling
+requests>=2.31.0
+python-dotenv>=1.0.0  # For loading .env files securely
+
+# Logging and utilities
+python-dateutil>=2.8.0
+tqdm>=4.65.0  # Progress bars
+
+# Optional: For advanced image processing
+scikit-image>=0.21.0
+matplotlib>=3.7.0  # For visualization/debugging

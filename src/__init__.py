@@ -1,0 +1,2 @@
+"""SAFAN OCR Project"""
+
