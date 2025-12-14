@@ -19,12 +19,14 @@ regex>=2023.0.0  # Enhanced regex functionality
 
 # Development and testing
 pytest>=7.0.0
+pytest-cov>=4.0.0  # Test coverage reporting
 ruff>=0.1.0  # Linter and formatter
 black>=23.0.0  # Code formatter
 
 # HTTP and file handling
 requests>=2.31.0
 python-dotenv>=1.0.0  # For loading .env files securely
+PyYAML>=6.0.0  # YAML configuration file support
 
 # Logging and utilities
 python-dateutil>=2.8.0
@@ -33,3 +35,6 @@ tqdm>=4.65.0  # Progress bars
 # Optional: For advanced image processing
 scikit-image>=0.21.0
 matplotlib>=3.7.0  # For visualization/debugging
+
+# Caching and performance
+diskcache>=5.6.0  # High-performance disk-based caching

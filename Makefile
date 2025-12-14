@@ -25,4 +25,3 @@ clean:
 # Run the example script
 example:
 	@$(PYTHON) scripts/example_ocr.py
-

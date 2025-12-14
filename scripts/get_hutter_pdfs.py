@@ -196,6 +196,15 @@ def download_books(book_names, output_dir, force_redownload=False, resume_existi
                 logger.info(f"Skipping {output_name} (already exists)")
                 skipped += 1
                 continue
+        elif os.path.exists(file_path) and force_redownload:
+            # Force redownload: delete existing file first
+            logger.info(f"Deleting existing {output_name} for forced re-download")
+            try:
+                os.remove(file_path)
+            except OSError as e:
+                logger.warning(f"Could not delete {file_path}: {e}")
+                continue
+            logger.info(f"Starting forced re-download of {output_name}")
         elif os.path.exists(file_path) and resume_existing and not force_redownload:
             if os.path.getsize(file_path) > 0:
                 logger.info(f"Resuming download of {output_name} (existing file)")

@@ -11,8 +11,6 @@ git clone https://github.com/edyhvh/safan.git
 cd safan
 ```
 
-**Note**: Replace `YOUR_USERNAME` with your actual GitHub username when you create the repository.
-
 ### Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -20,6 +18,7 @@ Before you begin, ensure you have the following installed:
 - **Python 3.12** (managed via mise)
 - **Node.js 20** (managed via mise)
 - **aria2** (for downloading PDFs): `brew install aria2`
+- **poppler** (converting PDFs pages to images): `brew install poppler`
 
 ### One-Command Setup
 
@@ -59,3 +58,47 @@ python scripts/get_hutter_pdfs.py --force matthew
 ```
 
 **Note**: This requires `aria2` to be installed. The script uses optimized aria2 settings for maximum download speed with resume capability for interrupted downloads.
+
+### Convert PDFs to Images
+
+Once you have the PDF source files, you need to convert them to images for OCR processing. This script converts PDF pages to high-quality PNG images optimized for OCR:
+
+```bash
+# Go to safan dir first
+cd path/to/safan
+
+# List all available books
+python scripts/get_images_from_pdfs.py --list
+
+# Convert specific books (example)
+python scripts/get_images_from_pdfs.py matthew mark luke
+
+# Convert all books (this will take several hours)
+python scripts/get_images_from_pdfs.py all
+
+# Test conversion with first 2 pages only (recommended before full conversion)
+python scripts/get_images_from_pdfs.py --test matthew
+
+# Convert specific page ranges
+python scripts/get_images_from_pdfs.py --pages 1-5 matthew
+
+# Optimized settings for speed (recommended for most books)
+python scripts/get_images_from_pdfs.py --dpi 150 --batch-size 25 matthew
+
+# Force re-conversion if needed
+python scripts/get_images_from_pdfs.py --force matthew
+
+# Check PDF integrity before conversion
+python scripts/get_images_from_pdfs.py --check-integrity
+```
+
+**Important Notes**:
+- **DPI Settings**: Use 150-200 DPI for OCR (300 DPI produces very large files but similar OCR quality)
+- **Batch Size**: Higher values (20-30) are faster but use more memory
+- **Resume Capability**: The script automatically detects already converted pages and skips them
+- **Estimated Times**: Matthew (~25-35min), Acts (~45-60min), Revelation (~20-30min) at 150 DPI with batch-size 25
+- **Requirements**: `pdf2image` (uses poppler), `tqdm` for progress bars
+
+
+
+
