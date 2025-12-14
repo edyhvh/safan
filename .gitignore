@@ -28,6 +28,9 @@ Thumbs.db
 # Temporary data files
 data/temp/
 
+# Generated images (converted from PDFs)
+data/images/
+
 # Logs
 *.log
 logs/
@@ -38,3 +41,5 @@ logs/
 
 # Cursor-specific configuration
 .cursorrules
+
+
