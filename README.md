@@ -116,6 +116,10 @@ python scripts/hebrew_images/main.py all
 
 **Special Case**: When processing `colossians`, pages 000026.png, 000028.png, and 000030.png are automatically saved to the `laodikim` directory, as these pages contain Paul's letter to Laodicea.
 
+### Training Dataset
+
+The extracted Hebrew text images used for model training are hosted on Hugging Face at [https://huggingface.co/datasets/edyhvh/hutter](https://huggingface.co/datasets/edyhvh/hutter) instead of GitHub to avoid repository bloat. If you want to improve the OCR model, you can download the training images from there.
+
 
 
 
