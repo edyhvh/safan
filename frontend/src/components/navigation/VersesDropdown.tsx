@@ -1,0 +1,66 @@
+'use client';
+
+import { Verse } from '@/lib/types';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { getLocaleFromPath } from '@/lib/locale';
+
+interface VersesDropdownProps {
+  verses: Verse[];
+  bookName: string;
+  chapterNumber: number;
+  isOpen: boolean;
+  onClose: () => void;
+  onCloseAll?: () => void;
+}
+
+export default function VersesDropdown({
+  verses,
+  bookName,
+  chapterNumber,
+  isOpen,
+  onClose,
+  onCloseAll,
+}: VersesDropdownProps) {
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
+
+  if (!isOpen) return null;
+
+  // If no verses, show message
+  if (!verses || verses.length === 0) {
+    return (
+      <div className="dropdown-panel z-[70] p-4">
+        <span className="text-sm text-black/60">No verses</span>
+      </div>
+    );
+  }
+
+  // Calculate grid columns based on number of verses
+  const gridCols = verses.length <= 4 ? 2 : verses.length <= 9 ? 3 : verses.length <= 16 ? 4 : 5;
+
+  return (
+    <div
+      className="dropdown-panel z-[70] p-3"
+    >
+      <div
+        className="grid gap-2 max-h-[300px] overflow-y-auto"
+        style={{ gridTemplateColumns: `repeat(${gridCols}, 1fr)` }}
+      >
+        {verses.map((verse) => (
+          <Link
+            key={verse.number}
+            href={`/${locale}/book/${bookName}/chapter/${chapterNumber}#verse-${verse.number}`}
+            className="flex items-center justify-center w-9 h-9 text-xs font-ui-latin font-medium text-black bg-black/5 hover:bg-black/10 transition-colors rounded-lg"
+            onClick={() => {
+              onClose();
+              onCloseAll?.();
+            }}
+          >
+            {verse.number}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
