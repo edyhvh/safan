@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Bodoni:wght@700&family=Suez+One&family=Cardo:wght@400;700&family=Assistant:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-black: #000000;
+    --color-gray: #333333;
+    --color-background: #FAF6F0;
+    --color-white: #FFFFFF;
+  }
+
+  html {
+    @apply bg-background text-black;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+
+  /* RTL support for Hebrew */
+  [dir='rtl'] {
+    direction: rtl;
+    text-align: right;
+  }
+
+  [dir='ltr'] {
+    direction: ltr;
+    text-align: left;
+  }
+}
+
+@layer utilities {
+  /* Typography utilities */
+  .font-logo-latin {
+    font-family: 'Libre Bodoni', serif;
+    font-weight: 700;
+  }
+
+  .font-logo-hebrew {
+    font-family: 'Suez One', serif;
+    font-weight: 400;
+  }
+
+  .font-bible-hebrew {
+    font-family: 'Cardo', serif;
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+  }
+
+  .font-ui-latin {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-ui-hebrew {
+    font-family: 'Assistant', sans-serif;
+  }
+
+  /* Dropdown panel styles */
+  .dropdown-panel {
+    @apply bg-white/95 backdrop-blur-xl border border-black/15 shadow-[0_8px_32px_rgba(0,0,0,0.15),inset_0_1px_1px_rgba(255,255,255,0.8)] rounded-xl ring-1 ring-black/5;
+  }
+}
+
+
+
