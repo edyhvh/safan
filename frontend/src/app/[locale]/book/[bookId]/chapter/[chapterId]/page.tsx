@@ -17,7 +17,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params
-  const { locale, bookId, chapterId } = resolvedParams
+  const { bookId, chapterId } = resolvedParams
 
   const bookName = bookId as BookName
   const chapterNumber = parseInt(chapterId)
@@ -103,7 +103,6 @@ export default async function BookChapterPage({ params }: PageProps) {
       <ChapterContent
         hebrewLetter={chapter.hebrew_letter}
         verses={chapter.verses}
-        locale={locale as Locale}
       />
 
       {/* Chapter Navigation Footer */}
