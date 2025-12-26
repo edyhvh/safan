@@ -16,7 +16,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params
-  const { bookId, chapterId } = resolvedParams
+  const { locale, bookId, chapterId } = resolvedParams
 
   // Runtime validation to prevent path traversal attacks
   if (!AVAILABLE_BOOKS.includes(bookId as BookName)) {
@@ -56,17 +56,28 @@ export async function generateMetadata({ params }: PageProps) {
     }
   }
 
+  // Get book display name based on locale
+  const displayName = BOOK_DISPLAY_NAMES[bookName] || {
+    en: bookName,
+    he: bookName,
+    es: bookName,
+  }
+  const bookDisplayName =
+    displayName[locale as 'he' | 'es' | 'en'] || displayName.en
+
+  const pageTitle = `Shafan - ${bookDisplayName}`
+
   return {
-    title: 'Shafan',
+    title: pageTitle,
     description: "Read Elias Hutter's Hebrew Besorah Translation",
     openGraph: {
-      title: 'Shafan',
+      title: pageTitle,
       description: "Read Elias Hutter's Hebrew Besorah Translation",
       type: 'website',
     },
     twitter: {
       card: 'summary',
-      title: 'Shafan',
+      title: pageTitle,
       description: "Read Elias Hutter's Hebrew Besorah Translation",
     },
   }
