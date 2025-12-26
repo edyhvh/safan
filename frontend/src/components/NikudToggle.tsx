@@ -28,7 +28,9 @@ export default function NikudToggle({ enabled, onToggle }: NikudToggleProps) {
       aria-label="Toggle nikud"
       title="Toggle nikud"
     >
-      <span className="font-ui-hebrew font-bold relative z-10 text-lg">{label}</span>
+      <span className="font-ui-hebrew font-bold relative z-10 text-lg">
+        {label}
+      </span>
     </button>
   )
 }

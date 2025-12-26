@@ -9,8 +9,6 @@ import {
 import '../globals.css'
 import Navbar from '@/components/Navbar'
 import CorrectionWarning from '@/components/CorrectionWarning'
-import { t } from '@/lib/translations'
-import { Locale } from '@/lib/locale'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -43,14 +41,10 @@ const assistant = Assistant({
 })
 
 export async function generateMetadata({
-  params,
+  params: _params,
 }: {
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const resolvedParams = await params
-  const locale = (resolvedParams.locale || 'he') as Locale
-  const title = t('page_title', locale)
-
   return {
     title: 'Shafan',
     description: "Read Elias Hutter's Hebrew Besorah Translation",

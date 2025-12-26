@@ -27,7 +27,9 @@ export default function CorrectionWarning() {
       const mainContent = document.querySelector('main')
       if (mainContent) {
         const text = mainContent.textContent || ''
-        const hasError = errorIndicators.some((indicator) => text.includes(indicator))
+        const hasError = errorIndicators.some((indicator) =>
+          text.includes(indicator)
+        )
         setIsErrorPage(hasError)
       }
     }
@@ -40,7 +42,12 @@ export default function CorrectionWarning() {
   }, [pathname])
 
   // Only show warning in books section, not on error pages
-  if (!pathname.includes('/book/') || isErrorPage || pathname.includes('/error') || pathname.includes('/not-found')) {
+  if (
+    !pathname.includes('/book/') ||
+    isErrorPage ||
+    pathname.includes('/error') ||
+    pathname.includes('/not-found')
+  ) {
     return null
   }
 

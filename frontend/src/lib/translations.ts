@@ -45,7 +45,7 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
     info_besorah_text:
       'Besorah (בְּשׂוֹרָה) means "Good News" or "Gospel" in Hebrew. This digital edition presents Hutter\'s Hebrew translation of the Greek New Testament. Unlike later translations, Hutter\'s work was created during a period of renewed interest in biblical languages, making it a unique historical document that bridges Greek Christian scripture with the Hebrew linguistic tradition.',
     info_follow: 'Follow the project',
-    info_youtube_title: 'Yeshua the Messiah\'s Besorah',
+    info_youtube_title: "Yeshua the Messiah's Besorah",
     correction_warning_text:
       'You may see errors in words, letters, or grammar. Help us improve',
     correction_warning_link: 'here',

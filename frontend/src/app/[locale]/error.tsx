@@ -38,13 +38,13 @@ export default function LocaleError({
     },
     es: {
       title: 'Parece que hubo un error',
-      subtitle: 'Mantén la calma y Yeshua Ha\'Mashiaj',
+      subtitle: "Mantén la calma y Yeshua Ha'Mashiaj",
       tryAgain: 'Intentar de nuevo',
       home: 'Volver al inicio',
     },
     en: {
       title: 'It seems there was an error',
-      subtitle: 'Keep Calm and Yeshua Ha\'Mashiaj',
+      subtitle: "Keep Calm and Yeshua Ha'Mashiaj",
       tryAgain: 'Try again',
       home: 'Back to home',
     },
