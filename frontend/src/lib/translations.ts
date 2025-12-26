@@ -10,6 +10,7 @@ type TranslationKey =
   | 'info'
   | 'home'
   | 'nikud'
+  | 'page_title'
   // Info page
   | 'info_title'
   | 'info_hutter_title'
@@ -30,6 +31,7 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
     info: 'Info',
     home: 'Home',
     nikud: 'Nikud',
+    page_title: 'Hebrew Besorah',
     // Info page
     info_title: 'Info',
     info_hutter_title: 'Who was Elias Hutter?',
@@ -52,6 +54,7 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
     info: 'Info',
     home: 'Inicio',
     nikud: 'Nikud',
+    page_title: 'Besorah Hebrea',
     // Info page
     info_title: 'Info',
     info_hutter_title: '¿Quién fue Elias Hutter?',
@@ -74,6 +77,7 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
     info: 'מידע',
     home: 'בית',
     nikud: 'ניקוד',
+    page_title: 'בְּשׂוֹרָה עברית',
     // Info page
     info_title: 'מידע',
     info_hutter_title: 'מי היה אליאס הוטר?',

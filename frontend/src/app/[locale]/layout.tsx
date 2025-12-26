@@ -9,6 +9,8 @@ import {
 import '../globals.css'
 import Navbar from '@/components/Navbar'
 import CorrectionWarning from '@/components/CorrectionWarning'
+import { t } from '@/lib/translations'
+import { Locale } from '@/lib/locale'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -40,19 +42,29 @@ const assistant = Assistant({
   weight: ['400', '600'],
 })
 
-export const metadata: Metadata = {
-  title: 'Shafan - Hebrew New Testament',
-  description:
-    "Open digital edition of Elias Hutter's Hebrew New Testament (1599–1602)",
-  keywords: [
-    'Hebrew',
-    'New Testament',
-    'Bible',
-    'Elias Hutter',
-    'Shafan',
-    'Besorah',
-    'בשורה',
-  ],
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const resolvedParams = await params
+  const locale = (resolvedParams.locale || 'he') as Locale
+  const title = t('page_title', locale)
+
+  return {
+    title,
+    description:
+      "Open digital edition of Elias Hutter's Hebrew New Testament (1599–1602)",
+    keywords: [
+      'Hebrew',
+      'New Testament',
+      'Bible',
+      'Elias Hutter',
+      'Shafan',
+      'Besorah',
+      'בשורה',
+    ],
+  }
 }
 
 export default async function LocaleLayout({
