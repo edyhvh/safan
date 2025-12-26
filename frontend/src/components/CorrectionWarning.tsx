@@ -6,7 +6,7 @@ import { getLocaleFromPath } from '@/lib/locale'
 import { t } from '@/lib/translations'
 import { WarningIcon } from './icons'
 
-const GITHUB_DISCUSSIONS_URL = 'https://github.com/edyhvh/shafan/discussions'
+const GITHUB_ISSUES_URL = 'https://github.com/edyhvh/shafan/issues'
 
 export default function CorrectionWarning() {
   const pathname = usePathname()
@@ -19,7 +19,7 @@ export default function CorrectionWarning() {
         <p className="text-[10px] sm:text-[11px] text-black font-medium leading-tight">
           {t('correction_warning_text', locale)}{' '}
           <Link
-            href={GITHUB_DISCUSSIONS_URL}
+            href={GITHUB_ISSUES_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="underline font-semibold hover:text-black/80 transition-colors"
