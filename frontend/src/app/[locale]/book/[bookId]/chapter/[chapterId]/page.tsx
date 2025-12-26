@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import { BOOK_DISPLAY_NAMES, type BookName } from '@/lib/books';
 import { loadBookServer } from '@/lib/books-server';
-import Link from 'next/link';
 import ChapterTitleSelector from '@/components/navigation/ChapterTitleSelector';
 import ChapterNavigation from '@/components/navigation/ChapterNavigation';
+import SaveLastBook from '@/components/navigation/SaveLastBook';
 
 interface PageProps {
   params: Promise<{
@@ -88,6 +88,9 @@ export default async function BookChapterPage({ params }: PageProps) {
 
   return (
     <div className="max-w-4xl mx-auto">
+      {/* Save current location to localStorage for "Back to reading" feature */}
+      <SaveLastBook bookId={bookId} chapterId={chapterId} />
+
       {/* Title - Centered, with interactive chapter selector */}
       <ChapterTitleSelector
         bookDisplayName={bookDisplayName}
