@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Libre_Bodoni, Suez_One, Cardo, Assistant } from 'next/font/google';
 import '../globals.css';
 import Navbar from '@/components/Navbar';
+import CorrectionWarning from '@/components/CorrectionWarning';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -76,6 +77,9 @@ export default async function LocaleLayout({
         <div className="min-h-screen bg-background">
           {/* Floating Navbar */}
           <Navbar />
+
+          {/* Correction Warning */}
+          <CorrectionWarning />
 
           {/* Main content with top padding for floating navbar */}
           <main className="w-full pt-32 pb-16">{children}</main>
