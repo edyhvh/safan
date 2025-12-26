@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { BOOK_DISPLAY_NAMES, type BookName } from '@/lib/books'
+import { AVAILABLE_BOOKS, BOOK_DISPLAY_NAMES, type BookName } from '@/lib/books'
 import { loadBookServer } from '@/lib/books-server'
 import ChapterTitleSelector from '@/components/navigation/ChapterTitleSelector'
 import ChapterNavigation from '@/components/navigation/ChapterNavigation'
@@ -18,6 +18,13 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params
   const { bookId, chapterId } = resolvedParams
+
+  // Runtime validation to prevent path traversal attacks
+  if (!AVAILABLE_BOOKS.includes(bookId as BookName)) {
+    return {
+      title: 'Not Found - Shafan',
+    }
+  }
 
   const bookName = bookId as BookName
   const chapterNumber = parseInt(chapterId)
@@ -43,6 +50,11 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function BookChapterPage({ params }: PageProps) {
   const resolvedParams = await params
   const { locale, bookId, chapterId } = resolvedParams
+
+  // Runtime validation to prevent path traversal attacks
+  if (!AVAILABLE_BOOKS.includes(bookId as BookName)) {
+    notFound()
+  }
 
   const bookName = bookId as BookName
   const chapterNumber = parseInt(chapterId)
