@@ -11,8 +11,6 @@ on:
 # Restrict permissions to minimum required
 permissions:
   contents: read
-  pull-requests: write
-  checks: write
 
 jobs:
   validate-json:
@@ -31,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install jsonschema PyYAML
+          pip install jsonschema==4.20.0 PyYAML==6.0.1
 
       - name: Validate JSON files
         run: |
@@ -89,8 +87,8 @@ jobs:
         working-directory: ./frontend
         run: |
           echo "Running npm audit..."
-          npm audit --audit-level=moderate || true
-          npm audit --json > npm-audit-report.json || true
+          npm audit --audit-level=moderate
+          npm audit --json > npm-audit-report.json
 
       - name: Upload npm audit report
         if: always()
@@ -114,8 +112,8 @@ jobs:
       - name: Run pip audit
         run: |
           echo "Running pip-audit..."
-          pip-audit --requirement requirements.txt --format json --output pip-audit-report.json || true
-          pip-audit --requirement requirements.txt || true
+          pip-audit --requirement requirements.txt --format json --output pip-audit-report.json
+          pip-audit --requirement requirements.txt
 
       - name: Upload pip audit report
         if: always()
