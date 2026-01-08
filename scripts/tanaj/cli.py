@@ -2,6 +2,7 @@
 
 import argparse
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -70,7 +71,7 @@ Examples:
   python -m scripts.tanaj genesis exodus            # Multiple books
   python -m scripts.tanaj --all                     # All books
 
-Source: ~/davar/data/oe/
+Source: ~/tanaj_source/
 Output: output/
         """,
         formatter_class=argparse.RawDescriptionHelpFormatter
@@ -81,7 +82,7 @@ Output: output/
     parser.add_argument('--all', action='store_true', help='Process all books')
     parser.add_argument('--list', action='store_true', help='List available books')
     parser.add_argument('--dry-run', action='store_true', help='Process only first 5 chapters per book')
-    parser.add_argument('--source-dir', type=str, default='~/davar/data/oe', help='Source directory (default: ~/davar/data/oe)')
+    parser.add_argument('--source-dir', type=str, default=os.getenv('TANAJ_SOURCE_DIR', '~/tanaj_source'), help='Source directory (default: ~/tanaj_source)')
     parser.add_argument('--output-dir', type=str, default='output', help='Output directory (default: output)')
     parser.add_argument('--verbose', '-v', action='store_true', help='Verbose logging')
 

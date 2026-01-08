@@ -7,81 +7,60 @@ import logging
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
+from .hebrew_utils import number_to_hebrew_numeral
+
 logger = logging.getLogger(__name__)
 
 
-def number_to_hebrew_numeral(num: int) -> str:
+def validate_source_dir(source_dir: str) -> str:
     """
-    Convert a number to Hebrew numeral representation.
+    Validate and sanitize source directory path.
 
-    Hebrew numerals use letters with special combinations:
-    - 1-9: א-ט
-    - 10-19: י + unit (except 15=טו, 16=טז)
-    - 20-90: כ, ל, מ, נ, ס, ע, פ, צ + unit
-    - 100-400: ק, ר, ש, ת + tens + units
-    - 500+: ת + remainder
+    Args:
+        source_dir: The source directory path to validate
+
+    Returns:
+        The validated source directory path
+
+    Raises:
+        ValueError: If the path is invalid or potentially dangerous
     """
-    if num <= 0:
-        return str(num)
+    import re
 
-    # Use the existing HEBREW_NUMERALS dictionary for numbers 1-50
-    # For consistency with Besorah books
-    from scripts.text.books import HEBREW_NUMERALS
+    # Check for dangerous path patterns
+    dangerous_patterns = [
+        r'\.\.',  # Parent directory traversal
+        r'^/',    # Absolute paths starting with /
+        r'^\\',   # Windows absolute paths
+        r'^[a-zA-Z]:',  # Windows drive letters
+        r'[<>|]',  # Shell redirection characters
+        r'[;&]',   # Command separators
+        r'[$`]',   # Shell variable expansion
+    ]
 
-    if num in HEBREW_NUMERALS:
-        return HEBREW_NUMERALS[num]
+    for pattern in dangerous_patterns:
+        if re.search(pattern, source_dir):
+            raise ValueError(f"Invalid source directory path: contains dangerous characters")
 
-    # For numbers beyond 50, generate Hebrew numerals
-    # Units: א-ט (1-9)
-    units = ['', 'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט']
-    # Tens: י, כ, ל, מ, נ, ס, ע, פ, צ (10-90)
-    tens = ['', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ']
-    # Hundreds: ק, ר, ש, ת (100-400)
-    hundreds = ['', 'ק', 'ר', 'ש', 'ת']
+    # Check path length
+    if len(source_dir) > 260:  # Reasonable path length limit
+        raise ValueError(f"Source directory path too long: {len(source_dir)} characters")
 
-    result = ''
-
-    # Handle hundreds (100-400)
-    if num >= 100:
-        hundreds_digit = num // 100
-        if hundreds_digit <= 4:
-            result += hundreds[hundreds_digit]
-        else:
-            # For 500+, use ת (400) + remainder
-            result += 'ת'
-            remainder = num - 400
-            if remainder > 0:
-                return result + number_to_hebrew_numeral(remainder)
-        num = num % 100
-
-    # Handle tens (20-90)
-    if num >= 20:
-        tens_digit = num // 10
-        result += tens[tens_digit]
-        num = num % 10
-
-    # Handle 10-19
-    elif num >= 10:
-        if num == 15:
-            result += 'טו'
-        elif num == 16:
-            result += 'טז'
-        else:
-            result += 'י' + units[num - 10]
-        num = 0
-
-    # Handle units (1-9)
-    if num > 0:
-        result += units[num]
-
-    return result
+    return source_dir
 
 
-def get_available_books(source_dir: str = "~/davar/data/oe") -> List[str]:
+def get_available_books(source_dir: str = "~/tanaj_source") -> List[str]:
     """Get list of available books from source directory."""
-    source_path = Path(source_dir).expanduser()
+    # Validate source directory path
+    try:
+        validated_source_dir = validate_source_dir(source_dir)
+    except ValueError as e:
+        logger.error(f"Invalid source directory: {e}")
+        return []
+
+    source_path = Path(validated_source_dir).expanduser()
     if not source_path.exists():
-        logger.error(f"Source directory not found: {source_path}")
+        logger.error(f"Source directory not found: {source_dir}")
         return []
 
     books = []
@@ -106,7 +85,7 @@ def load_chapter_data(book_path: Path, chapter_num: int) -> Optional[List[Dict[s
         return None
 
 
-def convert_book(book_name: str, source_dir: str = "~/davar/data/oe", output_dir: str = "output", dry_run: bool = False) -> bool:
+def convert_book(book_name: str, source_dir: str = "~/tanaj_source", output_dir: str = "output", dry_run: bool = False) -> bool:
     """
     Convert a Tanaj book from source format to Shafan JSON format.
 
@@ -119,11 +98,18 @@ def convert_book(book_name: str, source_dir: str = "~/davar/data/oe", output_dir
     Returns:
         True if conversion successful, False otherwise
     """
-    source_path = Path(source_dir).expanduser()
+    # Validate source directory path
+    try:
+        validated_source_dir = validate_source_dir(source_dir)
+    except ValueError as e:
+        logger.error(f"Invalid source directory: {e}")
+        return False
+
+    source_path = Path(validated_source_dir).expanduser()
     book_path = source_path / book_name
 
     if not book_path.exists():
-        logger.error(f"Book directory not found: {book_path}")
+        logger.error(f"Book directory not found: {book_name} in {source_dir}")
         return False
 
     output_path = Path(output_dir)
