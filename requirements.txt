@@ -40,6 +40,10 @@ lxml>=4.9.0  # Fast XML/HTML parser backend
 # Anthropic Claude API
 anthropic>=0.39.0  # Claude API client for vision tasks
 
+# xAI Grok API
+openai>=1.0.0  # Grok API client (compatible interface)
+httpx>=0.25.0  # HTTP client for API calls
+
 # JSON schema validation
 jsonschema>=4.0.0  # JSON schema validation
 
