@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: PageProps) {
   const bookDisplayName =
     displayName[locale as 'he' | 'es' | 'en'] || displayName.en
 
-  const pageTitle = `Shafan - ${bookDisplayName}`
+  const pageTitle = `${bookDisplayName} ${chapterNumber}`
 
   return {
     title: pageTitle,

@@ -1,10 +1,17 @@
 import { t } from '@/lib/translations'
 import { Locale } from '@/lib/locale'
+import type { Metadata } from 'next'
 
 interface PageProps {
   params: Promise<{
     locale: string
   }>
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Shafan',
+  }
 }
 
 export default async function InfoPage({ params }: PageProps) {
