@@ -3,6 +3,7 @@
 import { useNikud } from '@/hooks/useNikud'
 import { useCantillation } from '@/hooks/useCantillation'
 import { useTextSource } from '@/hooks/useTextSource'
+import { useSefer } from '@/hooks/useSefer'
 import { usePathname } from 'next/navigation'
 import { isNewTestament, AVAILABLE_BOOKS, type BookName } from '@/lib/books'
 import TextSourceToggle from './TextSourceToggle'
@@ -15,6 +16,7 @@ export default function ReadingControls() {
   const { nikudEnabled, toggleNikud } = useNikud()
   const { cantillationEnabled, toggleCantillation } = useCantillation()
   const { textSource, toggleTextSource } = useTextSource()
+  const { seferEnabled, toggleSefer } = useSefer()
   const pathname = usePathname()
 
   // Extract bookId from pathname to check if it's New Testament
@@ -90,10 +92,10 @@ export default function ReadingControls() {
         </span>
       </div>
 
-      {/* Cantillation Button - Only shown for Tanaj books, positioned below nikud button */}
+      {/* Cantillation Button - Only shown for Tanaj books, positioned below sefer button */}
       {showCantillationToggle && (
         <div
-          className={`fixed top-[80px] right-5 z-40 flex flex-col items-center gap-0.5`}
+          className={`fixed ${showTextSourceToggle ? 'top-[180px]' : 'top-[134px]'} right-5 z-40 flex flex-col items-center gap-0.5`}
         >
           <button
             onClick={toggleCantillation}
@@ -139,6 +141,54 @@ export default function ReadingControls() {
           </span>
         </div>
       )}
+
+      {/* Sefer Button - Always shown, positioned below nikud button */}
+      <div
+        className={`fixed ${showTextSourceToggle ? 'top-[126px]' : 'top-[80px]'} right-5 z-40 flex flex-col items-center gap-0.5`}
+      >
+        <button
+          onClick={toggleSefer}
+          className="cursor-pointer group relative"
+          aria-label="Toggle sefer (continuous paragraph) display"
+          aria-pressed={seferEnabled}
+          title="Toggle sefer (continuous text) display"
+        >
+          {/* Outer ring/border */}
+          <div
+            className={`
+              w-[36px] h-[36px]
+              rounded-full
+              border-[2.5px]
+              transition-all duration-300 ease-out
+              ${
+                seferEnabled
+                  ? 'bg-gray border-gray shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]'
+                  : 'bg-white border-gray/30 group-hover:border-gray/50 shadow-[0_2px_8px_rgba(0,0,0,0.1)]'
+              }
+            `}
+          >
+            {/* Inner circle - power symbol */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div
+                className={`
+                  w-[14px] h-[14px]
+                  rounded-full
+                  transition-all duration-300 ease-out
+                  ${
+                    seferEnabled
+                      ? 'bg-white/90'
+                      : 'bg-gray/40 group-hover:bg-gray/60'
+                  }
+                `}
+              />
+            </div>
+          </div>
+        </button>
+        {/* Label below button */}
+        <span className="text-[10px] font-ui-hebrew font-bold text-gray/80 select-none">
+          ספר
+        </span>
+      </div>
     </>
   )
 }

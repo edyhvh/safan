@@ -96,6 +96,7 @@ export default async function LocaleLayout({
       data-nikud="true"
       data-cantillation="false"
       data-text-source="hutter"
+      data-sefer="true"
       suppressHydrationWarning
     >
       <head>
@@ -117,6 +118,10 @@ export default async function LocaleLayout({
                   var textSource = localStorage.getItem('shafan-text-source');
                   if (textSource !== null) {
                     document.documentElement.setAttribute('data-text-source', textSource);
+                  }
+                  var sefer = localStorage.getItem('shafan-sefer-enabled');
+                  if (sefer !== null) {
+                    document.documentElement.setAttribute('data-sefer', sefer);
                   }
                 } catch(e) {}
               })();

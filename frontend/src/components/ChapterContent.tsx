@@ -9,6 +9,7 @@ import {
 import { useNikud } from '@/hooks/useNikud'
 import { useCantillation } from '@/hooks/useCantillation'
 import { useTextSource } from '@/hooks/useTextSource'
+import { useSefer } from '@/hooks/useSefer'
 import { type BookName } from '@/lib/books'
 import type { Verse } from '@/lib/types'
 
@@ -33,10 +34,11 @@ export default function ChapterContent({
   const { cantillationEnabled, isLoaded: cantillationLoaded } =
     useCantillation()
   const { textSource, isLoaded: textSourceLoaded } = useTextSource()
+  const { seferEnabled, isLoaded: seferLoaded } = useSefer()
 
   // Wait for all preference hooks to be loaded before rendering to prevent hydration mismatches
   const allPreferencesLoaded =
-    nikudLoaded && cantillationLoaded && textSourceLoaded
+    nikudLoaded && cantillationLoaded && textSourceLoaded && seferLoaded
 
   const getDisplayText = (verse: Verse): string => {
     // Select text source: Hutter (text_nikud) or Delitzsch (text_nikud_delitzsch)
@@ -73,23 +75,47 @@ export default function ChapterContent({
           {hebrewLetter}
         </h2>
 
-        <div className="space-y-8" dir="rtl">
-          {verses.map((verse) => (
-            <div
-              key={verse.number}
-              id={`verse-${verse.number}`}
-              className="font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-black scroll-mt-32 target:bg-amber-100/50 target:rounded-lg target:px-4 target:-mx-4 transition-colors duration-500"
-            >
-              {verse.number > 0 && (
-                <span className="text-gray/60 font-ui-latin text-base ml-3">
-                  {verse.number}
+        <div className={seferEnabled ? '' : 'space-y-8'} dir="rtl">
+          {seferEnabled ? (
+            // Sefer mode: continuous paragraph display
+            <p className="font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-black">
+              {verses.map((verse, index) => (
+                <span
+                  key={verse.number}
+                  id={`verse-${verse.number}`}
+                  className="scroll-mt-32 target:bg-amber-100/50 target:rounded target:px-1 transition-colors duration-500"
+                >
+                  {verse.number > 0 && (
+                    <span className="text-gray/60 font-ui-latin text-base ml-2">
+                      {verse.number}
+                    </span>
+                  )}
+                  <span className="font-bible-hebrew">
+                    {allPreferencesLoaded ? getDisplayText(verse) : '...'}
+                  </span>
+                  {index < verses.length - 1 && ' '}
                 </span>
-              )}
-              <span className="font-bible-hebrew">
-                {allPreferencesLoaded ? getDisplayText(verse) : '...'}
-              </span>
-            </div>
-          ))}
+              ))}
+            </p>
+          ) : (
+            // Standard mode: separate verse blocks
+            verses.map((verse) => (
+              <div
+                key={verse.number}
+                id={`verse-${verse.number}`}
+                className="font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-black scroll-mt-32 target:bg-amber-100/50 target:rounded-lg target:px-4 target:-mx-4 transition-colors duration-500"
+              >
+                {verse.number > 0 && (
+                  <span className="text-gray/60 font-ui-latin text-base ml-3">
+                    {verse.number}
+                  </span>
+                )}
+                <span className="font-bible-hebrew">
+                  {allPreferencesLoaded ? getDisplayText(verse) : '...'}
+                </span>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </>

@@ -61,7 +61,7 @@ export default function RetroToggle({
             ${
               enabled
                 ? 'left-0 right-0 justify-start pl-2.5 text-white/90'
-                : 'left-[32px] right-[8px] justify-end text-gray/60'
+                : 'left-[42px] right-[8px] justify-end text-gray/60'
             }
           `}
         >
