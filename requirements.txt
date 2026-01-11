@@ -57,3 +57,8 @@ matplotlib>=3.7.0  # For visualization/debugging
 
 # Caching and performance
 diskcache>=5.6.0  # High-performance disk-based caching
+
+# AI libraries for nakdimon
+wandb>=0.17.0
+prettytable>=3.6.0
+torch>=2.0.0
