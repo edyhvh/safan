@@ -2,6 +2,9 @@
 
 @import 'tailwindcss';
 
+/* Custom dark variant - only activate when data-theme="dark" is set */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /* stylelint-disable-next-line at-rule-no-unknown */
 @theme {
   --color-black: #000000;

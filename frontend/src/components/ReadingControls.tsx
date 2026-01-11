@@ -71,7 +71,7 @@ function ToggleButton({
         </div>
       </button>
       {/* Label below button */}
-      <span className="text-[10px] font-ui-hebrew font-bold text-gray/70 dark:text-[#bdae93] select-none">
+      <span className="text-[10px] font-ui-hebrew font-bold !text-black dark:!text-[#bdae93] select-none">
         {label}
       </span>
     </div>

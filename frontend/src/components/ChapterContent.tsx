@@ -96,7 +96,7 @@ export default function ChapterContent({
         className={`font-ui-latin text-base whitespace-nowrap ${className}`}
       >
         {christianRef && (
-          <span className="text-gray/60">{'{' + christianRef + '}'}</span>
+          <span className="!text-black/60 dark:!text-[#bdae93]/70">{'{' + christianRef + '}'}</span>
         )}
         {christianRef && <span className="mx-1"></span>}
         <span className={christianRef ? 'font-bold' : ''}>[{verseNumber}]</span>
@@ -152,7 +152,7 @@ export default function ChapterContent({
                   {verse.number > 0 && (
                     <VerseNumber
                       verseNumber={verse.number}
-                      className="text-gray/60 ml-2"
+                      className="!text-black/60 dark:!text-[#bdae93]/70 ml-2"
                     />
                   )}
                   <span className="font-bible-hebrew">
@@ -173,7 +173,7 @@ export default function ChapterContent({
                 {verse.number > 0 && (
                   <VerseNumber
                     verseNumber={verse.number}
-                    className="text-gray/60 ml-3"
+                      className="!text-black/60 dark:!text-[#bdae93]/70 ml-3"
                   />
                 )}
                 <span className="font-bible-hebrew">

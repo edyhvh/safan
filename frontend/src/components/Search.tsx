@@ -57,7 +57,7 @@ export default function Search() {
                 <div className="font-medium">
                   {displayName[locale as 'he' | 'es' | 'en'] || displayName.en}
                 </div>
-                <div className="text-sm text-gray/60 mt-1">{bookName}</div>
+                <div className="text-sm text-black/60 mt-1">{bookName}</div>
               </button>
             )
           })}

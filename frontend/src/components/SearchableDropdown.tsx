@@ -115,13 +115,13 @@ export default function SearchableDropdown({
     <div className="relative inline-block">
       <button
         onClick={onToggle}
-        className={`${triggerClassName} ${isOpen ? 'active' : ''}`}
+        className={`${triggerClassName} ${isOpen ? 'active' : ''} !text-black dark:!text-[#bdae93]`}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
       >
         <span>{triggerLabel}</span>
         <ChevronDown
-          className={`ml-1 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`ml-1 transition-transform duration-200 !text-black dark:!text-[#bdae93] ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 

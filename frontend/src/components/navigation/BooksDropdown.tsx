@@ -184,7 +184,7 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
                         displayName.en}
                     </span>
                     <ChevronRight
-                      className={`text-gray/60 ${locale === 'he' ? 'scale-x-[-1]' : ''}`}
+                      className={`text-black/60 ${locale === 'he' ? 'scale-x-[-1]' : ''}`}
                     />
                   </Link>
                 </div>

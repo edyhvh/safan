@@ -59,8 +59,8 @@ export default function RetroToggle({
             select-none
             ${
               enabled
-                ? 'left-0 right-0 justify-start pl-2.5 text-gray/80 dark:text-[#bdae93]'
-                : 'left-[42px] right-[8px] justify-end text-gray/60 dark:text-[#bdae93]/70'
+                ? 'left-0 right-0 justify-start pl-2.5 !text-black/80 dark:!text-[#bdae93]'
+                : 'left-[42px] right-[8px] justify-end !text-black/60 dark:!text-[#bdae93]/70'
             }
           `}
         >

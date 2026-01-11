@@ -40,7 +40,7 @@ export default function NikudToggle({ enabled, onToggle }: NikudToggleProps) {
             font-ui-hebrew font-semibold text-sm
             transition-all duration-300 ease-out
             select-none
-            ${enabled ? 'left-0 pl-[30px] text-white/90' : 'right-0 pr-[30px] text-gray/60'}
+            ${enabled ? 'left-0 pl-[30px] text-white/90' : 'right-0 pr-[30px] !text-black/60'}
           `}
         >
           {NIKUD_LABEL}
