@@ -53,17 +53,17 @@ export default function CopyableWallet({
   return (
     <div className="flex items-center justify-center gap-3 text-lg group">
       {icon}
-      <span className="font-medium">{name}</span>
+      <span className="font-medium text-primary">{name}</span>
       <button
         onClick={handleCopy}
-        className="flex items-center gap-2 text-gray/70 hover:text-black transition-colors cursor-pointer"
+        className="flex items-center gap-2 text-secondary hover:text-primary transition-colors cursor-pointer"
         title={`Copy ${name} address`}
       >
-        <span className="font-mono text-sm">{address}</span>
+        <span className="font-mono text-sm text-secondary">{address}</span>
         {copied ? (
           <CheckmarkIcon className="w-4 h-4 text-green-600" />
         ) : (
-          <CopyIcon className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <CopyIcon className="w-4 h-4 text-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
         )}
       </button>
     </div>
