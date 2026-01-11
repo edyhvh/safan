@@ -59,8 +59,8 @@ export default function RetroToggle({
             select-none
             ${
               enabled
-                ? 'left-0 right-0 justify-start pl-2.5 !text-black/80 dark:!text-[#bdae93]'
-                : 'left-[42px] right-[8px] justify-end !text-black/60 dark:!text-[#bdae93]/70'
+                ? 'left-0 right-0 justify-start pl-2.5 text-secondary'
+                : 'left-[42px] right-[8px] justify-end text-muted'
             }
           `}
         >
@@ -70,12 +70,12 @@ export default function RetroToggle({
         {/* Neumorphic sliding knob */}
         <div
           className={`
-            absolute top-[3px]
+            absolute top-[5px]
             w-[22px] h-[22px]
             rounded-full
             transition-all duration-300 ease-out
             group-hover:scale-110
-            ${enabled ? 'right-[3px] bg-gray toggle-inner-dark' : 'left-[3px] bg-background toggle-inner-light'}
+            ${enabled ? 'right-[3px] bg-primary toggle-inner-dark' : 'left-[3px] bg-background toggle-inner-light'}
           `}
         />
       </div>

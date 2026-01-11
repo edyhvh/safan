@@ -50,8 +50,13 @@ const BOOK_TO_OSIS: Record<string, string> = {
   malachi: 'MAL',
 }
 
+interface VersificationBookData {
+  simple_map: Record<string, Record<string, string>>
+  [key: string]: unknown
+}
+
 // Cached versification data
-let versificationData: Record<string, any> | null = null
+let versificationData: Record<string, VersificationBookData> | null = null
 let dataLoaded = false
 
 /**
@@ -171,7 +176,7 @@ export async function getBooksWithDifferences(): Promise<BookName[]> {
  */
 export async function getVersificationInfo(
   bookName: BookName
-): Promise<any | null> {
+): Promise<VersificationBookData | null> {
   await loadVersificationData()
 
   if (!versificationData) {

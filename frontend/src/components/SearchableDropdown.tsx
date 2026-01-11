@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ChevronDown } from '@/components/icons'
 
@@ -69,15 +69,15 @@ export default function SearchableDropdown({
                 onClick={item.onClick}
                 className={`flex items-center justify-center p-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
                   item.isCurrent
-                    ? 'bg-black text-white'
-                    : 'text-black hover:bg-black/5'
+                    ? 'bg-primary text-white'
+                    : 'text-primary hover:bg-primary/5'
                 }`}
               >
                 {item.label}
               </Link>
             ))
           ) : (
-            <div className="col-span-full px-4 py-3 text-sm text-black/60 text-center">
+            <div className="col-span-full px-4 py-3 text-sm text-muted text-center">
               {emptyMessage}
             </div>
           )}
@@ -95,15 +95,15 @@ export default function SearchableDropdown({
               onClick={item.onClick}
               className={`block px-4 py-2 text-sm font-semibold transition-all duration-200 ${
                 item.isCurrent
-                  ? 'bg-black text-white'
-                  : 'text-black hover:bg-black/5'
+                  ? 'bg-primary text-white'
+                  : 'text-primary hover:bg-primary/5'
               }`}
             >
               {item.label}
             </Link>
           ))
         ) : (
-          <div className="px-4 py-3 text-sm text-black/60 text-center">
+          <div className="px-4 py-3 text-sm text-muted text-center">
             {emptyMessage}
           </div>
         )}
@@ -115,13 +115,14 @@ export default function SearchableDropdown({
     <div className="relative inline-block">
       <button
         onClick={onToggle}
-        className={`${triggerClassName} ${isOpen ? 'active' : ''} !text-black dark:!text-[#bdae93]`}
+        className={`${triggerClassName} ${isOpen ? 'active' : ''} text-secondary`}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
+        aria-label={triggerAriaLabel}
       >
         <span>{triggerLabel}</span>
         <ChevronDown
-          className={`ml-1 transition-transform duration-200 !text-black dark:!text-[#bdae93] ${isOpen ? 'rotate-180' : ''}`}
+          className={`ml-1 transition-transform duration-200 text-secondary ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
@@ -133,7 +134,7 @@ export default function SearchableDropdown({
           <div className="p-2 border-b border-black/5">
             <div className="relative">
               <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -151,7 +152,7 @@ export default function SearchableDropdown({
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder={searchPlaceholder}
-                className="w-full pl-10 pr-4 py-2 text-sm font-ui-latin text-black neumorphism-inset outline-none placeholder:text-black/40 rounded-lg"
+                className="w-full pl-10 pr-4 py-2 text-sm font-ui-latin text-primary neumorphism-inset outline-none placeholder:text-muted rounded-lg"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>

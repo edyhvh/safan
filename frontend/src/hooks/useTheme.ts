@@ -9,7 +9,11 @@ export type Theme = 'light' | 'dark'
  * @returns Object with theme value, setTheme function, toggleTheme function, and isLoaded flag
  */
 export function useTheme() {
-  const { value: theme, setPreference: setTheme, isLoaded } = usePreference<Theme>(
+  const {
+    value: theme,
+    setPreference: setTheme,
+    isLoaded,
+  } = usePreference<Theme>(
     'shafan-theme',
     'light', // Default to light theme
     'data-theme'

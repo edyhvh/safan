@@ -5,7 +5,11 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 import { useBookSearch } from '@/hooks/useBookSearch'
 import { useChapterSearch } from '@/hooks/useChapterSearch'
 import SearchableDropdown from '@/components/SearchableDropdown'
-import { BOOK_DISPLAY_NAMES, BOOK_HEBREW_INFO, type BookName } from '@/lib/books'
+import {
+  BOOK_DISPLAY_NAMES,
+  BOOK_HEBREW_INFO,
+  type BookName,
+} from '@/lib/books'
 
 interface ChapterTitleSelectorProps {
   bookDisplayName: string

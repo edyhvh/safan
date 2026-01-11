@@ -96,7 +96,7 @@ export default function ChapterContent({
         className={`font-ui-latin text-base whitespace-nowrap ${className}`}
       >
         {christianRef && (
-          <span className="!text-black/60 dark:!text-[#bdae93]/70">{'{' + christianRef + '}'}</span>
+          <span className="text-muted">{'{' + christianRef + '}'}</span>
         )}
         {christianRef && <span className="mx-1"></span>}
         <span className={christianRef ? 'font-bold' : ''}>[{verseNumber}]</span>
@@ -135,14 +135,14 @@ export default function ChapterContent({
       <ReadingControls />
 
       <div className="mb-12">
-        <h2 className="font-bible-hebrew text-[64px] text-center mb-8 text-black">
+        <h2 className="font-bible-hebrew text-[64px] text-center mb-8 text-primary">
           {hebrewLetter}
         </h2>
 
         <div className={seferEnabled ? '' : 'space-y-8'} dir="rtl">
           {seferEnabled ? (
             // Sefer mode: continuous paragraph display
-            <p className="font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-black">
+            <p className="font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-primary">
               {verses.map((verse, index) => (
                 <span
                   key={verse.number}
@@ -152,7 +152,7 @@ export default function ChapterContent({
                   {verse.number > 0 && (
                     <VerseNumber
                       verseNumber={verse.number}
-                      className="!text-black/60 dark:!text-[#bdae93]/70 ml-2"
+                      className="text-muted ml-2"
                     />
                   )}
                   <span className="font-bible-hebrew">
@@ -168,12 +168,12 @@ export default function ChapterContent({
               <div
                 key={verse.number}
                 id={`verse-${verse.number}`}
-                className="font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-black scroll-mt-32 target:bg-amber-100/50 target:rounded-lg target:px-4 target:-mx-4 transition-colors duration-500"
+                className="font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-primary scroll-mt-32 target:bg-amber-100/50 target:rounded-lg target:px-4 target:-mx-4 transition-colors duration-500"
               >
                 {verse.number > 0 && (
                   <VerseNumber
                     verseNumber={verse.number}
-                      className="!text-black/60 dark:!text-[#bdae93]/70 ml-3"
+                    className="text-muted ml-3"
                   />
                 )}
                 <span className="font-bible-hebrew">

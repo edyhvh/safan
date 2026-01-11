@@ -56,7 +56,7 @@ function ToggleButton({
             ${enabled ? 'toggle-outer-pressed' : 'toggle-outer-raised'}
           `}
         >
-          {/* Inner circle - dark when ON */}
+          {/* Inner circle - black when ON */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className={`
@@ -64,14 +64,14 @@ function ToggleButton({
                 rounded-full
                 transition-all duration-300 ease-out
                 group-hover:scale-110
-                ${enabled ? 'bg-gray toggle-inner-dark' : 'bg-background toggle-inner-light'}
+                ${enabled ? 'bg-primary toggle-inner-dark' : 'bg-background toggle-inner-light'}
               `}
             />
           </div>
         </div>
       </button>
       {/* Label below button */}
-      <span className="text-[10px] font-ui-hebrew font-bold !text-black dark:!text-[#bdae93] select-none">
+      <span className="text-[10px] font-ui-hebrew font-bold text-secondary select-none">
         {label}
       </span>
     </div>
@@ -117,7 +117,7 @@ function ThemeToggle({
               className="
                 transition-all duration-300 ease-out
                 group-hover:scale-110
-                text-black
+                text-primary
               "
             />
           </div>
@@ -220,8 +220,12 @@ export default function ReadingControls() {
         ariaLabel="Toggle theme (light/dark)"
         topPosition={
           showCantillationToggle
-            ? showTextSourceToggle ? '264px' : '216px'
-            : showTextSourceToggle ? '200px' : '152px'
+            ? showTextSourceToggle
+              ? '264px'
+              : '216px'
+            : showTextSourceToggle
+              ? '200px'
+              : '152px'
         }
         animationDelay="200ms"
       />

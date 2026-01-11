@@ -5,13 +5,30 @@
 /* Custom dark variant - only activate when data-theme="dark" is set */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
+/* Semantic color variables - Light theme (default) */
+:root {
+  --color-primary: #000000; /* Primary text (black) */
+  --color-secondary: #333333; /* Secondary/UI text (gray) */
+  --color-muted: rgba(0, 0, 0, 0.6); /* Muted text */
+  --color-background: #faf6f0; /* Page background */
+  --color-white: #ffffff;
+}
+
+/* Semantic color variables - Dark theme */
+[data-theme='dark'] {
+  --color-primary: #d5c4a1; /* Primary text (sand/hebrew) */
+  --color-secondary: #bdae93; /* Secondary/UI text */
+  --color-muted: rgba(189, 174, 147, 0.7); /* Muted text */
+  --color-background: #3c3836; /* Page background */
+}
+
 /* stylelint-disable-next-line at-rule-no-unknown */
 @theme {
-  --color-black: #000000;
-  --color-gray: #333333;
-  --color-background: #faf6f0;
+  --color-black: var(--color-primary);
+  --color-gray: var(--color-secondary);
+  --color-background: var(--color-background);
   --color-white: #ffffff;
-  /* Dark theme colors */
+  /* Legacy dark theme colors - kept for backward compatibility */
   --color-dark-background: #3c3836;
   --color-dark-hebrew: #d5c4a1;
   --color-dark-ui: #bdae93;
@@ -27,13 +44,15 @@
     /* Better scroll performance */
     scroll-padding-top: 2rem;
     /* Smooth theme transitions */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   /* Dark theme styles */
-  html[data-theme="dark"] {
-    background-color: var(--color-dark-background);
-    color: var(--color-dark-hebrew);
+  html[data-theme='dark'] {
+    background-color: var(--color-background);
+    color: var(--color-primary);
   }
 
   body {
@@ -44,59 +63,9 @@
     /* Smooth momentum scrolling */
     overscroll-behavior-y: contain;
     /* Smooth theme transitions */
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  /* Dark theme text color overrides */
-  html[data-theme="dark"] .text-black {
-    color: var(--color-dark-hebrew) !important;
-  }
-
-  html[data-theme="dark"] .text-gray {
-    color: var(--color-dark-ui) !important;
-  }
-
-  /* Dark theme UI text color - override for non-biblical content */
-  html[data-theme="dark"] .font-ui-latin,
-  html[data-theme="dark"] .font-ui-hebrew {
-    color: var(--color-dark-ui);
-  }
-
-  /* Dark theme navbar and dropdown text colors */
-  html[data-theme="dark"] .text-black\/80 {
-    color: var(--color-dark-ui) !important;
-  }
-
-  html[data-theme="dark"] .text-black\/90 {
-    color: var(--color-dark-ui) !important;
-  }
-
-  html[data-theme="dark"] .hover\:text-black:hover {
-    color: var(--color-dark-hebrew) !important;
-  }
-
-  html[data-theme="dark"] .text-black\/70 {
-    color: rgba(189, 174, 147, 0.8) !important;
-  }
-
-  html[data-theme="dark"] .text-black\/60 {
-    color: rgba(189, 174, 147, 0.7) !important;
-  }
-
-  html[data-theme="dark"] .text-black\/40 {
-    color: rgba(189, 174, 147, 0.5) !important;
-  }
-
-  html[data-theme="dark"] .placeholder\:text-black\/40::placeholder {
-    color: rgba(189, 174, 147, 0.5) !important;
-  }
-
-  html[data-theme="dark"] .text-gray\/60 {
-    color: rgba(189, 174, 147, 0.7) !important;
-  }
-
-  html[data-theme="dark"] .text-gray\/50 {
-    color: rgba(189, 174, 147, 0.6) !important;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   /* Keep warning text always black */
@@ -104,7 +73,7 @@
     color: #000000 !important;
   }
 
-  html[data-theme="dark"] .warning-text {
+  html[data-theme='dark'] .warning-text {
     color: #000000 !important;
   }
 
@@ -121,30 +90,47 @@
 }
 
 @layer utilities {
+  /* Semantic text color utilities */
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+
+  .text-muted {
+    color: var(--color-muted);
+  }
+
+  /* Semantic background color utilities */
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
   /* Background color utility */
   .bg-background {
     background-color: var(--color-background);
     transition: background-color 0.3s ease;
   }
 
-  html[data-theme="dark"] .bg-background {
-    background-color: var(--color-dark-background);
-  }
-
   .bg-gray {
+    background-color: var(--color-secondary);
     transition: background-color 0.3s ease;
+    opacity: 0.3;
   }
 
-  html[data-theme="dark"] .bg-gray {
-    background-color: rgba(189, 174, 147, 0.3);
+  html[data-theme='dark'] .bg-gray {
+    opacity: 0.3;
   }
 
   .bg-white {
+    background-color: var(--color-white);
     transition: background-color 0.3s ease;
   }
 
-  html[data-theme="dark"] .bg-white {
-    background-color: var(--color-dark-background);
+  html[data-theme='dark'] .bg-white {
+    background-color: var(--color-background);
   }
 
   /* Typography utilities */
@@ -176,10 +162,13 @@
   .dropdown-panel {
     /* stylelint-disable-next-line at-rule-no-unknown */
     @apply bg-white/95 backdrop-blur-xl border border-black/15 shadow-[0_8px_32px_rgba(0,0,0,0.15),inset_0_1px_1px_rgba(255,255,255,0.8)] rounded-xl ring-1 ring-black/5;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
-  html[data-theme="dark"] .dropdown-panel {
+  html[data-theme='dark'] .dropdown-panel {
     /* stylelint-disable-next-line at-rule-no-unknown */
     @apply bg-[#3c3836]/95 border border-[#d5c4a1]/20 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(213,196,161,0.1)] ring-1 ring-[#d5c4a1]/10;
   }
@@ -299,23 +288,23 @@
   }
 
   /* Dark theme scrollbar */
-  html[data-theme="dark"] ::-webkit-scrollbar-track {
+  html[data-theme='dark'] ::-webkit-scrollbar-track {
     background: rgba(213, 196, 161, 0.05);
   }
 
-  html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  html[data-theme='dark'] ::-webkit-scrollbar-thumb {
     background: rgba(213, 196, 161, 0.3);
   }
 
-  html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  html[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
     background: rgba(213, 196, 161, 0.4);
   }
 
-  html[data-theme="dark"] ::-webkit-scrollbar-thumb:active {
+  html[data-theme='dark'] ::-webkit-scrollbar-thumb:active {
     background: rgba(213, 196, 161, 0.5);
   }
 
-  html[data-theme="dark"] * {
+  html[data-theme='dark'] * {
     scrollbar-color: rgba(213, 196, 161, 0.3) rgba(213, 196, 161, 0.05);
   }
 
@@ -337,11 +326,11 @@
     background: rgba(0, 0, 0, 0.3);
   }
 
-  html[data-theme="dark"] .scrollbar-thin::-webkit-scrollbar-thumb {
+  html[data-theme='dark'] .scrollbar-thin::-webkit-scrollbar-thumb {
     background: rgba(213, 196, 161, 0.3);
   }
 
-  html[data-theme="dark"] .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  html[data-theme='dark'] .scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background: rgba(213, 196, 161, 0.4);
   }
 
@@ -443,21 +432,21 @@
   }
 
   /* Dark theme neumorphism */
-  html[data-theme="dark"] .neumorphism {
+  html[data-theme='dark'] .neumorphism {
     background: var(--color-dark-background);
     box-shadow:
       -6px -6px 12px rgba(80, 73, 69, 0.7),
       6px 6px 12px rgba(29, 32, 33, 0.9);
   }
 
-  html[data-theme="dark"] .neumorphism:hover {
+  html[data-theme='dark'] .neumorphism:hover {
     box-shadow:
       -8px -8px 16px rgba(80, 73, 69, 0.8),
       8px 8px 16px rgba(29, 32, 33, 1);
   }
 
-  html[data-theme="dark"] .neumorphism:active,
-  html[data-theme="dark"] .neumorphism.active {
+  html[data-theme='dark'] .neumorphism:active,
+  html[data-theme='dark'] .neumorphism.active {
     box-shadow:
       inset -4px -4px 8px rgba(29, 32, 33, 0.7),
       inset 4px 4px 8px rgba(29, 32, 33, 0.5);
@@ -470,7 +459,7 @@
       6px 6px 12px rgba(180, 160, 140, 0.5);
   }
 
-  html[data-theme="dark"] .navbar-container:active {
+  html[data-theme='dark'] .navbar-container:active {
     box-shadow:
       -6px -6px 12px rgba(80, 73, 69, 0.7),
       6px 6px 12px rgba(29, 32, 33, 0.9);
@@ -516,14 +505,14 @@
   }
 
   /* Dark theme neumorphism inset */
-  html[data-theme="dark"] .neumorphism-inset {
+  html[data-theme='dark'] .neumorphism-inset {
     background: var(--color-dark-background);
     box-shadow:
       inset -4px -4px 8px rgba(29, 32, 33, 0.7),
       inset 4px 4px 8px rgba(29, 32, 33, 0.5);
   }
 
-  html[data-theme="dark"] .neumorphism-inset:hover {
+  html[data-theme='dark'] .neumorphism-inset:hover {
     box-shadow:
       inset -3px -3px 6px rgba(29, 32, 33, 0.6),
       inset 3px 3px 6px rgba(29, 32, 33, 0.4);
@@ -589,6 +578,7 @@
   }
 
   .toggle-inner-dark {
+    background-color: var(--color-primary);
     box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
   }
 
@@ -609,46 +599,46 @@
   }
 
   /* Toggle button styles - Dark theme */
-  html[data-theme="dark"] .toggle-outer-raised {
+  html[data-theme='dark'] .toggle-outer-raised {
     box-shadow:
       6px 6px 12px rgba(29, 32, 33, 0.9),
       -6px -6px 12px rgba(80, 73, 69, 0.7);
   }
 
-  html[data-theme="dark"] .toggle-outer-raised:hover {
+  html[data-theme='dark'] .toggle-outer-raised:hover {
     box-shadow:
       8px 8px 16px rgba(29, 32, 33, 1),
       -8px -8px 16px rgba(80, 73, 69, 0.8);
   }
 
-  html[data-theme="dark"] .toggle-outer-pressed {
+  html[data-theme='dark'] .toggle-outer-pressed {
     box-shadow:
       inset 4px 4px 8px rgba(29, 32, 33, 0.9),
       inset -4px -4px 8px rgba(80, 73, 69, 0.3);
   }
 
-  html[data-theme="dark"] .toggle-outer-pressed:hover {
+  html[data-theme='dark'] .toggle-outer-pressed:hover {
     box-shadow:
       inset 3px 3px 6px rgba(29, 32, 33, 0.8),
       inset -3px -3px 6px rgba(80, 73, 69, 0.25);
   }
 
-  html[data-theme="dark"] .toggle-inner-dark {
-    background: rgba(189, 174, 147, 0.5);
+  html[data-theme='dark'] .toggle-inner-dark {
+    background-color: var(--color-primary);
     box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
   }
 
-  html[data-theme="dark"] .toggle-inner-dark:hover {
+  html[data-theme='dark'] .toggle-inner-dark:hover {
     box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.6);
   }
 
-  html[data-theme="dark"] .toggle-inner-light {
+  html[data-theme='dark'] .toggle-inner-light {
     box-shadow:
       inset 2px 2px 4px rgba(29, 32, 33, 0.6),
       inset -2px -2px 4px rgba(80, 73, 69, 0.2);
   }
 
-  html[data-theme="dark"] .toggle-inner-light:hover {
+  html[data-theme='dark'] .toggle-inner-light:hover {
     box-shadow:
       inset 2px 2px 5px rgba(29, 32, 33, 0.7),
       inset -2px -2px 5px rgba(80, 73, 69, 0.25);

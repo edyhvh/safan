@@ -1,10 +1,5 @@
 import { useState, useEffect } from 'react'
-import {
-  AVAILABLE_BOOKS,
-  BOOK_DISPLAY_NAMES,
-  searchBooks,
-  type BookName,
-} from '@/lib/books'
+import { AVAILABLE_BOOKS, searchBooks, type BookName } from '@/lib/books'
 
 /**
  * Hook to manage book search functionality

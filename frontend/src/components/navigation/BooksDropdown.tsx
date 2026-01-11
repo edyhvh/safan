@@ -134,7 +134,7 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
         <div className="p-2 border-b border-black/5">
           <div className="relative">
             <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 z-10"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted z-10"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -152,7 +152,7 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search for..."
-              className="w-full pl-10 pr-4 py-2 text-sm font-ui-latin text-black neumorphism-inset outline-none placeholder:text-black/40 rounded-lg"
+              className="w-full pl-10 pr-4 py-2 text-sm font-ui-latin text-primary neumorphism-inset outline-none placeholder:text-muted rounded-lg"
               onClick={(e) => e.stopPropagation()}
             />
           </div>
@@ -174,8 +174,8 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
                 >
                   <Link
                     href={`/${locale}/book/${bookName}/chapter/1`}
-                    className={`flex items-center justify-between px-6 py-3 text-base font-ui-latin font-semibold text-black/90 hover:text-black hover:bg-black/5 transition-all border-b border-black/8 last:border-b-0 ${
-                      isHovered ? 'bg-black/5 text-black' : ''
+                    className={`flex items-center justify-between px-6 py-3 text-base font-ui-latin font-semibold text-primary hover:bg-primary/5 transition-all border-b border-primary/8 last:border-b-0 ${
+                      isHovered ? 'bg-primary/5' : ''
                     } ${locale === 'he' ? 'flex-row-reverse' : ''}`}
                     onClick={onClose}
                   >
@@ -184,14 +184,14 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
                         displayName.en}
                     </span>
                     <ChevronRight
-                      className={`text-black/60 ${locale === 'he' ? 'scale-x-[-1]' : ''}`}
+                      className={`text-muted ${locale === 'he' ? 'scale-x-[-1]' : ''}`}
                     />
                   </Link>
                 </div>
               )
             })
           ) : (
-            <div className="px-6 py-4 text-sm text-black/60 text-center">
+            <div className="px-6 py-4 text-sm text-muted text-center">
               No books found
             </div>
           )}
@@ -221,8 +221,8 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
           className={`absolute z-[60] ${locale === 'he' ? 'right-full pr-2' : 'left-full pl-2'}`}
           style={{ top: hoveredBookTop }}
         >
-          <div className="dropdown-panel px-6 py-4 text-sm text-black/70 min-w-[150px] flex items-center gap-3">
-            <LoadingSpinner className="text-black/50" />
+          <div className="dropdown-panel px-6 py-4 text-sm text-secondary min-w-[150px] flex items-center gap-3">
+            <LoadingSpinner className="text-muted" />
             <span>Loading...</span>
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
           className={`absolute z-[60] ${locale === 'he' ? 'right-full pr-2' : 'left-full pl-2'}`}
           style={{ top: hoveredBookTop }}
         >
-          <div className="dropdown-panel px-6 py-4 text-sm text-black/60 min-w-[150px]">
+          <div className="dropdown-panel px-6 py-4 text-sm text-muted min-w-[150px]">
             Coming soon
           </div>
         </div>
