@@ -5,14 +5,14 @@ import { useClickOutside } from '@/hooks/useClickOutside'
 import { useBookSearch } from '@/hooks/useBookSearch'
 import { useChapterSearch } from '@/hooks/useChapterSearch'
 import SearchableDropdown from '@/components/SearchableDropdown'
-import { BOOK_DISPLAY_NAMES, BOOK_HEBREW_INFO } from '@/lib/books'
+import { BOOK_DISPLAY_NAMES, BOOK_HEBREW_INFO, type BookName } from '@/lib/books'
 
 interface ChapterTitleSelectorProps {
   bookDisplayName: string
   currentChapter: number
   hebrewLetter?: string
   chapters: { number: number; hebrew_letter: string }[]
-  bookName: string
+  bookName: BookName
   locale: string
 }
 
@@ -61,7 +61,7 @@ export default function ChapterTitleSelector({
   useClickOutside(bookDropdownRef, () => setIsBookOpen(false), isBookOpen)
 
   // Get Hebrew info for the current book (for en/es locales)
-  const hebrewInfo = BOOK_HEBREW_INFO[bookName as BookName]
+  const hebrewInfo = BOOK_HEBREW_INFO[bookName]
   const transliteration =
     locale === 'es'
       ? hebrewInfo?.transliteration.es
@@ -72,15 +72,15 @@ export default function ChapterTitleSelector({
       {/* Hebrew name and transliteration (only for en/es locales) */}
       {locale !== 'he' && hebrewInfo && (
         <div className="mb-3 text-center">
-          <div className="font-bible-hebrew text-xl text-black/70 leading-tight">
+          <div className="font-bible-hebrew text-xl text-black/70 dark:text-[#d5c4a1]/80 leading-tight">
             {hebrewInfo.hebrew}
           </div>
-          <div className="text-[11px] text-black/35 font-light tracking-wide">
+          <div className="text-[11px] text-black/35 dark:text-[#d5c4a1]/50 font-light tracking-wide">
             {transliteration}
           </div>
         </div>
       )}
-      <h1 className="font-ui-latin text-lg text-black mb-1 inline-flex items-center gap-2">
+      <h1 className="font-ui-latin text-lg text-black dark:text-[#d5c4a1] mb-1 inline-flex items-center gap-2">
         {/* Book selector with SearchableDropdown */}
         <div ref={bookDropdownRef}>
           <SearchableDropdown

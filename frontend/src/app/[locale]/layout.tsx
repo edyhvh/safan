@@ -97,6 +97,7 @@ export default async function LocaleLayout({
       data-cantillation="false"
       data-text-source="hutter"
       data-sefer="true"
+      data-theme="light"
       suppressHydrationWarning
     >
       <head>
@@ -122,6 +123,10 @@ export default async function LocaleLayout({
                   var sefer = localStorage.getItem('shafan-sefer-enabled');
                   if (sefer !== null) {
                     document.documentElement.setAttribute('data-sefer', sefer);
+                  }
+                  var theme = localStorage.getItem('shafan-theme');
+                  if (theme !== null) {
+                    document.documentElement.setAttribute('data-theme', theme);
                   }
                 } catch(e) {}
               })();

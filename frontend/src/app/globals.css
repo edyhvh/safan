@@ -8,6 +8,10 @@
   --color-gray: #333333;
   --color-background: #faf6f0;
   --color-white: #ffffff;
+  /* Dark theme colors */
+  --color-dark-background: #3c3836;
+  --color-dark-hebrew: #d5c4a1;
+  --color-dark-ui: #bdae93;
 }
 
 @layer base {
@@ -19,6 +23,14 @@
     -webkit-overflow-scrolling: touch;
     /* Better scroll performance */
     scroll-padding-top: 2rem;
+    /* Smooth theme transitions */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark theme styles */
+  html[data-theme="dark"] {
+    background-color: var(--color-dark-background);
+    color: var(--color-dark-hebrew);
   }
 
   body {
@@ -28,6 +40,69 @@
     -webkit-overflow-scrolling: touch;
     /* Smooth momentum scrolling */
     overscroll-behavior-y: contain;
+    /* Smooth theme transitions */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark theme text color overrides */
+  html[data-theme="dark"] .text-black {
+    color: var(--color-dark-hebrew) !important;
+  }
+
+  html[data-theme="dark"] .text-gray {
+    color: var(--color-dark-ui) !important;
+  }
+
+  /* Dark theme UI text color - override for non-biblical content */
+  html[data-theme="dark"] .font-ui-latin,
+  html[data-theme="dark"] .font-ui-hebrew {
+    color: var(--color-dark-ui);
+  }
+
+  /* Dark theme navbar and dropdown text colors */
+  html[data-theme="dark"] .text-black\/80 {
+    color: var(--color-dark-ui) !important;
+  }
+
+  html[data-theme="dark"] .text-black\/90 {
+    color: var(--color-dark-ui) !important;
+  }
+
+  html[data-theme="dark"] .hover\:text-black:hover {
+    color: var(--color-dark-hebrew) !important;
+  }
+
+  html[data-theme="dark"] .text-black\/70 {
+    color: rgba(189, 174, 147, 0.8) !important;
+  }
+
+  html[data-theme="dark"] .text-black\/60 {
+    color: rgba(189, 174, 147, 0.7) !important;
+  }
+
+  html[data-theme="dark"] .text-black\/40 {
+    color: rgba(189, 174, 147, 0.5) !important;
+  }
+
+  html[data-theme="dark"] .placeholder\:text-black\/40::placeholder {
+    color: rgba(189, 174, 147, 0.5) !important;
+  }
+
+  html[data-theme="dark"] .text-gray\/60 {
+    color: rgba(189, 174, 147, 0.7) !important;
+  }
+
+  html[data-theme="dark"] .text-gray\/50 {
+    color: rgba(189, 174, 147, 0.6) !important;
+  }
+
+  /* Keep warning text always black */
+  .warning-text {
+    color: #000000 !important;
+  }
+
+  html[data-theme="dark"] .warning-text {
+    color: #000000 !important;
   }
 
   /* RTL support for Hebrew */
@@ -46,6 +121,27 @@
   /* Background color utility */
   .bg-background {
     background-color: var(--color-background);
+    transition: background-color 0.3s ease;
+  }
+
+  html[data-theme="dark"] .bg-background {
+    background-color: var(--color-dark-background);
+  }
+
+  .bg-gray {
+    transition: background-color 0.3s ease;
+  }
+
+  html[data-theme="dark"] .bg-gray {
+    background-color: rgba(189, 174, 147, 0.3);
+  }
+
+  .bg-white {
+    transition: background-color 0.3s ease;
+  }
+
+  html[data-theme="dark"] .bg-white {
+    background-color: var(--color-dark-background);
   }
 
   /* Typography utilities */
@@ -77,6 +173,12 @@
   .dropdown-panel {
     /* stylelint-disable-next-line at-rule-no-unknown */
     @apply bg-white/95 backdrop-blur-xl border border-black/15 shadow-[0_8px_32px_rgba(0,0,0,0.15),inset_0_1px_1px_rgba(255,255,255,0.8)] rounded-xl ring-1 ring-black/5;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  html[data-theme="dark"] .dropdown-panel {
+    /* stylelint-disable-next-line at-rule-no-unknown */
+    @apply bg-[#3c3836]/95 border border-[#d5c4a1]/20 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(213,196,161,0.1)] ring-1 ring-[#d5c4a1]/10;
   }
 
   /* Animation utilities */
@@ -193,6 +295,27 @@
     scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
   }
 
+  /* Dark theme scrollbar */
+  html[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: rgba(213, 196, 161, 0.05);
+  }
+
+  html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: rgba(213, 196, 161, 0.3);
+  }
+
+  html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(213, 196, 161, 0.4);
+  }
+
+  html[data-theme="dark"] ::-webkit-scrollbar-thumb:active {
+    background: rgba(213, 196, 161, 0.5);
+  }
+
+  html[data-theme="dark"] * {
+    scrollbar-color: rgba(213, 196, 161, 0.3) rgba(213, 196, 161, 0.05);
+  }
+
   /* Custom scrollbar for verses dropdown (kept for specificity) */
   .scrollbar-thin::-webkit-scrollbar {
     width: 6px;
@@ -209,6 +332,14 @@
 
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.3);
+  }
+
+  html[data-theme="dark"] .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(213, 196, 161, 0.3);
+  }
+
+  html[data-theme="dark"] .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(213, 196, 161, 0.4);
   }
 
   /* Enhanced smooth scrolling for dropdowns with iOS momentum */
@@ -308,11 +439,38 @@
       inset 4px 4px 8px rgba(180, 160, 140, 0.4);
   }
 
+  /* Dark theme neumorphism */
+  html[data-theme="dark"] .neumorphism {
+    background: var(--color-dark-background);
+    box-shadow:
+      -6px -6px 12px rgba(80, 73, 69, 0.7),
+      6px 6px 12px rgba(29, 32, 33, 0.9);
+  }
+
+  html[data-theme="dark"] .neumorphism:hover {
+    box-shadow:
+      -8px -8px 16px rgba(80, 73, 69, 0.8),
+      8px 8px 16px rgba(29, 32, 33, 1);
+  }
+
+  html[data-theme="dark"] .neumorphism:active,
+  html[data-theme="dark"] .neumorphism.active {
+    box-shadow:
+      inset -4px -4px 8px rgba(29, 32, 33, 0.7),
+      inset 4px 4px 8px rgba(29, 32, 33, 0.5);
+  }
+
   /* Prevent active state on navbar container to avoid blinking */
   .navbar-container:active {
     box-shadow:
       -6px -6px 12px rgba(255, 255, 255, 1),
       6px 6px 12px rgba(180, 160, 140, 0.5);
+  }
+
+  html[data-theme="dark"] .navbar-container:active {
+    box-shadow:
+      -6px -6px 12px rgba(80, 73, 69, 0.7),
+      6px 6px 12px rgba(29, 32, 33, 0.9);
   }
 
   /* Books dropdown float positioning */
@@ -354,6 +512,20 @@
       inset 3px 3px 6px rgba(180, 160, 140, 0.35);
   }
 
+  /* Dark theme neumorphism inset */
+  html[data-theme="dark"] .neumorphism-inset {
+    background: var(--color-dark-background);
+    box-shadow:
+      inset -4px -4px 8px rgba(29, 32, 33, 0.7),
+      inset 4px 4px 8px rgba(29, 32, 33, 0.5);
+  }
+
+  html[data-theme="dark"] .neumorphism-inset:hover {
+    box-shadow:
+      inset -3px -3px 6px rgba(29, 32, 33, 0.6),
+      inset 3px 3px 6px rgba(29, 32, 33, 0.4);
+  }
+
   /* Liquid glass effect for dark buttons (nikud) - inactive/grayed state */
   .liquid-glass-dark-inactive {
     background: rgba(100, 100, 100, 0.6);
@@ -386,5 +558,96 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.1),
       inset 0 -1px 0 rgba(0, 0, 0, 0.2);
     transform: translateY(0);
+  }
+
+  /* Toggle button styles - Light theme */
+  .toggle-outer-raised {
+    box-shadow:
+      6px 6px 12px rgba(180, 160, 140, 0.5),
+      -6px -6px 12px rgba(255, 255, 255, 1);
+  }
+
+  .toggle-outer-raised:hover {
+    box-shadow:
+      8px 8px 16px rgba(180, 160, 140, 0.6),
+      -8px -8px 16px rgba(255, 255, 255, 1);
+  }
+
+  .toggle-outer-pressed {
+    box-shadow:
+      inset 4px 4px 8px rgba(180, 160, 140, 0.5),
+      inset -4px -4px 8px rgba(255, 255, 255, 1);
+  }
+
+  .toggle-outer-pressed:hover {
+    box-shadow:
+      inset 3px 3px 6px rgba(180, 160, 140, 0.4),
+      inset -3px -3px 6px rgba(255, 255, 255, 0.95);
+  }
+
+  .toggle-inner-dark {
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .toggle-inner-dark:hover {
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  .toggle-inner-light {
+    box-shadow:
+      inset 2px 2px 4px rgba(180, 160, 140, 0.4),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+  }
+
+  .toggle-inner-light:hover {
+    box-shadow:
+      inset 2px 2px 5px rgba(180, 160, 140, 0.5),
+      inset -2px -2px 5px rgba(255, 255, 255, 1);
+  }
+
+  /* Toggle button styles - Dark theme */
+  html[data-theme="dark"] .toggle-outer-raised {
+    box-shadow:
+      6px 6px 12px rgba(29, 32, 33, 0.9),
+      -6px -6px 12px rgba(80, 73, 69, 0.7);
+  }
+
+  html[data-theme="dark"] .toggle-outer-raised:hover {
+    box-shadow:
+      8px 8px 16px rgba(29, 32, 33, 1),
+      -8px -8px 16px rgba(80, 73, 69, 0.8);
+  }
+
+  html[data-theme="dark"] .toggle-outer-pressed {
+    box-shadow:
+      inset 4px 4px 8px rgba(29, 32, 33, 0.9),
+      inset -4px -4px 8px rgba(80, 73, 69, 0.3);
+  }
+
+  html[data-theme="dark"] .toggle-outer-pressed:hover {
+    box-shadow:
+      inset 3px 3px 6px rgba(29, 32, 33, 0.8),
+      inset -3px -3px 6px rgba(80, 73, 69, 0.25);
+  }
+
+  html[data-theme="dark"] .toggle-inner-dark {
+    background: rgba(189, 174, 147, 0.5);
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  html[data-theme="dark"] .toggle-inner-dark:hover {
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  html[data-theme="dark"] .toggle-inner-light {
+    box-shadow:
+      inset 2px 2px 4px rgba(29, 32, 33, 0.6),
+      inset -2px -2px 4px rgba(80, 73, 69, 0.2);
+  }
+
+  html[data-theme="dark"] .toggle-inner-light:hover {
+    box-shadow:
+      inset 2px 2px 5px rgba(29, 32, 33, 0.7),
+      inset -2px -2px 5px rgba(80, 73, 69, 0.25);
   }
 }
