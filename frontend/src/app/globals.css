@@ -112,6 +112,56 @@
     }
   }
 
+  /* Slide in animations for controls */
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-in {
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+  }
+
+  .fade-in {
+    animation-name: fadeIn;
+  }
+
+  .slide-in-from-right-4 {
+    animation-name: slideInFromRight;
+  }
+
+  .slide-in-from-top-2 {
+    animation-name: slideInFromTop;
+  }
+
   /* Enhanced smooth scrollbar for the entire website */
   ::-webkit-scrollbar {
     width: 8px;
@@ -256,6 +306,35 @@
     box-shadow:
       inset -4px -4px 8px rgba(255, 255, 255, 0.9),
       inset 4px 4px 8px rgba(180, 160, 140, 0.4);
+  }
+
+  /* Prevent active state on navbar container to avoid blinking */
+  .navbar-container:active {
+    box-shadow:
+      -6px -6px 12px rgba(255, 255, 255, 1),
+      6px 6px 12px rgba(180, 160, 140, 0.5);
+  }
+
+  /* Books dropdown float positioning */
+  .books-dropdown-float {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.2s ease-out;
+    /* Keep pointer-events active during transition */
+  }
+
+  .books-dropdown-float.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hide dropdown content when not open, but keep wrapper for mouse events */
+  .books-dropdown-float:not(.open) > * {
+    pointer-events: none;
+  }
+
+  .books-dropdown-float.open > * {
+    pointer-events: auto;
   }
 
   /* Neumorphism pressed/inset state */

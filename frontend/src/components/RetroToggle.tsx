@@ -27,6 +27,7 @@ export default function RetroToggle({
   labelFontClass = 'font-ui-latin',
   textDirection = 'auto',
 }: RetroToggleProps) {
+
   return (
     <button
       onClick={onToggle}

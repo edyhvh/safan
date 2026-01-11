@@ -1,16 +1,19 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useNikud } from '@/hooks/useNikud'
 import { useCantillation } from '@/hooks/useCantillation'
 import { useTextSource } from '@/hooks/useTextSource'
 import { useSefer } from '@/hooks/useSefer'
 import { usePathname } from 'next/navigation'
 import { isNewTestament, AVAILABLE_BOOKS, type BookName } from '@/lib/books'
+import { useScrollState } from '@/hooks/useScrollState'
 import TextSourceToggle from './TextSourceToggle'
 
 /**
  * Component for reading controls (nikud and text source toggles)
- * Positioned as floating controls in the top right
+ * Positioned as fixed controls at the top, always visible
  */
 export default function ReadingControls() {
   const { nikudEnabled, toggleNikud } = useNikud()
@@ -18,6 +21,10 @@ export default function ReadingControls() {
   const { textSource, toggleTextSource } = useTextSource()
   const { seferEnabled, toggleSefer } = useSefer()
   const pathname = usePathname()
+  const [mounted, setMounted] = useState(false)
+
+  // Import scroll state hook
+  const { shouldHideForContent } = useScrollState()
 
   // Extract bookId from pathname to check if it's New Testament
   const pathParts = pathname.split('/')
@@ -33,20 +40,35 @@ export default function ReadingControls() {
   const showTextSourceToggle = bookName && isNewTestament(bookName)
   const showCantillationToggle = bookName && !isNewTestament(bookName)
 
-  return (
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Hide controls when scrolled down (like navbar)
+  if (shouldHideForContent) {
+    return null
+  }
+
+  const controlsContent = (
     <>
       {/* Text Source Toggle (Hutter/Delitzsch) - Only for New Testament */}
       {showTextSourceToggle && (
-        <TextSourceToggle
-          enabled={textSource === 'hutter'}
-          onToggle={toggleTextSource}
-          position="top-6 right-5"
-        />
+        <div
+          className="!fixed top-6 right-5 z-40 transition-all duration-300 ease-out animate-in fade-in slide-in-from-right-4"
+          style={{ position: 'fixed' }}
+        >
+          <TextSourceToggle
+            enabled={textSource === 'hutter'}
+            onToggle={toggleTextSource}
+            position=""
+          />
+        </div>
       )}
 
       {/* Nikud Button - Always shown, positioned below text source toggle if both are visible */}
       <div
-        className={`fixed ${showTextSourceToggle ? 'top-[72px]' : 'top-6'} right-5 z-40 flex flex-col items-center gap-1`}
+        className={`!fixed ${showTextSourceToggle ? 'top-[72px]' : 'top-6'} right-5 z-40 flex flex-col items-center gap-1 transition-all duration-300 ease-out animate-in fade-in slide-in-from-right-4`}
+        style={{ position: 'fixed', animationDelay: '50ms' }}
       >
         <button
           onClick={toggleNikud}
@@ -97,7 +119,8 @@ export default function ReadingControls() {
       {/* Cantillation Button - Only shown for Tanaj books, positioned below sefer button */}
       {showCantillationToggle && (
         <div
-          className={`fixed ${showTextSourceToggle ? 'top-[200px]' : 'top-[154px]'} right-5 z-40 flex flex-col items-center gap-1`}
+          className={`!fixed ${showTextSourceToggle ? 'top-[200px]' : 'top-[154px]'} right-5 z-40 flex flex-col items-center gap-1 transition-all duration-300 ease-out animate-in fade-in slide-in-from-right-4`}
+          style={{ position: 'fixed', animationDelay: '150ms' }}
         >
           <button
             onClick={toggleCantillation}
@@ -148,7 +171,8 @@ export default function ReadingControls() {
 
       {/* Sefer Button - Always shown, positioned below nikud button */}
       <div
-        className={`fixed ${showTextSourceToggle ? 'top-[140px]' : 'top-[94px]'} right-5 z-40 flex flex-col items-center gap-1`}
+        className={`!fixed ${showTextSourceToggle ? 'top-[140px]' : 'top-[94px]'} right-5 z-40 flex flex-col items-center gap-1 transition-all duration-300 ease-out animate-in fade-in slide-in-from-right-4`}
+        style={{ position: 'fixed', animationDelay: '100ms' }}
       >
         <button
           onClick={toggleSefer}
@@ -197,4 +221,9 @@ export default function ReadingControls() {
       </div>
     </>
   )
+
+  // Use portal to render controls directly in body, outside any scrollable containers
+  if (!mounted) return null
+
+  return createPortal(controlsContent, document.body)
 }

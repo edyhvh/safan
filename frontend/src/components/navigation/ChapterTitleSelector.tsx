@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { ChevronDown } from '@/components/icons'
@@ -8,6 +8,7 @@ import {
   AVAILABLE_BOOKS,
   BOOK_DISPLAY_NAMES,
   BOOK_HEBREW_INFO,
+  searchBooks,
   type BookName,
 } from '@/lib/books'
 
@@ -30,8 +31,55 @@ export default function ChapterTitleSelector({
 }: ChapterTitleSelectorProps) {
   const [isChapterOpen, setIsChapterOpen] = useState(false)
   const [isBookOpen, setIsBookOpen] = useState(false)
+  const [bookSearchQuery, setBookSearchQuery] = useState('')
+  const [chapterSearchQuery, setChapterSearchQuery] = useState('')
+  const [filteredBooks, setFilteredBooks] = useState<BookName[]>([...AVAILABLE_BOOKS])
+  const [filteredChapters, setFilteredChapters] = useState(chapters)
   const chapterDropdownRef = useRef<HTMLDivElement>(null)
   const bookDropdownRef = useRef<HTMLDivElement>(null)
+  const bookSearchInputRef = useRef<HTMLInputElement>(null)
+  const chapterSearchInputRef = useRef<HTMLInputElement>(null)
+
+  // Filter books based on search query
+  useEffect(() => {
+    if (bookSearchQuery.trim()) {
+      const results = searchBooks(bookSearchQuery)
+      setFilteredBooks(results)
+    } else {
+      setFilteredBooks([...AVAILABLE_BOOKS])
+    }
+  }, [bookSearchQuery])
+
+  // Filter chapters based on search query
+  useEffect(() => {
+    if (chapterSearchQuery.trim()) {
+      const query = chapterSearchQuery.toLowerCase()
+      const filtered = chapters.filter((chapter) =>
+        chapter.number.toString().includes(query) ||
+        chapter.hebrew_letter.includes(chapterSearchQuery)
+      )
+      setFilteredChapters(filtered)
+    } else {
+      setFilteredChapters(chapters)
+    }
+  }, [chapterSearchQuery, chapters])
+
+  // Focus search inputs when dropdowns open
+  useEffect(() => {
+    if (isBookOpen && bookSearchInputRef.current) {
+      setTimeout(() => bookSearchInputRef.current?.focus(), 100)
+    } else {
+      setBookSearchQuery('')
+    }
+  }, [isBookOpen])
+
+  useEffect(() => {
+    if (isChapterOpen && chapterSearchInputRef.current) {
+      setTimeout(() => chapterSearchInputRef.current?.focus(), 100)
+    } else {
+      setChapterSearchQuery('')
+    }
+  }, [isChapterOpen])
 
   // Close dropdowns when clicking outside
   useClickOutside(
@@ -92,8 +140,36 @@ export default function ChapterTitleSelector({
           {/* Books dropdown */}
           {isBookOpen && (
             <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 dropdown-panel overflow-hidden z-50 min-w-[200px] max-h-[400px] overflow-y-auto">
-              <div className="py-1">
-                {AVAILABLE_BOOKS.map((book) => {
+              {/* Book search */}
+              <div className="p-2 border-b border-black/5">
+                <div className="relative">
+                  <svg
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                  <input
+                    ref={bookSearchInputRef}
+                    type="text"
+                    value={bookSearchQuery}
+                    onChange={(e) => setBookSearchQuery(e.target.value)}
+                    placeholder="Search for..."
+                    className="w-full pl-10 pr-4 py-2 text-sm font-ui-latin text-black neumorphism-inset outline-none placeholder:text-black/40 rounded-lg"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </div>
+              </div>
+              <div className="py-1 max-h-[300px] overflow-y-auto">
+                {filteredBooks.length > 0 ? (
+                  filteredBooks.map((book) => {
                   const displayName = BOOK_DISPLAY_NAMES[book]
                   const isCurrentBook = book === bookName
                   return (
@@ -111,7 +187,12 @@ export default function ChapterTitleSelector({
                         displayName.en}
                     </Link>
                   )
-                })}
+                  })
+                ) : (
+                  <div className="px-4 py-3 text-sm text-black/60 text-center">
+                    No books found
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -153,8 +234,36 @@ export default function ChapterTitleSelector({
                 <div className="px-4 py-2 text-xs font-medium text-black/50 uppercase tracking-wide border-b border-black/5">
                   Chapters
                 </div>
+                {/* Chapter search */}
+                <div className="p-2 border-b border-black/5">
+                  <div className="relative">
+                    <svg
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                    <input
+                      ref={chapterSearchInputRef}
+                      type="text"
+                      value={chapterSearchQuery}
+                      onChange={(e) => setChapterSearchQuery(e.target.value)}
+                      placeholder="Search for..."
+                      className="w-full pl-10 pr-4 py-2 text-sm font-ui-latin text-black neumorphism-inset outline-none placeholder:text-black/40 rounded-lg"
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                  </div>
+                </div>
                 <div className="grid grid-cols-4 gap-1 p-2">
-                  {chapters.map((chapter) => (
+                  {filteredChapters.length > 0 ? (
+                    filteredChapters.map((chapter) => (
                     <Link
                       key={chapter.number}
                       href={`/${locale}/book/${bookName}/chapter/${chapter.number}`}
@@ -167,7 +276,12 @@ export default function ChapterTitleSelector({
                     >
                       {chapter.number}
                     </Link>
-                  ))}
+                    ))
+                  ) : (
+                    <div className="col-span-4 px-4 py-3 text-sm text-black/60 text-center">
+                      No chapters found
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

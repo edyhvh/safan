@@ -136,7 +136,7 @@ export default async function LocaleLayout({
           {/* Floating Navbar */}
           <Navbar />
 
-          {/* Correction Warning */}
+          {/* Correction Warning - Fixed at top */}
           <CorrectionWarning />
 
           {/* Main content with top padding for floating navbar */}
