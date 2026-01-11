@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react'
 
 export interface ScrollState {
   isAtTop: boolean
-  isMouseAtTop: boolean
   scrollDirection: 'up' | 'down' | null
   shouldHideForContent: boolean
 }
@@ -10,7 +9,6 @@ export interface ScrollState {
 export function useScrollState(): ScrollState {
   const [scrollState, setScrollState] = useState<ScrollState>({
     isAtTop: true,
-    isMouseAtTop: false,
     scrollDirection: null,
     shouldHideForContent: false,
   })
@@ -27,7 +25,7 @@ export function useScrollState(): ScrollState {
     // A good threshold is around 70-80px of scroll
     const shouldHideForContent = currentScrollY > 70
 
-    setScrollState(prev => ({
+    setScrollState((prev) => ({
       ...prev,
       isAtTop,
       shouldHideForContent,
@@ -37,31 +35,18 @@ export function useScrollState(): ScrollState {
     setLastScrollY(currentScrollY)
   }, [lastScrollY])
 
-  const handleMouseMove = useCallback((event: MouseEvent) => {
-    // Detect if mouse is at the very top to show navbar
-    // This is kept for potential future use, but currently navbar visibility
-    // is controlled by hover state on the navbar itself
-    const isMouseAtTop = event.clientY < 15
-    setScrollState(prev => ({
-      ...prev,
-      isMouseAtTop,
-    }))
-  }, [])
-
   useEffect(() => {
     // Set initial state
     handleScroll()
 
-    // Add event listeners
+    // Add scroll event listener
     window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('mousemove', handleMouseMove, { passive: true })
 
     // Cleanup
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [handleScroll, handleMouseMove])
+  }, [handleScroll])
 
   return scrollState
 }

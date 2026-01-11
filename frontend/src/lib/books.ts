@@ -455,9 +455,7 @@ export function getBookNameByIndex(index: number): BookName | null {
  * This allows searching Spanish text without requiring accents
  */
 function normalizeText(text: string): string {
-  return text
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
 }
 
 /**

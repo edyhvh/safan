@@ -57,7 +57,10 @@ export default function AuthorInfo({
 
   return (
     <div className="mt-12 flex justify-center">
-      <p className="font-ui-latin text-sm text-gray text-center" suppressHydrationWarning>
+      <p
+        className="font-ui-latin text-sm text-gray text-center"
+        suppressHydrationWarning
+      >
         {author}
         {year && ` (${year})`}
       </p>

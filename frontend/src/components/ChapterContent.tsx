@@ -40,20 +40,36 @@ export default function ChapterContent({
   const { textSource, isLoaded: textSourceLoaded } = useTextSource()
   const { seferEnabled, isLoaded: seferLoaded } = useSefer()
 
-  // State for Christian Bible verse mappings
-  const [christianVerses, setChristianVerses] = useState<Record<number, string | null>>({})
+  // State for Christian Bible verse mappings with optimized loading
+  const [christianVerses, setChristianVerses] = useState<
+    Record<number, string | null>
+  >({})
 
-  // Load Christian verse mappings
+  // Load Christian verse mappings - optimized to load all at once per chapter change
   useEffect(() => {
     async function loadChristianMappings() {
+      // Load all mappings for the chapter in parallel instead of sequential
+      const mappingPromises = verses.map(async (verse) => {
+        if (verse.number > 0) {
+          const christianRef = await getChristianVerse(
+            _bookName,
+            chapterNumber,
+            verse.number
+          )
+          return [verse.number, christianRef] as [number, string | null]
+        }
+        return null
+      })
+
+      const results = await Promise.all(mappingPromises)
       const mappings: Record<number, string | null> = {}
 
-      for (const verse of verses) {
-        if (verse.number > 0) {
-          const christianRef = await getChristianVerse(_bookName, chapterNumber, verse.number)
-          mappings[verse.number] = christianRef
+      results.forEach((result) => {
+        if (result) {
+          const [verseNumber, christianRef] = result
+          mappings[verseNumber] = christianRef
         }
-      }
+      })
 
       setChristianVerses(mappings)
     }
@@ -66,20 +82,24 @@ export default function ChapterContent({
     nikudLoaded && cantillationLoaded && textSourceLoaded && seferLoaded
 
   // Component to display verse numbers with Christian equivalents
-  const VerseNumber = ({ verseNumber, className = "" }: { verseNumber: number, className?: string }) => {
+  const VerseNumber = ({
+    verseNumber,
+    className = '',
+  }: {
+    verseNumber: number
+    className?: string
+  }) => {
     const christianRef = christianVerses[verseNumber]
 
     return (
-      <span className={`font-ui-latin text-base whitespace-nowrap ${className}`}>
+      <span
+        className={`font-ui-latin text-base whitespace-nowrap ${className}`}
+      >
         {christianRef && (
-          <span className="text-gray/60">
-            {"{" + christianRef + "}"}
-          </span>
+          <span className="text-gray/60">{'{' + christianRef + '}'}</span>
         )}
         {christianRef && <span className="mx-1"></span>}
-        <span className={christianRef ? "font-bold" : ""}>
-          [{verseNumber}]
-        </span>
+        <span className={christianRef ? 'font-bold' : ''}>[{verseNumber}]</span>
       </span>
     )
   }

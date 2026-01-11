@@ -132,7 +132,9 @@ export async function getChristianVerse(
 /**
  * Check if a book has versification differences
  */
-export async function hasVersificationDifferences(bookName: BookName): Promise<boolean> {
+export async function hasVersificationDifferences(
+  bookName: BookName
+): Promise<boolean> {
   await loadVersificationData()
 
   if (!versificationData) {
@@ -167,7 +169,9 @@ export async function getBooksWithDifferences(): Promise<BookName[]> {
 /**
  * Get versification info for a book (for debugging/display purposes)
  */
-export async function getVersificationInfo(bookName: BookName): Promise<any | null> {
+export async function getVersificationInfo(
+  bookName: BookName
+): Promise<any | null> {
   await loadVersificationData()
 
   if (!versificationData) {

@@ -28,7 +28,9 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
   )
   const [loadingBooks, setLoadingBooks] = useState<Set<BookName>>(new Set())
   const [searchQuery, setSearchQuery] = useState('')
-  const [filteredBooks, setFilteredBooks] = useState<BookName[]>([...AVAILABLE_BOOKS])
+  const [filteredBooks, setFilteredBooks] = useState<BookName[]>([
+    ...AVAILABLE_BOOKS,
+  ])
   const containerRef = useRef<HTMLDivElement>(null)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -158,38 +160,41 @@ export default function BooksDropdown({ isOpen, onClose }: BooksDropdownProps) {
 
         {/* Scrollable books list */}
         <div className="max-h-[500px] overflow-y-auto py-1 scroll-smooth scroll-smooth-enhanced scrollbar-thin scrollbar-thumb-black/20 scrollbar-track-transparent hover:scrollbar-thumb-black/30">
-        {filteredBooks.length > 0 ? (
-          filteredBooks.map((bookName) => {
-          const displayName = BOOK_DISPLAY_NAMES[bookName]
-          const isHovered = hoveredBook === bookName
+          {filteredBooks.length > 0 ? (
+            filteredBooks.map((bookName) => {
+              const displayName = BOOK_DISPLAY_NAMES[bookName]
+              const isHovered = hoveredBook === bookName
 
-          return (
-            <div
-              key={bookName}
-              onMouseEnter={(e) => handleBookHover(bookName, e.currentTarget)}
-            >
-              <Link
-                href={`/${locale}/book/${bookName}/chapter/1`}
-                className={`flex items-center justify-between px-6 py-3 text-base font-ui-latin font-semibold text-black/90 hover:text-black hover:bg-black/5 transition-all border-b border-black/8 last:border-b-0 ${
-                  isHovered ? 'bg-black/5 text-black' : ''
-                } ${locale === 'he' ? 'flex-row-reverse' : ''}`}
-                onClick={onClose}
-              >
-                <span>
-                  {displayName[locale as 'he' | 'es' | 'en'] || displayName.en}
-                </span>
-                <ChevronRight
-                  className={`text-gray/60 ${locale === 'he' ? 'scale-x-[-1]' : ''}`}
-                />
-              </Link>
+              return (
+                <div
+                  key={bookName}
+                  onMouseEnter={(e) =>
+                    handleBookHover(bookName, e.currentTarget)
+                  }
+                >
+                  <Link
+                    href={`/${locale}/book/${bookName}/chapter/1`}
+                    className={`flex items-center justify-between px-6 py-3 text-base font-ui-latin font-semibold text-black/90 hover:text-black hover:bg-black/5 transition-all border-b border-black/8 last:border-b-0 ${
+                      isHovered ? 'bg-black/5 text-black' : ''
+                    } ${locale === 'he' ? 'flex-row-reverse' : ''}`}
+                    onClick={onClose}
+                  >
+                    <span>
+                      {displayName[locale as 'he' | 'es' | 'en'] ||
+                        displayName.en}
+                    </span>
+                    <ChevronRight
+                      className={`text-gray/60 ${locale === 'he' ? 'scale-x-[-1]' : ''}`}
+                    />
+                  </Link>
+                </div>
+              )
+            })
+          ) : (
+            <div className="px-6 py-4 text-sm text-black/60 text-center">
+              No books found
             </div>
-          )
-          })
-        ) : (
-          <div className="px-6 py-4 text-sm text-black/60 text-center">
-            No books found
-          </div>
-        )}
+          )}
         </div>
       </div>
 

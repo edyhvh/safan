@@ -10,6 +10,7 @@ interface RetroToggleProps {
   title?: string
   labelFontClass?: string
   textDirection?: 'ltr' | 'rtl' | 'auto'
+  className?: string
 }
 
 /**
@@ -26,12 +27,12 @@ export default function RetroToggle({
   title,
   labelFontClass = 'font-ui-latin',
   textDirection = 'auto',
+  className = '',
 }: RetroToggleProps) {
-
   return (
     <button
       onClick={onToggle}
-      className={`${position ? `fixed ${position} z-40` : ''} cursor-pointer group`}
+      className={`${position ? `fixed ${position} z-40` : ''} cursor-pointer group ${className}`}
       aria-label={ariaLabel}
       aria-pressed={enabled}
       title={title || ariaLabel}
