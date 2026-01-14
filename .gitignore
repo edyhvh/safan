@@ -36,6 +36,9 @@ data/temp/
 # Generated images (converted from PDFs)
 data/images/
 
+# models
+models/
+
 # Checkpoints
 output/.checkpoints/
 
