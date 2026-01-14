@@ -49,7 +49,8 @@ export default function CorrectionWarning() {
   // Extract bookId from pathname (format: /[locale]/book/[bookId]/chapter/[chapterId])
   const bookMatch = pathname.match(/\/book\/([^/]+)/)
   const bookId = bookMatch ? (bookMatch[1] as BookName) : null
-  const isNTBook = bookId && AVAILABLE_BOOKS.includes(bookId) && isNewTestament(bookId)
+  const isNTBook =
+    bookId && AVAILABLE_BOOKS.includes(bookId) && isNewTestament(bookId)
 
   // Only show warning in books section, not on error pages, AND only for Hutter text in New Testament books
   if (
