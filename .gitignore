@@ -36,7 +36,7 @@ data/images/
 
 # models
 models/
-scripts/nakdimon/models
+scripts/nakdimon/models/
 
 # Checkpoints
 output/.checkpoints/
