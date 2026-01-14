@@ -1,10 +1,10 @@
 {
   "book": "philemon",
   "total_verses": 25,
-  "verses_with_corrections": 25,
+  "verses_with_corrections": 15,
   "confidence_threshold": 0.5,
   "top_k": 3,
-  "model_used": "mock_predictor",
+  "model_used": "real_model",
   "corrections": [
     {
       "book": "philemon",
@@ -12,180 +12,8 @@
       "verse": 1,
       "original_text": "פַּוְלוֹס אָסוּר יֵשׁוּעַ הַמָּשִׁיחַ וְטִימוֹתֵאוֹס הָאָח לְפִילֵימוֹן לִידִידֵנוּ וְעוֹזְרֵנוּ",
       "delitzsch_reference": "פּוֹלוֹס אֲסִיר הַמָּשִׁיחַ יֵשׁוּעַ וְטִימוֹתִיּוֹס הָאָח אֶל־פִילֵימוֹן הֶחָבִיב וְהָעׂזֵר אׂתָנוּ׃",
-      "corrections": [
-        {
-          "word_index": 0,
-          "original_word": "פַּוְלוֹס",
-          "error_confidence": 0.6411111111111112,
-          "suggestions": [
-            {
-              "word": "פַּוְלוחס",
-              "confidence": 0.6411111111111112
-            },
-            {
-              "word": "פַּוְלווס",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "פַּוולוֹס",
-              "confidence": 0.49777777777777776
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "אָסוּר",
-          "error_confidence": 0.6566666666666666,
-          "suggestions": [
-            {
-              "word": "אָסוצר",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "אָסויר",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "אוסוּר",
-              "confidence": 0.38666666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "יֵשׁוּעַ",
-          "error_confidence": 0.71,
-          "suggestions": [
-            {
-              "word": "יֵשׁוּעה",
-              "confidence": 0.71
-            },
-            {
-              "word": "יֵשׁוּעו",
-              "confidence": 0.67
-            },
-            {
-              "word": "יֵשׁוצעַ",
-              "confidence": 0.64
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "הַמָּשִׁיחַ",
-          "error_confidence": 0.7236363636363636,
-          "suggestions": [
-            {
-              "word": "הַמָּשִׁיחה",
-              "confidence": 0.7236363636363636
-            },
-            {
-              "word": "הַמָּשִׁיחו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "הַמָּשהׁיחַ",
-              "confidence": 0.5781818181818181
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "וְטִימוֹתֵאוֹס",
-          "error_confidence": 0.6728571428571428,
-          "suggestions": [
-            {
-              "word": "וְטִימוֹתֵאוחס",
-              "confidence": 0.6728571428571428
-            },
-            {
-              "word": "וְטִימוֹתֵאווס",
-              "confidence": 0.6628571428571428
-            },
-            {
-              "word": "וְטִימוֹתנאוֹס",
-              "confidence": 0.6371428571428571
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "הָאָח",
-          "error_confidence": 0.56,
-          "suggestions": [
-            {
-              "word": "הָאוח",
-              "confidence": 0.56
-            },
-            {
-              "word": "הָאיח",
-              "confidence": 0.55
-            },
-            {
-              "word": "הואָח",
-              "confidence": 0.4
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "לְפִילֵימוֹן",
-          "error_confidence": 0.6633333333333333,
-          "suggestions": [
-            {
-              "word": "לְפִילֵימוחן",
-              "confidence": 0.6633333333333333
-            },
-            {
-              "word": "לְפִילֵימוון",
-              "confidence": 0.6533333333333333
-            },
-            {
-              "word": "לְפִילנימוֹן",
-              "confidence": 0.58
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "לִידִידֵנוּ",
-          "error_confidence": 0.7536363636363635,
-          "suggestions": [
-            {
-              "word": "לִידִידֵנוצ",
-              "confidence": 0.7536363636363635
-            },
-            {
-              "word": "לִידִידֵנוי",
-              "confidence": 0.6736363636363636
-            },
-            {
-              "word": "לִידִידננוּ",
-              "confidence": 0.6345454545454545
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "וְעוֹזְרֵנוּ",
-          "error_confidence": 0.7566666666666667,
-          "suggestions": [
-            {
-              "word": "וְעוֹזְרֵנוצ",
-              "confidence": 0.7566666666666667
-            },
-            {
-              "word": "וְעוֹזְרֵנוי",
-              "confidence": 0.6766666666666667
-            },
-            {
-              "word": "וְעוֹזְרננוּ",
-              "confidence": 0.6466666666666666
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -193,157 +21,8 @@
       "verse": 2,
       "original_text": "וְאַפִּיאָ לִידִידָתֵנוּ וְאַרְכִיפּוֹס שֶׁהוּא בַּעֲרָכֵנוּ בַּמִּלְחָמָה וְלָעֵדָה אֲשֶׁר הִיא בְּבֵיתֶךָ",
       "delitzsch_reference": "וְאֶל־אַפִּיָּה הָאֲהוּבָה וְאֶל־אַרְכִפּוֹס הֶחָבֵר לָנוּ בְּמִלְחֲמׂתֵינוּ וְאֶל־הַקְּהִלָּה אֲשֶׁר בְּבֵיתֶךָ׃",
-      "corrections": [
-        {
-          "word_index": 0,
-          "original_word": "וְאַפִּיאָ",
-          "error_confidence": 0.68,
-          "suggestions": [
-            {
-              "word": "וְאַפִּיאו",
-              "confidence": 0.68
-            },
-            {
-              "word": "וְאַפִּיאי",
-              "confidence": 0.67
-            },
-            {
-              "word": "וְאַפִציאָ",
-              "confidence": 0.63
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "לִידִידָתֵנוּ",
-          "error_confidence": 0.7592307692307693,
-          "suggestions": [
-            {
-              "word": "לִידִידָתֵנוצ",
-              "confidence": 0.7592307692307693
-            },
-            {
-              "word": "לִידִידָתֵנוי",
-              "confidence": 0.6792307692307693
-            },
-            {
-              "word": "לִידִידָתננוּ",
-              "confidence": 0.6569230769230768
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "וְאַרְכִיפּוֹס",
-          "error_confidence": 0.6757142857142857,
-          "suggestions": [
-            {
-              "word": "וְאַרְכִיפצוֹס",
-              "confidence": 0.6757142857142857
-            },
-            {
-              "word": "וְאַרְכִיפּוחס",
-              "confidence": 0.6728571428571428
-            },
-            {
-              "word": "וְאַרְכִיפּווס",
-              "confidence": 0.6628571428571428
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "שֶׁהוּא",
-          "error_confidence": 0.6757142857142857,
-          "suggestions": [
-            {
-              "word": "שֶׁהוצא",
-              "confidence": 0.6757142857142857
-            },
-            {
-              "word": "שֶׁהויא",
-              "confidence": 0.5957142857142858
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "בַּעֲרָכֵנוּ",
-          "error_confidence": 0.7566666666666667,
-          "suggestions": [
-            {
-              "word": "בַּעֲרָכֵנוצ",
-              "confidence": 0.7566666666666667
-            },
-            {
-              "word": "בַּעֲרָכֵנוי",
-              "confidence": 0.6766666666666667
-            },
-            {
-              "word": "בַּעֲרָכננוּ",
-              "confidence": 0.6466666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "בַּמִּלְחָמָה",
-          "error_confidence": 0.6584615384615384,
-          "suggestions": [
-            {
-              "word": "בַּמִּלְחָמוה",
-              "confidence": 0.6584615384615384
-            },
-            {
-              "word": "בַּמִּלְחָמיה",
-              "confidence": 0.6484615384615384
-            },
-            {
-              "word": "בַּמִּלְחומָה",
-              "confidence": 0.5969230769230769
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "וְלָעֵדָה",
-          "error_confidence": 0.6311111111111112,
-          "suggestions": [
-            {
-              "word": "וְלָעֵדוה",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "וְלָעֵדיה",
-              "confidence": 0.6211111111111112
-            },
-            {
-              "word": "וְלָענדָה",
-              "confidence": 0.6022222222222222
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "בְּבֵיתֶךָ",
-          "error_confidence": 0.68,
-          "suggestions": [
-            {
-              "word": "בְּבֵיתֶךו",
-              "confidence": 0.68
-            },
-            {
-              "word": "בְּבֵיתֶךי",
-              "confidence": 0.67
-            },
-            {
-              "word": "בְּבניתֶךָ",
-              "confidence": 0.54
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -353,135 +32,24 @@
       "delitzsch_reference": "חֶסֶד לָכֶם וְשָׁלוֹם מֵאֵת אֱלׂהִים אָבִינוּ וַאֲדׂנֵינוּ יֵשׁוּעַ הַמָּשִׁיחַ׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "תִּהְיֶה",
-          "error_confidence": 0.52,
-          "suggestions": [
-            {
-              "word": "תִּהויֶה",
-              "confidence": 0.52
-            },
-            {
-              "word": "תִּהייֶה",
-              "confidence": 0.51
-            },
-            {
-              "word": "תִצהְיֶה",
-              "confidence": 0.49
-            }
-          ]
-        },
-        {
           "word_index": 2,
-          "original_word": "שָׁלוֹם",
-          "error_confidence": 0.6157142857142858,
+          "original_word": "שָׁלוֹם",
+          "error_confidence": 0.9342920780181885,
           "suggestions": [
             {
-              "word": "שָׁלוחם",
-              "confidence": 0.6157142857142858
-            },
-            {
-              "word": "שָׁלוום",
-              "confidence": 0.6057142857142858
-            },
-            {
-              "word": "שוׁלוֹם",
-              "confidence": 0.37714285714285717
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "בֵּאלֹהִים",
-          "error_confidence": 0.6399999999999999,
-          "suggestions": [
-            {
-              "word": "בֵּאלֹההים",
-              "confidence": 0.6399999999999999
-            },
-            {
-              "word": "בֵּאלֹהיים",
-              "confidence": 0.59
-            },
-            {
-              "word": "בֵּאלחהִים",
-              "confidence": 0.53
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "אָבִינוּ",
-          "error_confidence": 0.74,
-          "suggestions": [
-            {
-              "word": "אָבִינוצ",
-              "confidence": 0.74
-            },
-            {
-              "word": "אָבִינוי",
-              "confidence": 0.66
-            },
-            {
-              "word": "אָבהינוּ",
-              "confidence": 0.51
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "וּבַאֲדוֹנֵינוּ",
-          "error_confidence": 0.7633333333333333,
-          "suggestions": [
-            {
-              "word": "וּבַאֲדוֹנֵינוצ",
-              "confidence": 0.7633333333333333
-            },
-            {
-              "word": "וּבַאֲדוֹנֵינוי",
-              "confidence": 0.6833333333333333
-            },
-            {
-              "word": "וּבַאֲדוֹננינוּ",
-              "confidence": 0.6466666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "יֵשׁוּעַ",
-          "error_confidence": 0.71,
-          "suggestions": [
-            {
-              "word": "יֵשׁוּעה",
-              "confidence": 0.71
-            },
-            {
-              "word": "יֵשׁוּעו",
-              "confidence": 0.67
-            },
-            {
-              "word": "יֵשׁוצעַ",
-              "confidence": 0.64
+              "word": "לָכֶם",
+              "confidence": 0.505852222442627
             }
           ]
         },
         {
           "word_index": 7,
-          "original_word": "הַמָּשִׁיחַ",
-          "error_confidence": 0.7236363636363636,
+          "original_word": "הַמָּשִׁיחַ",
+          "error_confidence": 0.7162898778915405,
           "suggestions": [
             {
-              "word": "הַמָּשִׁיחה",
-              "confidence": 0.7236363636363636
-            },
-            {
-              "word": "הַמָּשִׁיחו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "הַמָּשהׁיחַ",
-              "confidence": 0.5781818181818181
+              "word": "כִּי",
+              "confidence": 0.3165988326072693
             }
           ]
         }
@@ -496,97 +64,28 @@
       "delitzsch_reference": "מוֹדֶה אֲנִי לֵאלׂהַי בְּכָל־עֵת בְּהַזְכִּירִי אׂתְךָ בִּתְפִלּוֹתָי׃",
       "corrections": [
         {
-          "word_index": 1,
-          "original_word": "לֵאלֹהַי",
-          "error_confidence": 0.6600000000000001,
-          "suggestions": [
-            {
-              "word": "לֵאלֹההי",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "לֵאלֹהוי",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "לֵאלחהַי",
-              "confidence": 0.53
-            }
-          ]
-        },
-        {
           "word_index": 2,
-          "original_word": "בְּכָל",
-          "error_confidence": 0.5866666666666667,
+          "original_word": "בְּכָל",
+          "error_confidence": 0.6040124297142029,
           "suggestions": [
             {
-              "word": "בְּכול",
-              "confidence": 0.5866666666666667
+              "word": "אֶת",
+              "confidence": 0.15425361692905426
             },
             {
-              "word": "בְּכיל",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "בְצכָל",
-              "confidence": 0.5233333333333333
+              "word": "לֹא",
+              "confidence": 0.135484516620636
             }
           ]
         },
         {
-          "word_index": 4,
-          "original_word": "בַּזְכָּרִי",
-          "error_confidence": 0.6872727272727273,
+          "word_index": 3,
+          "original_word": "עֵת",
+          "error_confidence": 0.6329972743988037,
           "suggestions": [
             {
-              "word": "בַּזְכָּרהי",
-              "confidence": 0.6872727272727273
-            },
-            {
-              "word": "בַּזְכָצרִי",
-              "confidence": 0.6445454545454545
-            },
-            {
-              "word": "בַּזְכָּריי",
-              "confidence": 0.6372727272727273
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "אֶת־שִׁמְךָ",
-          "error_confidence": 0.6836363636363636,
-          "suggestions": [
-            {
-              "word": "אֶת־שִׁמְךו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "אֶת־שִׁמְךי",
-              "confidence": 0.6736363636363636
-            },
-            {
-              "word": "אֶת־שִׁמוךָ",
-              "confidence": 0.610909090909091
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "בִּתְפִלּוֹתִי",
-          "error_confidence": 0.7028571428571428,
-          "suggestions": [
-            {
-              "word": "בִּתְפִלּוֹתהי",
-              "confidence": 0.7028571428571428
-            },
-            {
-              "word": "בִּתְפִלּוֹתיי",
-              "confidence": 0.6528571428571428
-            },
-            {
-              "word": "בִּתְפִלצוֹתִי",
-              "confidence": 0.6185714285714285
+              "word": "אֶת",
+              "confidence": 0.15584124624729156
             }
           ]
         }
@@ -601,154 +100,57 @@
       "delitzsch_reference": "אַחֲרֵי שָׁמְעִי אַהֲבָתְךָ וֶאֱמוּנָתְךָ אֲשֶׁר־בְּךָ לַאֲדׂנֵינוּ יֵשׁוּעַ וּלְכָל־הַקְּדוֹשִׁים׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "בְּשָׁמְעִי",
-          "error_confidence": 0.6872727272727273,
-          "suggestions": [
-            {
-              "word": "בְּשָׁמְעהי",
-              "confidence": 0.6872727272727273
-            },
-            {
-              "word": "בְּשָׁמְעיי",
-              "confidence": 0.6372727272727273
-            },
-            {
-              "word": "בְּשָׁמועִי",
-              "confidence": 0.5745454545454546
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "אֶת־אַהֲבָתֶךָ",
-          "error_confidence": 0.6914285714285715,
-          "suggestions": [
-            {
-              "word": "אֶת־אַהֲבָתֶךו",
-              "confidence": 0.6914285714285715
-            },
-            {
-              "word": "אֶת־אַהֲבָתֶךי",
-              "confidence": 0.6814285714285715
-            },
-            {
-              "word": "אֶת־אַהֲבותֶךָ",
-              "confidence": 0.5771428571428572
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "וְאֱמוּנָתֶךָ",
-          "error_confidence": 0.6892307692307693,
-          "suggestions": [
-            {
-              "word": "וְאֱמוּנָתֶךו",
-              "confidence": 0.6892307692307693
-            },
-            {
-              "word": "וְאֱמוּנָתֶךי",
-              "confidence": 0.6792307692307693
-            },
-            {
-              "word": "וְאֱמוצנָתֶךָ",
-              "confidence": 0.5746153846153846
-            }
-          ]
-        },
-        {
           "word_index": 5,
-          "original_word": "לְךָ",
-          "error_confidence": 0.6200000000000001,
+          "original_word": "יֵשׁ",
+          "error_confidence": 0.6056703925132751,
           "suggestions": [
             {
-              "word": "לְךו",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "לְךי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "לוךָ",
-              "confidence": 0.42000000000000004
+              "word": "אֲשֶׁר",
+              "confidence": 0.2827613055706024
             }
           ]
         },
         {
-          "word_index": 6,
-          "original_word": "אֶל־אֲדוֹנֵינוּ",
-          "error_confidence": 0.7633333333333333,
+          "word_index": 8,
+          "original_word": "אֲדוֹנֵינוּ",
+          "error_confidence": 0.8864875435829163,
           "suggestions": [
             {
-              "word": "אֶל־אֲדוֹנֵינוצ",
-              "confidence": 0.7633333333333333
-            },
-            {
-              "word": "אֶל־אֲדוֹנֵינוי",
-              "confidence": 0.6833333333333333
-            },
-            {
-              "word": "אֶל־אֲדוֹננינוּ",
-              "confidence": 0.6466666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "יֵשׁוּעַ",
-          "error_confidence": 0.71,
-          "suggestions": [
-            {
-              "word": "יֵשׁוּעה",
-              "confidence": 0.71
-            },
-            {
-              "word": "יֵשׁוּעו",
-              "confidence": 0.67
-            },
-            {
-              "word": "יֵשׁוצעַ",
-              "confidence": 0.64
+              "word": "הַכֹּחוֹת",
+              "confidence": 0.11544522643089294
             }
           ]
         },
         {
           "word_index": 9,
-          "original_word": "כָּל",
-          "error_confidence": 0.59,
+          "original_word": "יֵשׁוּעַ",
+          "error_confidence": 0.9198518395423889,
           "suggestions": [
             {
-              "word": "כָצל",
-              "confidence": 0.59
-            },
-            {
-              "word": "כָיל",
-              "confidence": 0.51
-            },
-            {
-              "word": "כוּל",
-              "confidence": 0.42000000000000004
+              "word": "כִּי",
+              "confidence": 0.19723208248615265
             }
           ]
         },
         {
           "word_index": 10,
-          "original_word": "הַקְּדוֹשִׁים",
-          "error_confidence": 0.6369230769230769,
+          "original_word": "וְאֶל",
+          "error_confidence": 0.9673824906349182,
           "suggestions": [
             {
-              "word": "הַקְּדוֹשהׁים",
-              "confidence": 0.6369230769230769
-            },
+              "word": "וּלְאֶחָד",
+              "confidence": 0.11288473755121231
+            }
+          ]
+        },
+        {
+          "word_index": 12,
+          "original_word": "הַקְּדוֹשִׁים",
+          "error_confidence": 0.702021062374115,
+          "suggestions": [
             {
-              "word": "הַקְּדוֹשיׁים",
-              "confidence": 0.5869230769230769
-            },
-            {
-              "word": "הַקְּדוחשִׁים",
-              "confidence": 0.5453846153846154
+              "word": "כָּל",
+              "confidence": 0.12997911870479584
             }
           ]
         }
@@ -763,184 +165,17 @@
       "delitzsch_reference": "לְמַעַן אֲשֶׁר תִּתְחַזֵּק הִתְחַבְּרוּת אֱמוּנָתְךָ בְּדַעַת כָּל־טוֹב אֲשֶׁר בָּכֶם לְשֵׁם הַמָּשִׁיחַ יֵשׁוּעַ׃",
       "corrections": [
         {
-          "word_index": 1,
-          "original_word": "חֶבְרַת",
-          "error_confidence": 0.6457142857142857,
-          "suggestions": [
-            {
-              "word": "חֶבְרהת",
-              "confidence": 0.6457142857142857
-            },
-            {
-              "word": "חֶבְרות",
-              "confidence": 0.6057142857142858
-            },
-            {
-              "word": "חֶבורַת",
-              "confidence": 0.49142857142857144
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "אֱמוּנָתְךָ",
-          "error_confidence": 0.6836363636363636,
-          "suggestions": [
-            {
-              "word": "אֱמוּנָתְךו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "אֱמוּנָתְךי",
-              "confidence": 0.6736363636363636
-            },
-            {
-              "word": "אֱמוּנָתוךָ",
-              "confidence": 0.610909090909091
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "תִּהְיֶה",
-          "error_confidence": 0.52,
-          "suggestions": [
-            {
-              "word": "תִּהויֶה",
-              "confidence": 0.52
-            },
-            {
-              "word": "תִּהייֶה",
-              "confidence": 0.51
-            },
-            {
-              "word": "תִצהְיֶה",
-              "confidence": 0.49
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "יְדוּעַת",
-          "error_confidence": 0.6600000000000001,
-          "suggestions": [
-            {
-              "word": "יְדוּעהת",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "יְדוּעות",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "יְדוצעַת",
-              "confidence": 0.59
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "כָּל",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "כָצל",
-              "confidence": 0.59
-            },
-            {
-              "word": "כָיל",
-              "confidence": 0.51
-            },
-            {
-              "word": "כוּל",
-              "confidence": 0.42000000000000004
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "טוֹב",
-          "error_confidence": 0.53,
-          "suggestions": [
-            {
-              "word": "טוחב",
-              "confidence": 0.53
-            },
-            {
-              "word": "טווב",
-              "confidence": 0.52
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "שֶׁהוּא",
-          "error_confidence": 0.6757142857142857,
-          "suggestions": [
-            {
-              "word": "שֶׁהוצא",
-              "confidence": 0.6757142857142857
-            },
-            {
-              "word": "שֶׁהויא",
-              "confidence": 0.5957142857142858
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "בָּכֶם",
-          "error_confidence": 0.5233333333333333,
-          "suggestions": [
-            {
-              "word": "בָצכֶם",
-              "confidence": 0.5233333333333333
-            },
-            {
-              "word": "בָיכֶם",
-              "confidence": 0.44333333333333336
-            },
-            {
-              "word": "בוּכֶם",
-              "confidence": 0.38666666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 10,
-          "original_word": "בִּישׁוּעַ",
-          "error_confidence": 0.72,
-          "suggestions": [
-            {
-              "word": "בִּישׁוּעה",
-              "confidence": 0.72
-            },
-            {
-              "word": "בִּישׁוּעו",
-              "confidence": 0.68
-            },
-            {
-              "word": "בִּישׁוצעַ",
-              "confidence": 0.6699999999999999
-            }
-          ]
-        },
-        {
           "word_index": 11,
-          "original_word": "הַמָּשִׁיחַ",
-          "error_confidence": 0.7236363636363636,
+          "original_word": "הַמָּשִׁיחַ",
+          "error_confidence": 0.6509336233139038,
           "suggestions": [
             {
-              "word": "הַמָּשִׁיחה",
-              "confidence": 0.7236363636363636
+              "word": "אֱלֹהִים",
+              "confidence": 0.11626628041267395
             },
             {
-              "word": "הַמָּשִׁיחו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "הַמָּשהׁיחַ",
-              "confidence": 0.5781818181818181
+              "word": "עַל",
+              "confidence": 0.10152683407068253
             }
           ]
         }
@@ -955,230 +190,13 @@
       "delitzsch_reference": "כִּי שִׂמְחָה גְדוֹלָה וְנֶחָמָה יֶשׁ־לָנוּ בְּאַהֲבָתֶךָ בַּאֲשֶׁר הָיְתָה רְוָחָה לִמְעֵי הַקְּדוֹשִׁים עַל־יָדְךָ אָחִי׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "כִּי",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "כִצי",
-              "confidence": 0.59
-            },
-            {
-              "word": "כִיי",
-              "confidence": 0.51
-            },
-            {
-              "word": "כהּי",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "שִׂמְחָה",
-          "error_confidence": 0.6200000000000001,
-          "suggestions": [
-            {
-              "word": "שִׂמְחוה",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "שִׂמְחיה",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "שִׂמוחָה",
-              "confidence": 0.52
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "גְּדוֹלָה",
-          "error_confidence": 0.6311111111111112,
-          "suggestions": [
-            {
-              "word": "גְּדוֹלוה",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "גְּדוֹליה",
-              "confidence": 0.6211111111111112
-            },
-            {
-              "word": "גְּדוחלָה",
-              "confidence": 0.5522222222222223
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "וְנֶחָמָה",
-          "error_confidence": 0.6311111111111112,
-          "suggestions": [
-            {
-              "word": "וְנֶחָמוה",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "וְנֶחָמיה",
-              "confidence": 0.6211111111111112
-            },
-            {
-              "word": "וְנֶחומָה",
-              "confidence": 0.5422222222222223
-            }
-          ]
-        },
-        {
           "word_index": 5,
           "original_word": "אַהֲבָתְךָ",
-          "error_confidence": 0.68,
+          "error_confidence": 0.9645847678184509,
           "suggestions": [
             {
-              "word": "אַהֲבָתְךו",
-              "confidence": 0.68
-            },
-            {
-              "word": "אַהֲבָתְךי",
-              "confidence": 0.67
-            },
-            {
-              "word": "אַהֲבָתוךָ",
-              "confidence": 0.6
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "כִּי",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "כִצי",
-              "confidence": 0.59
-            },
-            {
-              "word": "כִיי",
-              "confidence": 0.51
-            },
-            {
-              "word": "כהּי",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "דַמֵּי",
-          "error_confidence": 0.6566666666666666,
-          "suggestions": [
-            {
-              "word": "דַמֵצי",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "דַמנּי",
-              "confidence": 0.58
-            },
-            {
-              "word": "דַמֵיי",
-              "confidence": 0.5766666666666667
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "הַקְדוֹשִׁים",
-          "error_confidence": 0.6266666666666667,
-          "suggestions": [
-            {
-              "word": "הַקְדוֹשהׁים",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "הַקְדוֹשיׁים",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "הַקְדוחשִׁים",
-              "confidence": 0.53
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "בָּא",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "בָצא",
-              "confidence": 0.59
-            },
-            {
-              "word": "בָיא",
-              "confidence": 0.51
-            },
-            {
-              "word": "בוּא",
-              "confidence": 0.42000000000000004
-            }
-          ]
-        },
-        {
-          "word_index": 10,
-          "original_word": "לִמְנוּחָה",
-          "error_confidence": 0.6400000000000001,
-          "suggestions": [
-            {
-              "word": "לִמְנוּחוה",
-              "confidence": 0.6400000000000001
-            },
-            {
-              "word": "לִמְנוּחיה",
-              "confidence": 0.6300000000000001
-            },
-            {
-              "word": "לִמְנוצחָה",
-              "confidence": 0.63
-            }
-          ]
-        },
-        {
-          "word_index": 11,
-          "original_word": "בְּאַהֲבָתְךָ",
-          "error_confidence": 0.6892307692307693,
-          "suggestions": [
-            {
-              "word": "בְּאַהֲבָתְךו",
-              "confidence": 0.6892307692307693
-            },
-            {
-              "word": "בְּאַהֲבָתְךי",
-              "confidence": 0.6792307692307693
-            },
-            {
-              "word": "בְּאַהֲבָתוךָ",
-              "confidence": 0.6276923076923078
-            }
-          ]
-        },
-        {
-          "word_index": 12,
-          "original_word": "אָחִינוּ",
-          "error_confidence": 0.74,
-          "suggestions": [
-            {
-              "word": "אָחִינוצ",
-              "confidence": 0.74
-            },
-            {
-              "word": "אָחִינוי",
-              "confidence": 0.66
-            },
-            {
-              "word": "אָחהינוּ",
-              "confidence": 0.51
+              "word": "כִּי",
+              "confidence": 0.1061340942978859
             }
           ]
         }
@@ -1193,154 +211,13 @@
       "delitzsch_reference": "לָכֵן אַף־כִּי יֵשׁ־לִי אׂמֶץ רַב בַּמָּשִׁיחַ לְצַוּׂתְךָ אֵת הַנָּכוֹן הִנֵּה בָחַרְתִּי לְמַעַן הָאַהֲבָה לְחַלּוֹת אֶת־פָּנֶיךָ׃",
       "corrections": [
         {
-          "word_index": 1,
-          "original_word": "כֵּן",
-          "error_confidence": 0.59,
+          "word_index": 2,
+          "original_word": "יֵשׁ",
+          "error_confidence": 0.7005386352539062,
           "suggestions": [
             {
-              "word": "כֵצן",
-              "confidence": 0.59
-            },
-            {
-              "word": "כֵין",
-              "confidence": 0.51
-            },
-            {
-              "word": "כנּן",
-              "confidence": 0.48000000000000004
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "בִּטָּחוֹן",
-          "error_confidence": 0.6500000000000001,
-          "suggestions": [
-            {
-              "word": "בִּטָּחוחן",
-              "confidence": 0.6500000000000001
-            },
-            {
-              "word": "בִּטָּחוון",
-              "confidence": 0.6400000000000001
-            },
-            {
-              "word": "בִּטָצחוֹן",
-              "confidence": 0.59
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "לְצַוֹּתְךָ",
-          "error_confidence": 0.6836363636363636,
-          "suggestions": [
-            {
-              "word": "לְצַוֹּתְךו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "לְצַוֹּתְךי",
-              "confidence": 0.6736363636363636
-            },
-            {
-              "word": "לְצַוֹּתוךָ",
-              "confidence": 0.610909090909091
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "מַה־פֶּה",
-          "error_confidence": 0.6900000000000001,
-          "suggestions": [
-            {
-              "word": "מַה־פֶצה",
-              "confidence": 0.6900000000000001
-            },
-            {
-              "word": "מַה־פֶיה",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "מהה־פֶּה",
-              "confidence": 0.41
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "בִּמָשִׁיחַ",
-          "error_confidence": 0.7236363636363636,
-          "suggestions": [
-            {
-              "word": "בִּמָשִׁיחה",
-              "confidence": 0.7236363636363636
-            },
-            {
-              "word": "בִּמָשִׁיחו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "בִּמָשהׁיחַ",
-              "confidence": 0.5781818181818181
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "אָסוּר",
-          "error_confidence": 0.6566666666666666,
-          "suggestions": [
-            {
-              "word": "אָסוצר",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "אָסויר",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "אוסוּר",
-              "confidence": 0.38666666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "יָשָׁר",
-          "error_confidence": 0.52,
-          "suggestions": [
-            {
-              "word": "יָשוׁר",
-              "confidence": 0.52
-            },
-            {
-              "word": "יָשיׁר",
-              "confidence": 0.51
-            },
-            {
-              "word": "יושָׁר",
-              "confidence": 0.38666666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 10,
-          "original_word": "לִמְשׁוֹחַ",
-          "error_confidence": 0.72,
-          "suggestions": [
-            {
-              "word": "לִמְשׁוֹחה",
-              "confidence": 0.72
-            },
-            {
-              "word": "לִמְשׁוֹחו",
-              "confidence": 0.68
-            },
-            {
-              "word": "לִמְשׁוחחַ",
-              "confidence": 0.61
+              "word": "וּכִי",
+              "confidence": 0.12154903262853622
             }
           ]
         }
@@ -1355,249 +232,61 @@
       "delitzsch_reference": "אָנׂכִי פּוֹלוֹס הַזָּקֵן וְעַתָּה גַּם־אֲסִיר יֵשׁוּעַ הַמָּשִׁיחַ׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "וּבִעֲבוּר",
-          "error_confidence": 0.7100000000000001,
-          "suggestions": [
-            {
-              "word": "וּבִעֲבוצר",
-              "confidence": 0.7100000000000001
-            },
-            {
-              "word": "וּבִעֲבויר",
-              "confidence": 0.6300000000000001
-            },
-            {
-              "word": "וּבהעֲבוּר",
-              "confidence": 0.48
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "אַהֲבָה",
-          "error_confidence": 0.6057142857142858,
-          "suggestions": [
-            {
-              "word": "אַהֲבוה",
-              "confidence": 0.6057142857142858
-            },
-            {
-              "word": "אַהֲביה",
-              "confidence": 0.5957142857142858
-            },
-            {
-              "word": "אההֲבָה",
-              "confidence": 0.41714285714285715
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "יוֹתֵר",
-          "error_confidence": 0.6466666666666666,
-          "suggestions": [
-            {
-              "word": "יוֹתנר",
-              "confidence": 0.6466666666666666
-            },
-            {
-              "word": "יוֹתער",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "יוחתֵר",
-              "confidence": 0.4633333333333334
-            }
-          ]
-        },
-        {
           "word_index": 3,
           "original_word": "אֲתַחֲנַן",
-          "error_confidence": 0.6711111111111112,
+          "error_confidence": 0.9403738975524902,
           "suggestions": [
             {
-              "word": "אֲתַחֲנהן",
-              "confidence": 0.6711111111111112
-            },
-            {
-              "word": "אֲתַחֲנון",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "אֲתהחֲנַן",
-              "confidence": 0.49333333333333335
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "לְךָ",
-          "error_confidence": 0.6200000000000001,
-          "suggestions": [
-            {
-              "word": "לְךו",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "לְךי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "לוךָ",
-              "confidence": 0.42000000000000004
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "אַף־כִּי",
-          "error_confidence": 0.6900000000000001,
-          "suggestions": [
-            {
-              "word": "אַף־כִצי",
-              "confidence": 0.6900000000000001
-            },
-            {
-              "word": "אַף־כהּי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "אַף־כִיי",
-              "confidence": 0.6100000000000001
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "פּוֹלוֹס",
-          "error_confidence": 0.6300000000000001,
-          "suggestions": [
-            {
-              "word": "פּוֹלוחס",
-              "confidence": 0.6300000000000001
-            },
-            {
-              "word": "פּוֹלווס",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "פּוחלוֹס",
-              "confidence": 0.48
+              "word": "כִּי",
+              "confidence": 0.28169023990631104
             }
           ]
         },
         {
           "word_index": 7,
-          "original_word": "עַתִּיק",
-          "error_confidence": 0.6185714285714285,
+          "original_word": "פּוֹלוֹס",
+          "error_confidence": 0.9648306369781494,
           "suggestions": [
             {
-              "word": "עַתִציק",
-              "confidence": 0.6185714285714285
-            },
-            {
-              "word": "עַתִייק",
-              "confidence": 0.5385714285714286
-            },
-            {
-              "word": "עַתהּיק",
-              "confidence": 0.5314285714285714
+              "word": "כִּי",
+              "confidence": 0.23377034068107605
             }
           ]
         },
         {
           "word_index": 8,
-          "original_word": "יָמִין",
-          "error_confidence": 0.56,
+          "original_word": "עַתִּיק",
+          "error_confidence": 0.9670226573944092,
           "suggestions": [
             {
-              "word": "יָמהין",
-              "confidence": 0.56
-            },
-            {
-              "word": "יָמיין",
-              "confidence": 0.51
-            },
-            {
-              "word": "יומִין",
-              "confidence": 0.38666666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "עַתָּה",
-          "error_confidence": 0.6566666666666666,
-          "suggestions": [
-            {
-              "word": "עַתָצה",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "עַתָיה",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "עַתוּה",
-              "confidence": 0.52
+              "word": "כִּי",
+              "confidence": 0.5670974254608154
             }
           ]
         },
         {
           "word_index": 11,
-          "original_word": "אָסוּר",
-          "error_confidence": 0.6566666666666666,
+          "original_word": "גַם",
+          "error_confidence": 0.9340155720710754,
           "suggestions": [
             {
-              "word": "אָסוצר",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "אָסויר",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "אוסוּר",
-              "confidence": 0.38666666666666666
+              "word": "כִּי",
+              "confidence": 0.2942869961261749
             }
           ]
         },
         {
-          "word_index": 12,
-          "original_word": "יֵשׁוּעַ",
-          "error_confidence": 0.71,
+          "word_index": 14,
+          "original_word": "הַמָּשִׁיחַ",
+          "error_confidence": 0.6292914748191833,
           "suggestions": [
             {
-              "word": "יֵשׁוּעה",
-              "confidence": 0.71
+              "word": "עַל",
+              "confidence": 0.1560327708721161
             },
             {
-              "word": "יֵשׁוּעו",
-              "confidence": 0.67
-            },
-            {
-              "word": "יֵשׁוצעַ",
-              "confidence": 0.64
-            }
-          ]
-        },
-        {
-          "word_index": 13,
-          "original_word": "הַמָּשִׁיחַ",
-          "error_confidence": 0.7236363636363636,
-          "suggestions": [
-            {
-              "word": "הַמָּשִׁיחה",
-              "confidence": 0.7236363636363636
-            },
-            {
-              "word": "הַמָּשִׁיחו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "הַמָּשהׁיחַ",
-              "confidence": 0.5781818181818181
+              "word": "כִּי",
+              "confidence": 0.10477488487958908
             }
           ]
         }
@@ -1610,138 +299,8 @@
       "verse": 10,
       "original_text": "מִתְחַנֵּן אֲנִי עַל בְּנִי אוֹנֵסִימוֹס הוּלַדְתִּי בַאֲסוּרַי עַל אוֹנֵסִימוֹס",
       "delitzsch_reference": "הִנְנִי מְחַלֶּה אֶת־פָּנֶיךָ עַל־בְּנִי אֲשֶׁר חוֹלַלְתִּיו בִּהְיוֹתי בַּמַּאֲסָר עַל־אֳנִיסִימוֹס׃",
-      "corrections": [
-        {
-          "word_index": 0,
-          "original_word": "מִתְחַנֵּן",
-          "error_confidence": 0.7100000000000001,
-          "suggestions": [
-            {
-              "word": "מִתְחַנֵצן",
-              "confidence": 0.7100000000000001
-            },
-            {
-              "word": "מִתְחַננּן",
-              "confidence": 0.6599999999999999
-            },
-            {
-              "word": "מִתְחַנעּן",
-              "confidence": 0.6399999999999999
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "אֲנִי",
-          "error_confidence": 0.6000000000000001,
-          "suggestions": [
-            {
-              "word": "אֲנהי",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "אֲניי",
-              "confidence": 0.55
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "בְּנִי",
-          "error_confidence": 0.6266666666666667,
-          "suggestions": [
-            {
-              "word": "בְּנהי",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "בְּניי",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "בְצנִי",
-              "confidence": 0.5233333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "אוֹנֵסִימוֹס",
-          "error_confidence": 0.6633333333333333,
-          "suggestions": [
-            {
-              "word": "אוֹנֵסִימוחס",
-              "confidence": 0.6633333333333333
-            },
-            {
-              "word": "אוֹנֵסִימווס",
-              "confidence": 0.6533333333333333
-            },
-            {
-              "word": "אוֹנֵסהימוֹס",
-              "confidence": 0.56
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "הוּלַדְתִּי",
-          "error_confidence": 0.7172727272727273,
-          "suggestions": [
-            {
-              "word": "הוּלַדְתִצי",
-              "confidence": 0.7172727272727273
-            },
-            {
-              "word": "הוּלַדְתהּי",
-              "confidence": 0.6509090909090909
-            },
-            {
-              "word": "הוּלַדְתִיי",
-              "confidence": 0.6372727272727273
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "בַאֲסוּרַי",
-          "error_confidence": 0.6800000000000002,
-          "suggestions": [
-            {
-              "word": "בַאֲסוּרהי",
-              "confidence": 0.6800000000000002
-            },
-            {
-              "word": "בַאֲסוּרוי",
-              "confidence": 0.6400000000000001
-            },
-            {
-              "word": "בַאֲסוצרַי",
-              "confidence": 0.63
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "אוֹנֵסִימוֹס",
-          "error_confidence": 0.6633333333333333,
-          "suggestions": [
-            {
-              "word": "אוֹנֵסִימוחס",
-              "confidence": 0.6633333333333333
-            },
-            {
-              "word": "אוֹנֵסִימווס",
-              "confidence": 0.6533333333333333
-            },
-            {
-              "word": "אוֹנֵסהימוֹס",
-              "confidence": 0.56
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -1751,135 +310,46 @@
       "delitzsch_reference": "אֲשֶׁר מִלְּפָנִים לׂא־הוֹעִיל לָךְ וְעַתָּה הוּא לְהוֹעִיל גַּם־לְךָ גַם־לִי וַהֲשִׁיבֹתִיו אֵלֶיךָ׃",
       "corrections": [
         {
-          "word_index": 2,
-          "original_word": "גַּם",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "גַצם",
-              "confidence": 0.59
-            },
-            {
-              "word": "גַים",
-              "confidence": 0.51
-            },
-            {
-              "word": "גהּם",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "לְךָ",
-          "error_confidence": 0.6200000000000001,
-          "suggestions": [
-            {
-              "word": "לְךו",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "לְךי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "לוךָ",
-              "confidence": 0.42000000000000004
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "בִּזְמַן־מָעַל־עֲתָה",
-          "error_confidence": 0.68,
-          "suggestions": [
-            {
-              "word": "בִּזְמַן־מָעַל־עֲתוה",
-              "confidence": 0.68
-            },
-            {
-              "word": "בִּזְמַן־מָעַל־עֲתיה",
-              "confidence": 0.67
-            },
-            {
-              "word": "בִּזְמַן־מָעהל־עֲתָה",
-              "confidence": 0.6000000000000001
-            }
-          ]
-        },
-        {
           "word_index": 7,
-          "original_word": "כִּי־עַתָּה",
-          "error_confidence": 0.7172727272727273,
+          "original_word": "מָעַל",
+          "error_confidence": 0.969383180141449,
           "suggestions": [
             {
-              "word": "כִּי־עַתָצה",
-              "confidence": 0.7172727272727273
-            },
-            {
-              "word": "כִּי־עַתָיה",
-              "confidence": 0.6372727272727273
-            },
-            {
-              "word": "כִּי־עַתוּה",
-              "confidence": 0.610909090909091
+              "word": "כִּי",
+              "confidence": 0.1205301508307457
             }
           ]
         },
         {
-          "word_index": 8,
-          "original_word": "לְךָ",
-          "error_confidence": 0.6200000000000001,
+          "word_index": 10,
+          "original_word": "עַתָּה",
+          "error_confidence": 0.9393683075904846,
           "suggestions": [
             {
-              "word": "לְךו",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "לְךי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "לוךָ",
-              "confidence": 0.42000000000000004
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "עַתָּה",
-          "error_confidence": 0.6566666666666666,
-          "suggestions": [
-            {
-              "word": "עַתָצה",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "עַתָיה",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "עַתוּה",
-              "confidence": 0.52
+              "word": "כִּי",
+              "confidence": 0.42546728253364563
             }
           ]
         },
         {
           "word_index": 11,
-          "original_word": "בְמֹעַל־עַל־מְאֹד",
-          "error_confidence": 0.6829411764705883,
+          "original_word": "לְךָ",
+          "error_confidence": 0.9619389772415161,
           "suggestions": [
             {
-              "word": "בְמֹעַל־עַל־מְאחד",
-              "confidence": 0.6829411764705883
-            },
+              "word": "כִּי",
+              "confidence": 0.5983059406280518
+            }
+          ]
+        },
+        {
+          "word_index": 13,
+          "original_word": "לִי",
+          "error_confidence": 0.9369800090789795,
+          "suggestions": [
             {
-              "word": "בְמֹעַל־עַל־מְאוד",
-              "confidence": 0.6729411764705883
-            },
-            {
-              "word": "בְמֹעַל־עַל־מואֹד",
-              "confidence": 0.6258823529411766
+              "word": "כִּי",
+              "confidence": 0.1302264779806137
             }
           ]
         }
@@ -1892,119 +362,8 @@
       "verse": 12,
       "original_text": "אֲשֶׁר שִׁלַּחְתִּיו אֵלֶיךָ וְאַתָּה הוּא זֶה דָּמַי הַכְבָדִים",
       "delitzsch_reference": "וְאַתָּה קַבֶּל־נָא אׂתוֹ שֶׁהוּא יָקָר לְלִבִּי׃",
-      "corrections": [
-        {
-          "word_index": 1,
-          "original_word": "שִׁלַּחְתִּיו",
-          "error_confidence": 0.6976923076923077,
-          "suggestions": [
-            {
-              "word": "שִׁלַּחְתִציו",
-              "confidence": 0.6976923076923077
-            },
-            {
-              "word": "שִׁלַּחְתהּיו",
-              "confidence": 0.6369230769230769
-            },
-            {
-              "word": "שִׁלַּחְתִייו",
-              "confidence": 0.6176923076923078
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "אֵלֶיךָ",
-          "error_confidence": 0.6628571428571428,
-          "suggestions": [
-            {
-              "word": "אֵלֶיךו",
-              "confidence": 0.6628571428571428
-            },
-            {
-              "word": "אֵלֶיךי",
-              "confidence": 0.6528571428571428
-            },
-            {
-              "word": "אנלֶיךָ",
-              "confidence": 0.43714285714285717
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "וְאַתָּה",
-          "error_confidence": 0.6900000000000001,
-          "suggestions": [
-            {
-              "word": "וְאַתָצה",
-              "confidence": 0.6900000000000001
-            },
-            {
-              "word": "וְאַתָיה",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "וְאַתוּה",
-              "confidence": 0.5700000000000001
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "הוּא",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "הוצא",
-              "confidence": 0.59
-            },
-            {
-              "word": "הויא",
-              "confidence": 0.51
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "דָּמַי",
-          "error_confidence": 0.6266666666666667,
-          "suggestions": [
-            {
-              "word": "דָּמהי",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "דָּמוי",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "דָצמַי",
-              "confidence": 0.5233333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "הַכְבָדִים",
-          "error_confidence": 0.6399999999999999,
-          "suggestions": [
-            {
-              "word": "הַכְבָדהים",
-              "confidence": 0.6399999999999999
-            },
-            {
-              "word": "הַכְבָדיים",
-              "confidence": 0.59
-            },
-            {
-              "word": "הַכְבודִים",
-              "confidence": 0.52
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -2012,161 +371,8 @@
       "verse": 13,
       "original_text": "אֲשֶׁר אַתָּה חָפַצְתִּי לִטּוֹר עִמִּי אֲשֶׁר מַתְחָה שֵׁרְתַנִי בַאֲסוּרֵי הַבְּשׂוֹרָה",
       "delitzsch_reference": "חָפַצְתִּי לַעֲצׂר אׂתוֹ אֶצְלִי שֶׁיְּשָׁרֲתֵנִי תַחְתֶּיךָ בְּמוֹסְרוֹת הַבְּשׂוֹרָה׃",
-      "corrections": [
-        {
-          "word_index": 1,
-          "original_word": "אַתָּה",
-          "error_confidence": 0.6566666666666666,
-          "suggestions": [
-            {
-              "word": "אַתָצה",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "אַתָיה",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "אַתוּה",
-              "confidence": 0.52
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "חָפַצְתִּי",
-          "error_confidence": 0.7100000000000001,
-          "suggestions": [
-            {
-              "word": "חָפַצְתִצי",
-              "confidence": 0.7100000000000001
-            },
-            {
-              "word": "חָפַצְתהּי",
-              "confidence": 0.6399999999999999
-            },
-            {
-              "word": "חָפַצְתִיי",
-              "confidence": 0.6300000000000001
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "לִטּוֹר",
-          "error_confidence": 0.6157142857142858,
-          "suggestions": [
-            {
-              "word": "לִטּוחר",
-              "confidence": 0.6157142857142858
-            },
-            {
-              "word": "לִטּוור",
-              "confidence": 0.6057142857142858
-            },
-            {
-              "word": "לִטצוֹר",
-              "confidence": 0.5614285714285714
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "עִמִּי",
-          "error_confidence": 0.6566666666666666,
-          "suggestions": [
-            {
-              "word": "עִמִצי",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "עִמִיי",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "עִמהּי",
-              "confidence": 0.56
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "מַתְחָה",
-          "error_confidence": 0.6057142857142858,
-          "suggestions": [
-            {
-              "word": "מַתְחוה",
-              "confidence": 0.6057142857142858
-            },
-            {
-              "word": "מַתְחיה",
-              "confidence": 0.5957142857142858
-            },
-            {
-              "word": "מַתוחָה",
-              "confidence": 0.49142857142857144
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "שֵׁרְתַנִי",
-          "error_confidence": 0.6800000000000002,
-          "suggestions": [
-            {
-              "word": "שֵׁרְתַנהי",
-              "confidence": 0.6800000000000002
-            },
-            {
-              "word": "שֵׁרְתַניי",
-              "confidence": 0.6300000000000001
-            },
-            {
-              "word": "שֵׁרְתהנִי",
-              "confidence": 0.6000000000000001
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "בַאֲסוּרֵי",
-          "error_confidence": 0.7000000000000001,
-          "suggestions": [
-            {
-              "word": "בַאֲסוּרני",
-              "confidence": 0.7000000000000001
-            },
-            {
-              "word": "בַאֲסוּרעי",
-              "confidence": 0.6800000000000002
-            },
-            {
-              "word": "בַאֲסוצרֵי",
-              "confidence": 0.63
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "הַבְּשׂוֹרָה",
-          "error_confidence": 0.6533333333333333,
-          "suggestions": [
-            {
-              "word": "הַבְּשׂוֹרוה",
-              "confidence": 0.6533333333333333
-            },
-            {
-              "word": "הַבְּשׂוֹריה",
-              "confidence": 0.6433333333333333
-            },
-            {
-              "word": "הַבְּשׂוחרָה",
-              "confidence": 0.5966666666666667
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -2176,173 +382,24 @@
       "delitzsch_reference": "אֲבָל לׂא חָפַצְתִּי לַעֲשׂוֹת דָּבָר שֶׁלּא בִרְצוֹנֶךָ כְּדֵי שֶׁלּא־תִהְיֶה טוֹבָתְךָ בְּאׂנֶס כִּי אִם־בִּנְדָבָה׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "אַךְ",
-          "error_confidence": 0.6200000000000001,
-          "suggestions": [
-            {
-              "word": "אַךו",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "אַךי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "אהךְ",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "בִּלְתִּי",
-          "error_confidence": 0.7011111111111111,
-          "suggestions": [
-            {
-              "word": "בִּלְתִצי",
-              "confidence": 0.7011111111111111
-            },
-            {
-              "word": "בִּלְתהּי",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "בִּלְתִיי",
-              "confidence": 0.6211111111111112
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "עֲצָתְךָ",
-          "error_confidence": 0.67,
-          "suggestions": [
-            {
-              "word": "עֲצָתְךו",
-              "confidence": 0.67
-            },
-            {
-              "word": "עֲצָתְךי",
-              "confidence": 0.66
-            },
-            {
-              "word": "עֲצָתוךָ",
-              "confidence": 0.5700000000000001
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "חָפַצְתִּי",
-          "error_confidence": 0.7100000000000001,
-          "suggestions": [
-            {
-              "word": "חָפַצְתִצי",
-              "confidence": 0.7100000000000001
-            },
-            {
-              "word": "חָפַצְתהּי",
-              "confidence": 0.6399999999999999
-            },
-            {
-              "word": "חָפַצְתִיי",
-              "confidence": 0.6300000000000001
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "לַעֲשׂוֹת",
-          "error_confidence": 0.6411111111111112,
-          "suggestions": [
-            {
-              "word": "לַעֲשׂוחת",
-              "confidence": 0.6411111111111112
-            },
-            {
-              "word": "לַעֲשׂוות",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "להעֲשׂוֹת",
-              "confidence": 0.40444444444444444
-            }
-          ]
-        },
-        {
           "word_index": 7,
           "original_word": "טוּבְךָ",
-          "error_confidence": 0.6628571428571428,
+          "error_confidence": 0.9038549065589905,
           "suggestions": [
             {
-              "word": "טוּבְךו",
-              "confidence": 0.6628571428571428
-            },
-            {
-              "word": "טוּבְךי",
-              "confidence": 0.6528571428571428
-            },
-            {
-              "word": "טוּבוךָ",
-              "confidence": 0.5485714285714286
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "הַמְּצֻוָּהוּ",
-          "error_confidence": 0.7592307692307693,
-          "suggestions": [
-            {
-              "word": "הַמְּצֻוָּהוצ",
-              "confidence": 0.7592307692307693
-            },
-            {
-              "word": "הַמְּצֻוָּהוי",
-              "confidence": 0.6792307692307693
-            },
-            {
-              "word": "הַמְּצֻוָצהוּ",
-              "confidence": 0.6669230769230768
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "כִּי",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "כִצי",
-              "confidence": 0.59
-            },
-            {
-              "word": "כִיי",
-              "confidence": 0.51
-            },
-            {
-              "word": "כהּי",
-              "confidence": 0.46
+              "word": "כִּי",
+              "confidence": 0.17290090024471283
             }
           ]
         },
         {
           "word_index": 10,
-          "original_word": "אִם־בְּרָצוֹן",
-          "error_confidence": 0.6684615384615384,
+          "original_word": "אִם",
+          "error_confidence": 0.7278735041618347,
           "suggestions": [
             {
-              "word": "אִם־בְּרָצוחן",
-              "confidence": 0.6684615384615384
-            },
-            {
-              "word": "אִם־בְּרָצוון",
-              "confidence": 0.6584615384615384
-            },
-            {
-              "word": "אִם־בְצרָצוֹן",
-              "confidence": 0.5746153846153846
+              "word": "כִּי",
+              "confidence": 0.23770898580551147
             }
           ]
         }
@@ -2355,161 +412,8 @@
       "verse": 15,
       "original_text": "אוּלַי עַל־זֹאת בָּרַח בַּמֶּשֶׁךְ הַקָּצֵר לְעוֹלָם׃ לְקַחְתּוֹ לְעוֹלָם׃",
       "delitzsch_reference": "כִּי אוּלַי נִפְרַד מִמְּךָ לְשָׁעָה בַּעֲבוּר אֲשֶׁר יִהְיֶה־לְּךָ לְעוֹלָם׃",
-      "corrections": [
-        {
-          "word_index": 0,
-          "original_word": "אוּלַי",
-          "error_confidence": 0.6266666666666667,
-          "suggestions": [
-            {
-              "word": "אוּלהי",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "אוּלוי",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "אוצלַי",
-              "confidence": 0.5233333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "עַל־זֹאת",
-          "error_confidence": 0.5800000000000001,
-          "suggestions": [
-            {
-              "word": "עַל־זחאת",
-              "confidence": 0.5800000000000001
-            },
-            {
-              "word": "עַל־זואת",
-              "confidence": 0.5700000000000001
-            },
-            {
-              "word": "עהל־זֹאת",
-              "confidence": 0.41
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "בָּרַח",
-          "error_confidence": 0.6266666666666667,
-          "suggestions": [
-            {
-              "word": "בָּרהח",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "בָּרוח",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "בָצרַח",
-              "confidence": 0.5233333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "בַּמֶּשֶׁךְ",
-          "error_confidence": 0.6836363636363636,
-          "suggestions": [
-            {
-              "word": "בַּמֶּשֶׁךו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "בַּמֶּשֶׁךי",
-              "confidence": 0.6736363636363636
-            },
-            {
-              "word": "בַּמֶצשֶׁךְ",
-              "confidence": 0.5718181818181818
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "הַקָּצֵר",
-          "error_confidence": 0.68,
-          "suggestions": [
-            {
-              "word": "הַקָּצנר",
-              "confidence": 0.68
-            },
-            {
-              "word": "הַקָּצער",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "הַקָצצֵר",
-              "confidence": 0.59
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "לְעוֹלָם׃",
-          "error_confidence": 0.5866666666666667,
-          "suggestions": [
-            {
-              "word": "לְעוֹלום׃",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "לְעוֹלים׃",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "לְעוחלָם׃",
-              "confidence": 0.5077777777777778
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "לְקַחְתּוֹ",
-          "error_confidence": 0.6900000000000001,
-          "suggestions": [
-            {
-              "word": "לְקַחְתּוח",
-              "confidence": 0.6900000000000001
-            },
-            {
-              "word": "לְקַחְתּוו",
-              "confidence": 0.68
-            },
-            {
-              "word": "לְקַחְתצוֹ",
-              "confidence": 0.6699999999999999
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "לְעוֹלָם׃",
-          "error_confidence": 0.5866666666666667,
-          "suggestions": [
-            {
-              "word": "לְעוֹלום׃",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "לְעוֹלים׃",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "לְעוחלָם׃",
-              "confidence": 0.5077777777777778
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -2517,290 +421,8 @@
       "verse": 16,
       "original_text": "לֹא עוֹד בִּמְקוֹם עָבֶד כִּי־אִם מַעַל הָעָבֶד בְּיֹעַד פַּאַח דָּדִיד לִי בִמְאֹד פָּמָה יוֹתֵיךְ לְךָ גַּם בִּבְשַׂר גַּם בָּאָדוֹן׃",
       "delitzsch_reference": "וּמֵעַתָּה לׂא כְעֶבֶד כִּי אִם־לְמַעְלָה מֵעֶבֶד כְּאָח אָהוּב בְּיוֹתֵר לִי וְאַף כִּי־לְךָ הֵן בַּבָּשָׂר הֵן בָּאָדוֹן׃",
-      "corrections": [
-        {
-          "word_index": 1,
-          "original_word": "עוֹד",
-          "error_confidence": 0.53,
-          "suggestions": [
-            {
-              "word": "עוחד",
-              "confidence": 0.53
-            },
-            {
-              "word": "עווד",
-              "confidence": 0.52
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "בִּמְקוֹם",
-          "error_confidence": 0.6411111111111112,
-          "suggestions": [
-            {
-              "word": "בִּמְקוחם",
-              "confidence": 0.6411111111111112
-            },
-            {
-              "word": "בִּמְקוום",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "בִּמוקוֹם",
-              "confidence": 0.49777777777777776
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "כִּי־אִם",
-          "error_confidence": 0.6600000000000001,
-          "suggestions": [
-            {
-              "word": "כִּי־אהם",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "כִּי־אים",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "כִצי־אִם",
-              "confidence": 0.49
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "מַעַל",
-          "error_confidence": 0.6000000000000001,
-          "suggestions": [
-            {
-              "word": "מַעהל",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "מַעול",
-              "confidence": 0.56
-            },
-            {
-              "word": "מהעַל",
-              "confidence": 0.44
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "בְּיֹעַד",
-          "error_confidence": 0.6600000000000001,
-          "suggestions": [
-            {
-              "word": "בְּיֹעהד",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "בְּיֹעוד",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "בְּיחעַד",
-              "confidence": 0.53
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "פַּאַח",
-          "error_confidence": 0.6266666666666667,
-          "suggestions": [
-            {
-              "word": "פַּאהח",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "פַּאוח",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "פַצאַח",
-              "confidence": 0.5233333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "דָּדִיד",
-          "error_confidence": 0.5885714285714285,
-          "suggestions": [
-            {
-              "word": "דָּדהיד",
-              "confidence": 0.5885714285714285
-            },
-            {
-              "word": "דָּדייד",
-              "confidence": 0.5385714285714286
-            },
-            {
-              "word": "דָצדִיד",
-              "confidence": 0.5042857142857142
-            }
-          ]
-        },
-        {
-          "word_index": 11,
-          "original_word": "בִמְאֹד",
-          "error_confidence": 0.6157142857142858,
-          "suggestions": [
-            {
-              "word": "בִמְאחד",
-              "confidence": 0.6157142857142858
-            },
-            {
-              "word": "בִמְאוד",
-              "confidence": 0.6057142857142858
-            },
-            {
-              "word": "בִמואֹד",
-              "confidence": 0.49142857142857144
-            }
-          ]
-        },
-        {
-          "word_index": 12,
-          "original_word": "פָּמָה",
-          "error_confidence": 0.5866666666666667,
-          "suggestions": [
-            {
-              "word": "פָּמוה",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "פָּמיה",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "פָצמָה",
-              "confidence": 0.5233333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 13,
-          "original_word": "יוֹתֵיךְ",
-          "error_confidence": 0.67,
-          "suggestions": [
-            {
-              "word": "יוֹתֵיךו",
-              "confidence": 0.67
-            },
-            {
-              "word": "יוֹתֵיךי",
-              "confidence": 0.66
-            },
-            {
-              "word": "יוֹתניךְ",
-              "confidence": 0.58
-            }
-          ]
-        },
-        {
-          "word_index": 14,
-          "original_word": "לְךָ",
-          "error_confidence": 0.6200000000000001,
-          "suggestions": [
-            {
-              "word": "לְךו",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "לְךי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "לוךָ",
-              "confidence": 0.42000000000000004
-            }
-          ]
-        },
-        {
-          "word_index": 15,
-          "original_word": "גַּם",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "גַצם",
-              "confidence": 0.59
-            },
-            {
-              "word": "גַים",
-              "confidence": 0.51
-            },
-            {
-              "word": "גהּם",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 16,
-          "original_word": "בִּבְשַׂר",
-          "error_confidence": 0.6266666666666667,
-          "suggestions": [
-            {
-              "word": "בִּבְשהׂר",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "בִּבְשוׂר",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "בִּבושַׂר",
-              "confidence": 0.49777777777777776
-            }
-          ]
-        },
-        {
-          "word_index": 17,
-          "original_word": "גַּם",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "גַצם",
-              "confidence": 0.59
-            },
-            {
-              "word": "גַים",
-              "confidence": 0.51
-            },
-            {
-              "word": "גהּם",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 18,
-          "original_word": "בָּאָדוֹן׃",
-          "error_confidence": 0.61,
-          "suggestions": [
-            {
-              "word": "בָּאָדוחן׃",
-              "confidence": 0.61
-            },
-            {
-              "word": "בָּאָדוון׃",
-              "confidence": 0.6
-            },
-            {
-              "word": "בָּאודוֹן׃",
-              "confidence": 0.48000000000000004
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -2808,85 +430,8 @@
       "verse": 17,
       "original_text": "וְאִם־אַתָּה אִישׁ חַבְרִי קַבְּלֶנוּ כַּמוֹנִי׃",
       "delitzsch_reference": "וְהִנֵּה אִם־תַּחְשְׁבֵנִי לְחָבֵר לָךְ תְּקַבְּלֶנּוּ כָּמוֹנִי׃",
-      "corrections": [
-        {
-          "word_index": 0,
-          "original_word": "וְאִם־אַתָּה",
-          "error_confidence": 0.7233333333333333,
-          "suggestions": [
-            {
-              "word": "וְאִם־אַתָצה",
-              "confidence": 0.7233333333333333
-            },
-            {
-              "word": "וְאִם־אַתָיה",
-              "confidence": 0.6433333333333333
-            },
-            {
-              "word": "וְאִם־אַתוּה",
-              "confidence": 0.6200000000000001
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "חַבְרִי",
-          "error_confidence": 0.6457142857142857,
-          "suggestions": [
-            {
-              "word": "חַבְרהי",
-              "confidence": 0.6457142857142857
-            },
-            {
-              "word": "חַבְריי",
-              "confidence": 0.5957142857142858
-            },
-            {
-              "word": "חַבורִי",
-              "confidence": 0.49142857142857144
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "קַבְּלֶנוּ",
-          "error_confidence": 0.75,
-          "suggestions": [
-            {
-              "word": "קַבְּלֶנוצ",
-              "confidence": 0.75
-            },
-            {
-              "word": "קַבְּלֶנוי",
-              "confidence": 0.67
-            },
-            {
-              "word": "קַבְצלֶנוּ",
-              "confidence": 0.55
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "כַּמוֹנִי׃",
-          "error_confidence": 0.6399999999999999,
-          "suggestions": [
-            {
-              "word": "כַּמוֹנהי׃",
-              "confidence": 0.6399999999999999
-            },
-            {
-              "word": "כַּמוֹניי׃",
-              "confidence": 0.59
-            },
-            {
-              "word": "כַּמוחנִי׃",
-              "confidence": 0.53
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -2896,135 +441,13 @@
       "delitzsch_reference": "וְאִם־הֵרַע לְךָ בְּדָבָר אוֹ חַיָּב־הוּא לְךָ דָּבָר חַשְּׁבֵהוּ לִי׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "וְאִם",
-          "error_confidence": 0.6000000000000001,
-          "suggestions": [
-            {
-              "word": "וְאהם",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "וְאים",
-              "confidence": 0.55
-            },
-            {
-              "word": "וואִם",
-              "confidence": 0.4
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "בְּמֵאוּמָה",
-          "error_confidence": 0.6472727272727273,
-          "suggestions": [
-            {
-              "word": "בְּמֵאוּמוה",
-              "confidence": 0.6472727272727273
-            },
-            {
-              "word": "בְּמֵאוצמָה",
-              "confidence": 0.6445454545454545
-            },
-            {
-              "word": "בְּמֵאוּמיה",
-              "confidence": 0.6372727272727273
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "הֵנִיעַ",
-          "error_confidence": 0.7028571428571428,
-          "suggestions": [
-            {
-              "word": "הֵנִיעה",
-              "confidence": 0.7028571428571428
-            },
-            {
-              "word": "הֵנִיעו",
-              "confidence": 0.6628571428571428
-            },
-            {
-              "word": "הֵנהיעַ",
-              "confidence": 0.5314285714285714
-            }
-          ]
-        },
-        {
           "word_index": 4,
-          "original_word": "אוֹ־אִם",
-          "error_confidence": 0.6457142857142857,
+          "original_word": "אוֹ",
+          "error_confidence": 0.5752738118171692,
           "suggestions": [
             {
-              "word": "אוֹ־אהם",
-              "confidence": 0.6457142857142857
-            },
-            {
-              "word": "אוֹ־אים",
-              "confidence": 0.5957142857142858
-            },
-            {
-              "word": "אוח־אִם",
-              "confidence": 0.4442857142857143
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "נוֹבְבֵל",
-          "error_confidence": 0.68,
-          "suggestions": [
-            {
-              "word": "נוֹבְבנל",
-              "confidence": 0.68
-            },
-            {
-              "word": "נוֹבְבעל",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "נוֹבובֵל",
-              "confidence": 0.52
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "לְךָ׃",
-          "error_confidence": 0.56,
-          "suggestions": [
-            {
-              "word": "לְךו׃",
-              "confidence": 0.56
-            },
-            {
-              "word": "לְךי׃",
-              "confidence": 0.55
-            },
-            {
-              "word": "לוךָ׃",
-              "confidence": 0.4
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "הַחְשְׁבֵהוּ׃",
-          "error_confidence": 0.7284615384615384,
-          "suggestions": [
-            {
-              "word": "הַחְשְׁבֵהוצ׃",
-              "confidence": 0.7284615384615384
-            },
-            {
-              "word": "הַחְשְׁבֵהוי׃",
-              "confidence": 0.6484615384615384
-            },
-            {
-              "word": "הַחְשְׁבנהוּ׃",
-              "confidence": 0.6261538461538462
+              "word": "אֲשֶׁר",
+              "confidence": 0.1112481951713562
             }
           ]
         }
@@ -3041,182 +464,11 @@
         {
           "word_index": 0,
           "original_word": "אֲנִי",
-          "error_confidence": 0.6000000000000001,
+          "error_confidence": 0.5373840928077698,
           "suggestions": [
             {
-              "word": "אֲנהי",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "אֲניי",
-              "confidence": 0.55
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "פּוֹלוֹס",
-          "error_confidence": 0.6300000000000001,
-          "suggestions": [
-            {
-              "word": "פּוֹלוחס",
-              "confidence": 0.6300000000000001
-            },
-            {
-              "word": "פּוֹלווס",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "פּוחלוֹס",
-              "confidence": 0.48
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "כְּתַבְתִּיהִי",
-          "error_confidence": 0.7028571428571428,
-          "suggestions": [
-            {
-              "word": "כְּתַבְתִּיההי",
-              "confidence": 0.7028571428571428
-            },
-            {
-              "word": "כְּתַבְתִּיהיי",
-              "confidence": 0.6528571428571428
-            },
-            {
-              "word": "כְּתַבְתִציהִי",
-              "confidence": 0.6471428571428571
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "בְּיָדִי",
-          "error_confidence": 0.6600000000000001,
-          "suggestions": [
-            {
-              "word": "בְּיָדהי",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "בְּיָדיי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "בְּיודִי",
-              "confidence": 0.52
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "אֲנִי",
-          "error_confidence": 0.6000000000000001,
-          "suggestions": [
-            {
-              "word": "אֲנהי",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "אֲניי",
-              "confidence": 0.55
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "אֲשַׁלֵּם",
-          "error_confidence": 0.7011111111111111,
-          "suggestions": [
-            {
-              "word": "אֲשַׁלֵצם",
-              "confidence": 0.7011111111111111
-            },
-            {
-              "word": "אֲשַׁלנּם",
-              "confidence": 0.6466666666666666
-            },
-            {
-              "word": "אֲשַׁלעּם",
-              "confidence": 0.6266666666666667
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "פַּר",
-          "error_confidence": 0.59,
-          "suggestions": [
-            {
-              "word": "פַצר",
-              "confidence": 0.59
-            },
-            {
-              "word": "פַיר",
-              "confidence": 0.51
-            },
-            {
-              "word": "פהּר",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "אֹמַר",
-          "error_confidence": 0.6000000000000001,
-          "suggestions": [
-            {
-              "word": "אֹמהר",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "אֹמור",
-              "confidence": 0.56
-            },
-            {
-              "word": "אחמַר",
-              "confidence": 0.41000000000000003
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "כִּי־בָנֶיךָ",
-          "error_confidence": 0.6866666666666668,
-          "suggestions": [
-            {
-              "word": "כִּי־בָנֶיךו",
-              "confidence": 0.6866666666666668
-            },
-            {
-              "word": "כִּי־בָנֶיךי",
-              "confidence": 0.6766666666666667
-            },
-            {
-              "word": "כִּי־בונֶיךָ",
-              "confidence": 0.52
-            }
-          ]
-        },
-        {
-          "word_index": 10,
-          "original_word": "מִתְחַלֵּת",
-          "error_confidence": 0.7100000000000001,
-          "suggestions": [
-            {
-              "word": "מִתְחַלֵצת",
-              "confidence": 0.7100000000000001
-            },
-            {
-              "word": "מִתְחַלנּת",
-              "confidence": 0.6599999999999999
-            },
-            {
-              "word": "מִתְחַלעּת",
-              "confidence": 0.6399999999999999
+              "word": "תִּהְיֶה",
+              "confidence": 0.3345821797847748
             }
           ]
         }
@@ -3232,168 +484,12 @@
       "corrections": [
         {
           "word_index": 0,
-          "original_word": "כֵּן־אָחִי",
-          "error_confidence": 0.6800000000000002,
+          "original_word": "כֵּן",
+          "error_confidence": 0.6517249941825867,
           "suggestions": [
             {
-              "word": "כֵּן־אָחהי",
-              "confidence": 0.6800000000000002
-            },
-            {
-              "word": "כֵּן־אָחיי",
-              "confidence": 0.6300000000000001
-            },
-            {
-              "word": "כֵּן־אוחִי",
-              "confidence": 0.56
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "אֲנִי",
-          "error_confidence": 0.6000000000000001,
-          "suggestions": [
-            {
-              "word": "אֲנהי",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "אֲניי",
-              "confidence": 0.55
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "הֵרְוִיחַ",
-          "error_confidence": 0.7155555555555555,
-          "suggestions": [
-            {
-              "word": "הֵרְוִיחה",
-              "confidence": 0.7155555555555555
-            },
-            {
-              "word": "הֵרְוִיחו",
-              "confidence": 0.6755555555555556
-            },
-            {
-              "word": "הֵרְוהיחַ",
-              "confidence": 0.5822222222222222
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "אֵת־נַפְשִׁי",
-          "error_confidence": 0.6600000000000001,
-          "suggestions": [
-            {
-              "word": "אֵת־נַפְשהׁי",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "אֵת־נַפְשיׁי",
-              "confidence": 0.6100000000000001
-            },
-            {
-              "word": "אֵת־נַפושִׁי",
-              "confidence": 0.5533333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "בָּאָדוֹן",
-          "error_confidence": 0.6411111111111112,
-          "suggestions": [
-            {
-              "word": "בָּאָדוחן",
-              "confidence": 0.6411111111111112
-            },
-            {
-              "word": "בָּאָדוון",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "בָּאודוֹן",
-              "confidence": 0.49777777777777776
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "הַבִּיחַ",
-          "error_confidence": 0.71,
-          "suggestions": [
-            {
-              "word": "הַבִּיחה",
-              "confidence": 0.71
-            },
-            {
-              "word": "הַבִּיחו",
-              "confidence": 0.67
-            },
-            {
-              "word": "הַבִציחַ",
-              "confidence": 0.59
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "רַחֲמַי",
-          "error_confidence": 0.6457142857142857,
-          "suggestions": [
-            {
-              "word": "רַחֲמהי",
-              "confidence": 0.6457142857142857
-            },
-            {
-              "word": "רַחֲמוי",
-              "confidence": 0.6057142857142858
-            },
-            {
-              "word": "רהחֲמַי",
-              "confidence": 0.41714285714285715
-            }
-          ]
-        },
-        {
-          "word_index": 8,
-          "original_word": "בִּמְשִׁיחַ",
-          "error_confidence": 0.7236363636363636,
-          "suggestions": [
-            {
-              "word": "בִּמְשִׁיחה",
-              "confidence": 0.7236363636363636
-            },
-            {
-              "word": "בִּמְשִׁיחו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "בִּמְשהׁיחַ",
-              "confidence": 0.5781818181818181
-            }
-          ]
-        },
-        {
-          "word_index": 9,
-          "original_word": "אֲדֹנֵינוּ׃",
-          "error_confidence": 0.7172727272727273,
-          "suggestions": [
-            {
-              "word": "אֲדֹנֵינוצ׃",
-              "confidence": 0.7172727272727273
-            },
-            {
-              "word": "אֲדֹנֵינוי׃",
-              "confidence": 0.6372727272727273
-            },
-            {
-              "word": "אֲדֹננינוּ׃",
-              "confidence": 0.5618181818181818
+              "word": "תִּהְיֶה",
+              "confidence": 0.2677905261516571
             }
           ]
         }
@@ -3408,203 +504,35 @@
       "delitzsch_reference": "כָּתַבְתִּי אֵלֶיךָ וַאֲנִי בָטוּחַ בְּךָ שֶׁתִּשְׁמַע לִי וְיׂדֵעַ אֲנִי שֶׁתּוֹסִיף לַעֲשׂוֹת עַל־אֲשֶׁר אָמָרְתִּי׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "בִּבְטִחִי",
-          "error_confidence": 0.6800000000000002,
-          "suggestions": [
-            {
-              "word": "בִּבְטִחהי",
-              "confidence": 0.6800000000000002
-            },
-            {
-              "word": "בִּבְטִחיי",
-              "confidence": 0.6300000000000001
-            },
-            {
-              "word": "בִּבְטהחִי",
-              "confidence": 0.6000000000000001
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "עַל־יוֹדֵעֲךָ",
-          "error_confidence": 0.6892307692307693,
-          "suggestions": [
-            {
-              "word": "עַל־יוֹדֵעֲךו",
-              "confidence": 0.6892307692307693
-            },
-            {
-              "word": "עַל־יוֹדֵעֲךי",
-              "confidence": 0.6792307692307693
-            },
-            {
-              "word": "עַל־יוֹדנעֲךָ",
-              "confidence": 0.6261538461538462
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "כְּתַבְתִּי",
-          "error_confidence": 0.7172727272727273,
-          "suggestions": [
-            {
-              "word": "כְּתַבְתִצי",
-              "confidence": 0.7172727272727273
-            },
-            {
-              "word": "כְּתַבְתהּי",
-              "confidence": 0.6509090909090909
-            },
-            {
-              "word": "כְּתַבְתִיי",
-              "confidence": 0.6372727272727273
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "אֵלֶיךָ",
-          "error_confidence": 0.6628571428571428,
-          "suggestions": [
-            {
-              "word": "אֵלֶיךו",
-              "confidence": 0.6628571428571428
-            },
-            {
-              "word": "אֵלֶיךי",
-              "confidence": 0.6528571428571428
-            },
-            {
-              "word": "אנלֶיךָ",
-              "confidence": 0.43714285714285717
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "יוֹדֵעַ",
-          "error_confidence": 0.7028571428571428,
-          "suggestions": [
-            {
-              "word": "יוֹדֵעה",
-              "confidence": 0.7028571428571428
-            },
-            {
-              "word": "יוֹדֵעו",
-              "confidence": 0.6628571428571428
-            },
-            {
-              "word": "יוֹדנעַ",
-              "confidence": 0.6085714285714285
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "אֲנִי",
-          "error_confidence": 0.6000000000000001,
-          "suggestions": [
-            {
-              "word": "אֲנהי",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "אֲניי",
-              "confidence": 0.55
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "כִּי־יַעֲשֶׂה",
-          "error_confidence": 0.5446153846153846,
-          "suggestions": [
-            {
-              "word": "כִּי־יהעֲשֶׂה",
-              "confidence": 0.5446153846153846
-            },
-            {
-              "word": "כִּי־יועֲשֶׂה",
-              "confidence": 0.5046153846153846
-            },
-            {
-              "word": "כִצי־יַעֲשֶׂה",
-              "confidence": 0.45153846153846156
-            }
-          ]
-        },
-        {
           "word_index": 8,
-          "original_word": "יוֹתֵר",
-          "error_confidence": 0.6466666666666666,
+          "original_word": "יַעֲשֶׂה",
+          "error_confidence": 0.9571296572685242,
           "suggestions": [
             {
-              "word": "יוֹתנר",
-              "confidence": 0.6466666666666666
-            },
-            {
-              "word": "יוֹתער",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "יוחתֵר",
-              "confidence": 0.4633333333333334
+              "word": "כִּי",
+              "confidence": 0.20534645020961761
             }
           ]
         },
         {
           "word_index": 9,
-          "original_word": "מִדַּבְּרִי׃",
-          "error_confidence": 0.6600000000000001,
+          "original_word": "גַם",
+          "error_confidence": 0.8181443810462952,
           "suggestions": [
             {
-              "word": "מִדַּבְּרהי׃",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "מִדַּבְצרִי׃",
-              "confidence": 0.6233333333333333
-            },
-            {
-              "word": "מִדַּבְּריי׃",
-              "confidence": 0.6100000000000001
+              "word": "כִּי",
+              "confidence": 0.2582772672176361
             }
           ]
         },
         {
           "word_index": 10,
-          "original_word": "אֲנִי",
-          "error_confidence": 0.6000000000000001,
-          "suggestions": [
-            {
-              "word": "אֲנהי",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "אֲניי",
-              "confidence": 0.55
-            }
-          ]
-        },
-        {
-          "word_index": 11,
           "original_word": "יוֹתֵר",
-          "error_confidence": 0.6466666666666666,
+          "error_confidence": 0.8573566675186157,
           "suggestions": [
             {
-              "word": "יוֹתנר",
-              "confidence": 0.6466666666666666
-            },
-            {
-              "word": "יוֹתער",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "יוחתֵר",
-              "confidence": 0.4633333333333334
+              "word": "כִּי",
+              "confidence": 0.48079338669776917
             }
           ]
         }
@@ -3619,154 +547,68 @@
       "delitzsch_reference": "וְגַם־לִי תָכִין בֵּית מָלוֹן כִּי אֲקַוֶּה אֲשֶׁר אֶנָּתֵן לָכֶם עַל־יְדֵי תְּפִלּוֹתֵיכֶם׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "וּבְאֶחָד",
-          "error_confidence": 0.6311111111111112,
-          "suggestions": [
-            {
-              "word": "וּבְאֶחוד",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "וּבְאֶחיד",
-              "confidence": 0.6211111111111112
-            },
-            {
-              "word": "וּבואֶחָד",
-              "confidence": 0.45333333333333337
-            }
-          ]
-        },
-        {
           "word_index": 1,
-          "original_word": "הַכִּין",
-          "error_confidence": 0.6185714285714285,
+          "original_word": "הַכִּין",
+          "error_confidence": 0.9734665155410767,
           "suggestions": [
             {
-              "word": "הַכִצין",
-              "confidence": 0.6185714285714285
-            },
-            {
-              "word": "הַכִיין",
-              "confidence": 0.5385714285714286
-            },
-            {
-              "word": "הַכהּין",
-              "confidence": 0.5314285714285714
+              "word": "כִּי",
+              "confidence": 0.11797843128442764
             }
           ]
         },
         {
           "word_index": 3,
-          "original_word": "אֶת־הַמָּלוֹן",
-          "error_confidence": 0.6684615384615384,
+          "original_word": "אֶת",
+          "error_confidence": 0.9197463989257812,
           "suggestions": [
             {
-              "word": "אֶת־הַמָּלוחן",
-              "confidence": 0.6684615384615384
-            },
-            {
-              "word": "אֶת־הַמָּלוון",
-              "confidence": 0.6584615384615384
-            },
-            {
-              "word": "אֶת־הַמָצלוֹן",
-              "confidence": 0.6361538461538462
+              "word": "כִּי",
+              "confidence": 0.13223102688789368
             }
           ]
         },
         {
           "word_index": 4,
-          "original_word": "כִּי",
-          "error_confidence": 0.59,
+          "original_word": "הַמָּלוֹן",
+          "error_confidence": 0.9574927091598511,
           "suggestions": [
             {
-              "word": "כִצי",
-              "confidence": 0.59
-            },
-            {
-              "word": "כִיי",
-              "confidence": 0.51
-            },
-            {
-              "word": "כהּי",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "שִׂבֶּרְתִּי",
-          "error_confidence": 0.7233333333333333,
-          "suggestions": [
-            {
-              "word": "שִׂבֶּרְתִצי",
-              "confidence": 0.7233333333333333
-            },
-            {
-              "word": "שִׂבֶּרְתהּי",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "שִׂבֶּרְתִיי",
-              "confidence": 0.6433333333333333
+              "word": "כִּי",
+              "confidence": 0.9435950517654419
             }
           ]
         },
         {
           "word_index": 6,
-          "original_word": "כִּי",
-          "error_confidence": 0.59,
+          "original_word": "שִׂבֶּרְתִּי",
+          "error_confidence": 0.9556936621665955,
           "suggestions": [
             {
-              "word": "כִצי",
-              "confidence": 0.59
-            },
-            {
-              "word": "כִיי",
-              "confidence": 0.51
-            },
-            {
-              "word": "כהּי",
-              "confidence": 0.46
-            }
-          ]
-        },
-        {
-          "word_index": 7,
-          "original_word": "בִּתְפִלּוֹתֵיכֶם",
-          "error_confidence": 0.6623529411764706,
-          "suggestions": [
-            {
-              "word": "בִּתְפִלּוֹתניכֶם",
-              "confidence": 0.6623529411764706
-            },
-            {
-              "word": "בִּתְפִלּוֹתעיכֶם",
-              "confidence": 0.6423529411764706
-            },
-            {
-              "word": "בִּתְפִלצוֹתֵיכֶם",
-              "confidence": 0.5782352941176471
+              "word": "כִּי",
+              "confidence": 0.913561224937439
             }
           ]
         },
         {
           "word_index": 8,
-          "original_word": "אִנוֹן",
-          "error_confidence": 0.5966666666666667,
+          "original_word": "בִּתְפִלּוֹתֵיכֶם",
+          "error_confidence": 0.9333186149597168,
           "suggestions": [
             {
-              "word": "אִנוחן",
-              "confidence": 0.5966666666666667
-            },
+              "word": "כִּי",
+              "confidence": 0.8522019386291504
+            }
+          ]
+        },
+        {
+          "word_index": 9,
+          "original_word": "אִנוֹן",
+          "error_confidence": 0.8929045796394348,
+          "suggestions": [
             {
-              "word": "אִנוון",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "אהנוֹן",
-              "confidence": 0.42666666666666664
+              "word": "כִּי",
+              "confidence": 0.11774715781211853
             }
           ]
         }
@@ -3781,135 +623,17 @@
       "delitzsch_reference": "אֶפַּפְרָס הָאָסוּר אִתִּי בַּמָּשִׁיחַ יֵשׁוּעַ׃",
       "corrections": [
         {
-          "word_index": 0,
-          "original_word": "שָׁאֵל",
-          "error_confidence": 0.6466666666666666,
-          "suggestions": [
-            {
-              "word": "שָׁאנל",
-              "confidence": 0.6466666666666666
-            },
-            {
-              "word": "שָׁאעל",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "שוׁאֵל",
-              "confidence": 0.38666666666666666
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "לִשְׁלוֹמֵךְ",
-          "error_confidence": 0.6866666666666668,
-          "suggestions": [
-            {
-              "word": "לִשְׁלוֹמֵךו",
-              "confidence": 0.6866666666666668
-            },
-            {
-              "word": "לִשְׁלוֹמנךְ",
-              "confidence": 0.68
-            },
-            {
-              "word": "לִשְׁלוֹמֵךי",
-              "confidence": 0.6766666666666667
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "אֶפַּפְרָא",
-          "error_confidence": 0.6400000000000001,
-          "suggestions": [
-            {
-              "word": "אֶפַּפְרוא",
-              "confidence": 0.6400000000000001
-            },
-            {
-              "word": "אֶפַּפְריא",
-              "confidence": 0.6300000000000001
-            },
-            {
-              "word": "אֶפַּפורָא",
-              "confidence": 0.56
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "הַשָּׁבָה",
-          "error_confidence": 0.6311111111111112,
-          "suggestions": [
-            {
-              "word": "הַשָּׁבוה",
-              "confidence": 0.6311111111111112
-            },
-            {
-              "word": "הַשָּׁביה",
-              "confidence": 0.6211111111111112
-            },
-            {
-              "word": "הַשָצׁבָה",
-              "confidence": 0.5677777777777777
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "אִתִּי",
-          "error_confidence": 0.6566666666666666,
-          "suggestions": [
-            {
-              "word": "אִתִצי",
-              "confidence": 0.6566666666666666
-            },
-            {
-              "word": "אִתִיי",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "אִתהּי",
-              "confidence": 0.56
-            }
-          ]
-        },
-        {
-          "word_index": 5,
-          "original_word": "בִּישׁוּעַ",
-          "error_confidence": 0.72,
-          "suggestions": [
-            {
-              "word": "בִּישׁוּעה",
-              "confidence": 0.72
-            },
-            {
-              "word": "בִּישׁוּעו",
-              "confidence": 0.68
-            },
-            {
-              "word": "בִּישׁוצעַ",
-              "confidence": 0.6699999999999999
-            }
-          ]
-        },
-        {
           "word_index": 6,
-          "original_word": "הַמָּשִׁיחַ",
-          "error_confidence": 0.7236363636363636,
+          "original_word": "הַמָּשִׁיחַ",
+          "error_confidence": 0.5413434505462646,
           "suggestions": [
             {
-              "word": "הַמָּשִׁיחה",
-              "confidence": 0.7236363636363636
+              "word": "כִּי",
+              "confidence": 0.2879234552383423
             },
             {
-              "word": "הַמָּשִׁיחו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "הַמָּשהׁיחַ",
-              "confidence": 0.5781818181818181
+              "word": "אֱלֹהִים",
+              "confidence": 0.20178504288196564
             }
           ]
         }
@@ -3922,104 +646,8 @@
       "verse": 24,
       "original_text": "וּמַרְקוֹס אֲרִיסְטַרְכוֹס דֵּמָא לוּקַס עוֹזְרַי",
       "delitzsch_reference": "וּמַרְקוֹס וַאֲרִסְטַרְכוֹס וְדִימָס וְלוּקָס עׂזְרַי שׁׂאֲלִים לִשְׁלוֹמֶךָ׃",
-      "corrections": [
-        {
-          "word_index": 0,
-          "original_word": "וּמַרְקוֹס",
-          "error_confidence": 0.6500000000000001,
-          "suggestions": [
-            {
-              "word": "וּמַרְקוחס",
-              "confidence": 0.6500000000000001
-            },
-            {
-              "word": "וּמַרְקווס",
-              "confidence": 0.6400000000000001
-            },
-            {
-              "word": "וּמַרוקוֹס",
-              "confidence": 0.52
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "אֲרִיסְטַרְכוֹס",
-          "error_confidence": 0.6766666666666667,
-          "suggestions": [
-            {
-              "word": "אֲרִיסְטַרְכוחס",
-              "confidence": 0.6766666666666667
-            },
-            {
-              "word": "אֲרִיסְטַרְכווס",
-              "confidence": 0.6666666666666667
-            },
-            {
-              "word": "אֲרִיסְטַרוכוֹס",
-              "confidence": 0.5866666666666667
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "דֵּמָא",
-          "error_confidence": 0.5866666666666667,
-          "suggestions": [
-            {
-              "word": "דֵּמוא",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "דֵּמיא",
-              "confidence": 0.5766666666666667
-            },
-            {
-              "word": "דֵצמָא",
-              "confidence": 0.5233333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "לוּקַס",
-          "error_confidence": 0.6266666666666667,
-          "suggestions": [
-            {
-              "word": "לוּקהס",
-              "confidence": 0.6266666666666667
-            },
-            {
-              "word": "לוּקוס",
-              "confidence": 0.5866666666666667
-            },
-            {
-              "word": "לוצקַס",
-              "confidence": 0.5233333333333333
-            }
-          ]
-        },
-        {
-          "word_index": 4,
-          "original_word": "עוֹזְרַי",
-          "error_confidence": 0.6600000000000001,
-          "suggestions": [
-            {
-              "word": "עוֹזְרהי",
-              "confidence": 0.6600000000000001
-            },
-            {
-              "word": "עוֹזְרוי",
-              "confidence": 0.6200000000000001
-            },
-            {
-              "word": "עוֹזורַי",
-              "confidence": 0.52
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     },
     {
       "book": "philemon",
@@ -4027,104 +655,8 @@
       "verse": 25,
       "original_text": "חַנּוֹת אֲדֹנֵינוּ יֵשׁוּעַ הַמָּשִׁיחַ עִם רוּחֲכֶם אָמֵן",
       "delitzsch_reference": "חֶסֶד יֵשׁוּעַ הַמָּשִׁיחַ אֲדׂנֵינוּ עִם־רוּחֲכֶם אָמֵן׃",
-      "corrections": [
-        {
-          "word_index": 0,
-          "original_word": "חַנּוֹת",
-          "error_confidence": 0.6157142857142858,
-          "suggestions": [
-            {
-              "word": "חַנּוחת",
-              "confidence": 0.6157142857142858
-            },
-            {
-              "word": "חַנּוות",
-              "confidence": 0.6057142857142858
-            },
-            {
-              "word": "חַנצוֹת",
-              "confidence": 0.5614285714285714
-            }
-          ]
-        },
-        {
-          "word_index": 1,
-          "original_word": "אֲדֹנֵינוּ",
-          "error_confidence": 0.75,
-          "suggestions": [
-            {
-              "word": "אֲדֹנֵינוצ",
-              "confidence": 0.75
-            },
-            {
-              "word": "אֲדֹנֵינוי",
-              "confidence": 0.67
-            },
-            {
-              "word": "אֲדֹננינוּ",
-              "confidence": 0.58
-            }
-          ]
-        },
-        {
-          "word_index": 2,
-          "original_word": "יֵשׁוּעַ",
-          "error_confidence": 0.71,
-          "suggestions": [
-            {
-              "word": "יֵשׁוּעה",
-              "confidence": 0.71
-            },
-            {
-              "word": "יֵשׁוּעו",
-              "confidence": 0.67
-            },
-            {
-              "word": "יֵשׁוצעַ",
-              "confidence": 0.64
-            }
-          ]
-        },
-        {
-          "word_index": 3,
-          "original_word": "הַמָּשִׁיחַ",
-          "error_confidence": 0.7236363636363636,
-          "suggestions": [
-            {
-              "word": "הַמָּשִׁיחה",
-              "confidence": 0.7236363636363636
-            },
-            {
-              "word": "הַמָּשִׁיחו",
-              "confidence": 0.6836363636363636
-            },
-            {
-              "word": "הַמָּשהׁיחַ",
-              "confidence": 0.5781818181818181
-            }
-          ]
-        },
-        {
-          "word_index": 6,
-          "original_word": "אָמֵן",
-          "error_confidence": 0.62,
-          "suggestions": [
-            {
-              "word": "אָמנן",
-              "confidence": 0.62
-            },
-            {
-              "word": "אָמען",
-              "confidence": 0.6000000000000001
-            },
-            {
-              "word": "אומֵן",
-              "confidence": 0.4
-            }
-          ]
-        }
-      ],
-      "requires_manual_review": true
+      "corrections": [],
+      "requires_manual_review": false
     }
   ]
 }

@@ -177,14 +177,25 @@ class HebrewCorrectionDataset:
         orig_tokens = self.tokenizer.tokenize(original_text)
         corr_tokens = self.tokenizer.tokenize(corrected_text)
 
-        # For correction tasks, we use the corrected text as input and learn to predict corrections
-        # This is a simplified approach - in practice we'd need better alignment
-
-        tokens = corr_tokens  # Use corrected text as base
+        # For training, we use the original (potentially erroneous) text as input
+        # and the corrected text as the target for what the model should predict
+        tokens = orig_tokens  # Use original text as input
         token_indices = [self.vocab[token] for token in tokens]
 
-        # Create error indicators (simplified: assume training pairs represent corrections needed)
-        error_mask = [1] * len(tokens)
+        # Convert corrected tokens to indices for training targets
+        corr_token_indices = [self.vocab[token] for token in corr_tokens]
+        if len(corr_token_indices) > self.max_length:
+            corr_token_indices = corr_token_indices[:self.max_length]
+        corrected_tokens = corr_token_indices + [self.vocab['<pad>']] * (self.max_length - len(corr_token_indices))
+
+        # Create error indicators - mark positions where original differs from corrected
+        error_mask = []
+        for i in range(min(len(tokens), self.max_length)):
+            if i < len(corr_tokens) and tokens[i] != corr_tokens[i]:
+                error_mask.append(1)  # Error at this position
+            else:
+                error_mask.append(0)  # No error at this position
+        error_mask += [0] * (self.max_length - len(error_mask))  # Pad with zeros
 
         # Pad sequences
         if len(token_indices) > self.max_length:
@@ -197,6 +208,7 @@ class HebrewCorrectionDataset:
         return {
             'input_tokens': padded_tokens,
             'error_mask': padded_mask,
+            'corrected_tokens': corrected_tokens,
             'original_text': original_text,
             'corrected_text': corrected_text,
             'length': min(len(tokens), self.max_length)

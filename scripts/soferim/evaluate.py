@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 from typing import Dict, List
 import json
+import csv
 import argparse
 
 # Add parent directory to path for imports
@@ -17,93 +18,11 @@ current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir))
 
 # Import our modules (only for real model, not mock)
-# import predict  # Commented out for mock evaluation
-
-class MockSoferimPredictor:
-    """
-    Mock predictor for demonstration purposes when no trained model is available.
-    Generates plausible correction suggestions based on pattern analysis.
-    """
-
-    def __init__(self, confidence_threshold: float = 0.5, top_k: int = 3):
-        self.confidence_threshold = confidence_threshold
-        self.top_k = top_k
-
-        # Common Hebrew character substitution patterns from pattern_analysis.json
-        self.error_patterns = {
-            'ִ': ['ה', 'י', 'ו'],  # Common substitutions for hirik
-            'ֵ': ['נ', 'ע', 'ו'],  # Common substitutions for tsere
-            'ָ': ['ו', 'י', 'כ'],  # Common substitutions for kamatz
-            'ַ': ['ו', 'ה', 'מ'],  # Common substitutions for patach
-            'ְ': ['י', 'ו', 'ם'],  # Common substitutions for shva
-            'ֹ': ['ו', 'ח', 'ן'],  # Common substitutions for holam
-            'ּ': ['י', 'צ', 'ה'],  # Common substitutions for dagesh
-        }
-
-    def predict_verse_corrections(self, verse_text: str) -> List[Dict]:
-        """
-        Generate mock corrections for a verse based on common error patterns.
-
-        Args:
-            verse_text: Hebrew verse text
-
-        Returns:
-            list: List of correction dictionaries
-        """
-        corrections = []
-        words = verse_text.split()  # Simple word splitting
-
-        for word_idx, word in enumerate(words):
-            # Look for words with potential OCR errors (simplified heuristic)
-            if len(word) > 3 and any(char in 'ְֱֲֳִֵֶַָֹֺֻּֿׁׂ' for char in word):
-                # Generate mock corrections based on character patterns
-                mock_corrections = self._generate_mock_corrections(word)
-
-                if mock_corrections and mock_corrections[0]['confidence'] >= self.confidence_threshold:
-                    corrections.append({
-                        'word_index': word_idx,
-                        'original_word': word,
-                        'error_confidence': mock_corrections[0]['confidence'],
-                        'suggestions': mock_corrections[:self.top_k]
-                    })
-
-        return corrections
-
-    def _generate_mock_corrections(self, word: str) -> List[Dict]:
-        """
-        Generate mock correction suggestions for a word.
-
-        Args:
-            word: Hebrew word
-
-        Returns:
-            list: List of suggestion dictionaries
-        """
-        suggestions = []
-
-        # Simple pattern-based mock corrections
-        for i, char in enumerate(word):
-            if char in self.error_patterns:
-                alternatives = self.error_patterns[char]
-                for alt in alternatives[:2]:  # Limit alternatives
-                    # Create modified word
-                    corrected_word = word[:i] + alt + word[i+1:]
-
-                    # Mock confidence based on position and character
-                    confidence = 0.3 + (i / len(word)) * 0.4 + hash(alt) % 10 / 100
-
-                    suggestions.append({
-                        'word': corrected_word,
-                        'confidence': min(confidence, 0.9)  # Cap at 0.9
-                    })
-
-        # Sort by confidence
-        suggestions.sort(key=lambda x: x['confidence'], reverse=True)
-
-        return suggestions
+import predict
+import hebrew_tokens
 
 def evaluate_book(book_name: str, model_path: str, project_root: Path,
-                 confidence_threshold: float = 0.5, top_k: int = 3) -> Dict:
+                 confidence_threshold: float = 0.4, top_k: int = 3) -> Dict:
     """
     Evaluate model on a single book.
 
@@ -137,8 +56,42 @@ def evaluate_book(book_name: str, model_path: str, project_root: Path,
     with open(book_json_path, 'r', encoding='utf-8') as f:
         book_data = json.load(f)
 
-    # Use mock predictor for demonstration
-    predictor = MockSoferimPredictor(confidence_threshold, top_k)
+    # Build vocabulary from training data (same as used in training)
+    print("Building vocabulary from training data...")
+    vocab = hebrew_tokens.HebrewWordVocabulary()
+
+    # Load training texts to build vocab
+    project_root = Path(__file__).parent.parent.parent
+    moriah_csv = project_root / 'data' / 'review' / 'hutter_moriah.csv'
+    lena_csv = project_root / 'data' / 'review' / 'hutter_lena.csv'
+
+    all_texts = []
+
+    # Load Moriah data
+    if moriah_csv.exists():
+        with open(moriah_csv, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                original = row.get('current_text', '').strip()
+                corrected = row.get('corrected_text', '').strip()
+                if original and corrected:
+                    all_texts.extend([original, corrected])
+
+    # Load Lena data
+    if lena_csv.exists():
+        with open(lena_csv, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                original = row.get('current_text', '').strip()
+                corrected = row.get('corrected_text', '').strip()
+                if original and corrected:
+                    all_texts.extend([original, corrected])
+
+    vocab.build_vocab(all_texts)
+    print(f"Vocabulary size: {len(vocab)}")
+
+    # Use real trained model predictor
+    predictor = predict.SoferimPredictor(model_path, vocab, device='cpu')
 
     # Process all verses
     results = []
@@ -157,8 +110,21 @@ def evaluate_book(book_name: str, model_path: str, project_root: Path,
 
             total_verses += 1
 
-            # Get mock predictions
-            corrections = predictor.predict_verse_corrections(verse_text)
+            # Get model predictions
+            try:
+                result = predictor.predict_verse(verse_text, confidence_threshold, top_k)
+                corrections = result['corrections']
+
+                # Debug: print first few predictions to see if model is working
+                if total_verses <= 3:  # Only for first few verses
+                    print(f"    Verse {chapter_num}:{verse_num} - {len(corrections)} corrections found")
+                    if corrections:
+                        for i, corr in enumerate(corrections[:2]):  # Show first 2 corrections
+                            print(f"      {i+1}. Word '{corr['original_word']}' -> '{corr['suggestions'][0]['word']}' (conf: {corr['suggestions'][0]['confidence']:.3f})")
+
+            except Exception as e:
+                print(f"    Error predicting verse {chapter_num}:{verse_num}: {e}")
+                corrections = []
 
             # Add metadata
             verse_result = {
@@ -183,7 +149,7 @@ def evaluate_book(book_name: str, model_path: str, project_root: Path,
         'verses_with_corrections': verses_with_corrections,
         'confidence_threshold': confidence_threshold,
         'top_k': top_k,
-        'model_used': 'mock_predictor',  # Indicate this is mock data
+        'model_used': 'real_model',  # Using actual trained model
         'corrections': results
     }
 
@@ -194,6 +160,8 @@ def evaluate_book(book_name: str, model_path: str, project_root: Path,
     print(f"  Processed {total_verses} verses")
     print(f"  Found corrections in {verses_with_corrections} verses")
     print(f"  Results saved to {output_json_path}")
+    print(f"  Using confidence threshold: {confidence_threshold}")
+    print(f"  Total corrections found: {sum(len(result['corrections']) for result in results)}")
 
     return output_data
 

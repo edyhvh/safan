@@ -163,7 +163,7 @@ class SoferimModel(nn.Module):
             'correction_logits': correction_logits
         }
 
-    def compute_loss(self, outputs, targets, error_mask, vocab_size):
+    def compute_loss(self, outputs, targets, error_mask, vocab_size, use_focal_loss=True, focal_gamma=2.0, focal_alpha=0.75):
         """
         Compute training loss for Soferim model.
 
@@ -172,6 +172,9 @@ class SoferimModel(nn.Module):
             targets: Dict with target tensors
             error_mask: (batch_size, seq_len) - 1 where errors should be corrected
             vocab_size: Vocabulary size
+            use_focal_loss: Whether to use focal loss for error detection
+            focal_gamma: Focusing parameter for focal loss (higher = focus more on hard examples)
+            focal_alpha: Class weight for positive class (errors)
 
         Returns:
             dict: Loss components
@@ -179,12 +182,26 @@ class SoferimModel(nn.Module):
         error_probs = outputs['error_probs']  # (batch_size, seq_len)
         correction_logits = outputs['correction_logits']  # (batch_size, seq_len, vocab_size)
 
-        # Error detection loss (binary cross-entropy)
-        # For training, we assume all positions in training data are "errors" to be corrected
+        # Error detection loss
         error_targets = error_mask.float()
-        error_detection_loss = nn.functional.binary_cross_entropy(
-            error_probs, error_targets, reduction='mean'
-        )
+
+        if use_focal_loss:
+            # Focal Loss: FL(p_t) = -alpha_t * (1 - p_t)^gamma * log(p_t)
+            # This down-weights easy examples and focuses on hard ones
+            p_t = torch.where(error_targets == 1, error_probs, 1 - error_probs)
+            alpha_t = torch.where(error_targets == 1, focal_alpha, 1 - focal_alpha)
+
+            # Clamp to avoid log(0)
+            p_t = torch.clamp(p_t, min=1e-8, max=1-1e-8)
+
+            focal_weight = (1 - p_t) ** focal_gamma
+            bce = -torch.log(p_t)
+            error_detection_loss = (alpha_t * focal_weight * bce).mean()
+        else:
+            # Standard binary cross-entropy
+            error_detection_loss = nn.functional.binary_cross_entropy(
+                error_probs, error_targets, reduction='mean'
+            )
 
         # Correction loss (cross-entropy)
         # Only compute loss for positions marked as errors
@@ -196,8 +213,10 @@ class SoferimModel(nn.Module):
             reduction='mean'
         )
 
-        # Combined loss
-        total_loss = error_detection_loss + correction_loss
+        # Combined loss with adjusted weights
+        alpha = 0.4  # Weight for error detection
+        beta = 0.6   # Weight for correction
+        total_loss = alpha * error_detection_loss + beta * correction_loss
 
         return {
             'total_loss': total_loss,

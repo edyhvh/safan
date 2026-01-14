@@ -43,7 +43,7 @@ class SoferimPredictor:
         self.model = model.load_model(model_path, device)
         self.model.eval()
 
-    def predict_verse(self, verse_text: str, confidence_threshold: float = 0.5,
+    def predict_verse(self, verse_text: str, confidence_threshold: float = 0.4,
                      top_k: int = 3) -> Dict:
         """
         Predict corrections for a single verse.
@@ -60,21 +60,20 @@ class SoferimPredictor:
         tokens = self.tokenizer.tokenize(verse_text)
         token_indices = [self.vocab[token] for token in tokens]
 
-        # Pad to model's expected length (simplified)
-        max_len = 128  # Should match training
+        # Pad to model's expected length (must match training)
+        max_len = 32  # Matches training max_length
         if len(token_indices) > max_len:
             token_indices = token_indices[:max_len]
             tokens = tokens[:max_len]
 
         padded_tokens = token_indices + [self.vocab['<pad>']] * (max_len - len(token_indices))
-        lengths = torch.tensor([min(len(tokens), max_len)], dtype=torch.long)
 
         # Convert to tensor
         input_tensor = torch.tensor([padded_tokens], dtype=torch.long).to(self.device)
 
         # Get model predictions
         with torch.no_grad():
-            outputs = self.model(input_tensor, lengths)
+            outputs = self.model(input_tensor)
             error_probs = outputs['error_probs'][0]  # Remove batch dimension
             correction_logits = outputs['correction_logits'][0]  # (seq_len, vocab_size)
 
@@ -189,7 +188,7 @@ def load_predictor(model_path: str, vocab_path: Optional[str] = None, device: st
     return SoferimPredictor(model_path, vocab, device)
 
 def predict_from_json(json_path: str, model_path: str, output_path: str,
-                     confidence_threshold: float = 0.5, top_k: int = 3):
+                     confidence_threshold: float = 0.4, top_k: int = 3):
     """
     Predict corrections for all verses in a JSON book file.
 
@@ -275,7 +274,7 @@ def main():
     parser.add_argument('--input-json', type=str, help='Path to input book JSON file')
     parser.add_argument('--output-json', type=str, help='Path to output corrections JSON file')
     parser.add_argument('--text', type=str, help='Single text to correct')
-    parser.add_argument('--confidence-threshold', type=float, default=0.5, help='Minimum confidence for suggestions')
+    parser.add_argument('--confidence-threshold', type=float, default=0.4, help='Minimum confidence for suggestions')
     parser.add_argument('--top-k', type=int, default=3, help='Maximum suggestions per error')
     parser.add_argument('--device', type=str, default='cpu', help='Device for predictions')
 

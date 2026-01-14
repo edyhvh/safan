@@ -8,7 +8,7 @@ creates word-level training samples for the Soferim model.
 
 import sys
 from pathlib import Path
-from torch.utils.data import Dataset, DataLoader, random_split
+from torch.utils.data import Dataset, DataLoader, random_split, WeightedRandomSampler
 import json
 import csv
 import torch
@@ -67,6 +67,10 @@ class SoferimDataset(Dataset):
         print(f"Loading Moriah data from {csv_path}...")
 
         pairs = hebrew_tokens.load_training_pairs_from_csv(csv_path)
+        # Mark these as actual correction pairs (has_error=True)
+        for pair in pairs:
+            pair['has_error'] = True
+            pair['source'] = 'moriah'
         self.training_pairs.extend(pairs)
 
         print(f"  Added {len(pairs)} Moriah correction pairs")
@@ -76,6 +80,10 @@ class SoferimDataset(Dataset):
         print(f"Loading Lena data from {csv_path}...")
 
         pairs = hebrew_tokens.load_training_pairs_from_csv(csv_path)
+        # Mark these as actual correction pairs (has_error=True)
+        for pair in pairs:
+            pair['has_error'] = True
+            pair['source'] = 'lena'
         self.training_pairs.extend(pairs)
 
         print(f"  Added {len(pairs)} Lena correction pairs")
@@ -105,7 +113,8 @@ class SoferimDataset(Dataset):
                                 'original': vocalized_text,
                                 'corrected': vocalized_text,
                                 'source': 'delitzsch',
-                                'book': book_data.get('book_name', 'unknown')
+                                'book': book_data.get('book_name', 'unknown'),
+                                'has_error': False  # No errors in Delitzsch (clean text)
                             })
                             verses_loaded += 1
 
@@ -127,15 +136,45 @@ class SoferimDataset(Dataset):
             [pair], vocab=self.vocab, max_length=self.max_length
         )
 
-        return correction_dataset[0]
+        sample = correction_dataset[0]
+        # Add has_error flag for loss weighting
+        sample['has_error'] = pair.get('has_error', False)
+        return sample
 
     def get_vocab_size(self):
         """Get vocabulary size."""
         return len(self.vocab)
 
-    def create_data_loaders(self, batch_size=8, shuffle=True):
+    def get_sample_weights(self, error_weight=10.0):
+        """
+        Get sample weights for weighted sampling.
+
+        Correction pairs (with actual errors) get higher weight to balance
+        against the larger number of clean Delitzsch samples.
+
+        Args:
+            error_weight: Weight multiplier for samples with actual errors
+
+        Returns:
+            list: Weight for each sample
+        """
+        weights = []
+        for pair in self.training_pairs:
+            if pair.get('has_error', False):
+                weights.append(error_weight)
+            else:
+                weights.append(1.0)
+        return weights
+
+    def create_data_loaders(self, batch_size=8, shuffle=True, use_weighted_sampling=False, error_weight=10.0):
         """
         Create train/validation data loaders.
+
+        Args:
+            batch_size: Batch size for data loading
+            shuffle: Whether to shuffle data (ignored if use_weighted_sampling=True)
+            use_weighted_sampling: Use weighted sampling to oversample error examples
+            error_weight: Weight multiplier for samples with actual errors
 
         Returns:
             tuple: (train_loader, val_loader) or (data_loader, None)
@@ -146,13 +185,34 @@ class SoferimDataset(Dataset):
             train_size = len(self) - val_size
             train_dataset, val_dataset = random_split(self, [train_size, val_size])
 
-            train_loader = DataLoader(
-                train_dataset,
-                batch_size=batch_size,
-                shuffle=shuffle,
-                collate_fn=self.collate_fn,
-                num_workers=0
-            )
+            # Get sample weights for training set only
+            if use_weighted_sampling:
+                # Get weights for training indices
+                train_indices = train_dataset.indices
+                all_weights = self.get_sample_weights(error_weight=error_weight)
+                train_weights = [all_weights[i] for i in train_indices]
+
+                sampler = WeightedRandomSampler(
+                    weights=train_weights,
+                    num_samples=len(train_dataset),
+                    replacement=True
+                )
+
+                train_loader = DataLoader(
+                    train_dataset,
+                    batch_size=batch_size,
+                    sampler=sampler,  # Use weighted sampler instead of shuffle
+                    collate_fn=self.collate_fn,
+                    num_workers=0
+                )
+            else:
+                train_loader = DataLoader(
+                    train_dataset,
+                    batch_size=batch_size,
+                    shuffle=shuffle,
+                    collate_fn=self.collate_fn,
+                    num_workers=0
+                )
 
             val_loader = DataLoader(
                 val_dataset,
@@ -164,13 +224,28 @@ class SoferimDataset(Dataset):
 
             return train_loader, val_loader
         else:
-            data_loader = DataLoader(
-                self,
-                batch_size=batch_size,
-                shuffle=shuffle,
-                collate_fn=self.collate_fn,
-                num_workers=0
-            )
+            if use_weighted_sampling:
+                weights = self.get_sample_weights(error_weight=error_weight)
+                sampler = WeightedRandomSampler(
+                    weights=weights,
+                    num_samples=len(self),
+                    replacement=True
+                )
+                data_loader = DataLoader(
+                    self,
+                    batch_size=batch_size,
+                    sampler=sampler,
+                    collate_fn=self.collate_fn,
+                    num_workers=0
+                )
+            else:
+                data_loader = DataLoader(
+                    self,
+                    batch_size=batch_size,
+                    shuffle=shuffle,
+                    collate_fn=self.collate_fn,
+                    num_workers=0
+                )
             return data_loader, None
 
     def collate_fn(self, batch):
@@ -189,30 +264,37 @@ class SoferimDataset(Dataset):
         # Pad sequences
         input_batch = []
         error_mask_batch = []
+        corrected_batch = []
         lengths = []
 
         for sample in batch:
             input_seq = sample['input_tokens'][:max_len]  # Truncate if longer
             error_mask = sample['error_mask'][:max_len]   # Truncate if longer
+            corrected_seq = sample['corrected_tokens'][:max_len]  # Truncate if longer
             length = min(sample['length'], max_len)       # Actual length (capped)
 
             # Pad to max_len
             padded_input = input_seq + [self.vocab['<pad>']] * (max_len - len(input_seq))
             padded_mask = error_mask + [0] * (max_len - len(error_mask))
+            padded_corrected = corrected_seq + [self.vocab['<pad>']] * (max_len - len(corrected_seq))
 
             input_batch.append(padded_input)
             error_mask_batch.append(padded_mask)
+            corrected_batch.append(padded_corrected)
             lengths.append(length)
 
         return {
             'input_tokens': torch.tensor(input_batch, dtype=torch.long),
             'error_mask': torch.tensor(error_mask_batch, dtype=torch.long),
+            'corrected_tokens': torch.tensor(corrected_batch, dtype=torch.long),
             'lengths': torch.tensor(lengths, dtype=torch.long),
             'original_texts': [sample['original_text'] for sample in batch],
-            'corrected_texts': [sample['corrected_text'] for sample in batch]
+            'corrected_texts': [sample['corrected_text'] for sample in batch],
+            'has_error': torch.tensor([sample.get('has_error', False) for sample in batch], dtype=torch.bool)
         }
 
-def load_soferim_dataset(project_root=None, validation_split=0.1, batch_size=8, max_length=32):
+def load_soferim_dataset(project_root=None, validation_split=0.1, batch_size=8, max_length=32,
+                         use_weighted_sampling=True, error_weight=10.0):
     """
     Load complete Soferim dataset from project structure.
 
@@ -220,6 +302,9 @@ def load_soferim_dataset(project_root=None, validation_split=0.1, batch_size=8, 
         project_root: Path to project root (auto-detects if None)
         validation_split: Fraction for validation
         batch_size: Batch size for data loading
+        max_length: Maximum sequence length
+        use_weighted_sampling: Use weighted sampling to oversample error examples
+        error_weight: Weight multiplier for samples with actual errors
 
     Returns:
         tuple: (train_loader, val_loader, vocab_size)
@@ -251,8 +336,12 @@ def load_soferim_dataset(project_root=None, validation_split=0.1, batch_size=8, 
         max_length=max_length
     )
 
-    # Create data loaders
-    train_loader, val_loader = dataset.create_data_loaders(batch_size=batch_size)
+    # Create data loaders with weighted sampling to balance error examples
+    train_loader, val_loader = dataset.create_data_loaders(
+        batch_size=batch_size,
+        use_weighted_sampling=use_weighted_sampling,
+        error_weight=error_weight
+    )
 
     return train_loader, val_loader, dataset.get_vocab_size()
 

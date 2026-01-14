@@ -64,9 +64,10 @@ def train_epoch(model, train_loader, optimizer, device, vocab_size):
             # Forward pass
             outputs = model(input_tokens)
 
-            # Create targets (simplified for training)
-            # In practice, this would be more sophisticated
-            targets = {'correction_targets': input_tokens}  # Target is same as input for now
+            # Use corrected tokens as targets for training
+            targets = {
+                'correction_targets': batch['corrected_tokens']
+            }
 
             # Compute loss
             losses = model.compute_loss(outputs, targets, error_mask, vocab_size)
@@ -179,7 +180,7 @@ def train_model(model, train_loader, val_loader, vocab_size, num_epochs=50,
     model.to(device)
 
     # Initialize optimizer and scheduler (required before loading state dicts)
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(
         optimizer, mode='min', factor=0.5, patience=5
     )
@@ -313,20 +314,20 @@ def train_two_stage(project_root=None, device='cpu', resume_stage1_from=None, re
         project_root=project_root,
         validation_split=0.1,
         batch_size=32,
-        max_samples=5000  # Limit for faster training
+        max_samples=10000  # Increased for richer Hebrew language understanding
     )
 
     # Create model for pretraining
     soferim_model = model.create_model(
         vocab_size=delitzsch_vocab_size,
-        embedding_dim=128,  # Smaller for pretraining
-        hidden_dim=256,
-        num_layers=2,
+        embedding_dim=256,  # Increased for better capacity
+        hidden_dim=512,
+        num_layers=3,
         dropout=0.1
     )
 
     # Path for stage 1 model
-    stage1_model_path = project_root / 'data' / 'soferim' / 'models' / 'soferim_stage1_pretrained.pt'
+    stage1_model_path = project_root / 'scripts' / 'soferim' / 'models' / 'soferim_stage1_pretrained.pt'
 
     # Check if stage 1 is already completed
     if stage1_model_path.exists() and resume_stage1_from is None:
@@ -364,8 +365,9 @@ def train_two_stage(project_root=None, device='cpu', resume_stage1_from=None, re
     hutter_train, hutter_val, hutter_vocab_size = dataset.load_soferim_dataset(
         project_root=project_root,
         validation_split=0.2,
-        batch_size=32,  # Larger batch size for faster training
-        max_length=32   # Shorter sequences for faster training
+        batch_size=16,  # Smaller batch size for better generalization
+        max_length=32,  # Shorter sequences for faster training
+        error_weight=15.0  # Increased to oversample error examples more
     )
 
     # Note: In practice, we'd need to handle vocabulary differences between stages
@@ -375,27 +377,27 @@ def train_two_stage(project_root=None, device='cpu', resume_stage1_from=None, re
 
         soferim_model = model.create_model(
             vocab_size=hutter_vocab_size,
-            embedding_dim=128,  # Smaller for faster training
-            hidden_dim=256,
-            num_layers=2,
-            dropout=0.1
+            embedding_dim=256,  # Increased for better capacity
+            hidden_dim=512,
+            num_layers=3,
+            dropout=0.3  # Higher dropout to prevent overfitting
         )
 
     # Fine-tune on Hutter data
-    stage2_model_path = project_root / 'data' / 'soferim' / 'models' / 'soferim_stage2_finetuned.pt'
+    stage2_model_path = project_root / 'scripts' / 'soferim' / 'models' / 'soferim_stage2_finetuned.pt'
 
     stage2_history = train_model(
         model=soferim_model,
         train_loader=hutter_train,
         val_loader=hutter_val,
         vocab_size=hutter_vocab_size,
-        num_epochs=10,  # Reduced for faster training
-        learning_rate=5e-4,  # Higher learning rate for faster convergence
+        num_epochs=30,  # More epochs for better convergence
+        learning_rate=1e-4,  # Lower learning rate for stable fine-tuning
         device=device,
-        patience=3,  # Aggressive early stopping
+        patience=5,  # Early stopping with some patience
         model_save_path=stage2_model_path,
         resume_from=resume_stage2_from,
-        checkpoint_freq=2,  # Save more frequently
+        checkpoint_freq=5,  # Save checkpoints every 5 epochs
         checkpoint_prefix='stage2'
     )
 
@@ -413,7 +415,7 @@ def main():
     parser.add_argument('--num-layers', type=int, default=3, help='Number of LSTM layers')
     parser.add_argument('--dropout', type=float, default=0.2, help='Dropout probability')
     parser.add_argument('--max-length', type=int, default=128, help='Maximum sequence length')
-    parser.add_argument('--output-dir', type=str, default='data/soferim/models', help='Output directory')
+    parser.add_argument('--output-dir', type=str, default='scripts/soferim/models', help='Output directory')
     parser.add_argument('--model-name', type=str, default='soferim.pt', help='Model filename')
     parser.add_argument('--device', type=str, default='auto', help='Device (cpu/cuda/auto)')
     parser.add_argument('--two-stage', action='store_true', help='Use two-stage training')
