@@ -20,8 +20,6 @@ Thumbs.db
 
 # Data and models (uncomment if you want to ignore these)
 # data/
-models/
-scripts/nakdimon/models/
 # output/
 
 # Local Tanaj source data directory
@@ -38,6 +36,7 @@ data/images/
 
 # models
 models/
+scripts/nakdimon/models
 
 # Checkpoints
 output/.checkpoints/
