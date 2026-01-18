@@ -1,9 +1,11 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { getLocaleFromPath, removeLocaleFromPath } from '@/lib/locale'
 import { ChevronDown } from '@/components/icons'
+import { useIsMobile } from '@/hooks/useIsMobile'
+import { useClickOutside } from '@/hooks/useClickOutside'
 
 const languages = [
   { code: 'he', label: 'עברית', nativeLabel: 'עברית' },
@@ -15,10 +17,16 @@ export default function LanguageSelector() {
   const pathname = usePathname()
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
+  const isMobile = useIsMobile()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   const currentLocale = getLocaleFromPath(pathname)
   const currentLanguage =
     languages.find((lang) => lang.code === currentLocale) || languages[0]
+
+  // Close dropdown when clicking outside
+  useClickOutside(containerRef, () => setIsOpen(false), isOpen)
 
   const handleLanguageChange = (locale: string) => {
     setIsOpen(false)
@@ -27,13 +35,20 @@ export default function LanguageSelector() {
     router.push(newPath)
   }
 
+  const handleToggle = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <div
+      ref={containerRef}
       className="relative"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={!isMobile ? () => setIsOpen(true) : undefined}
+      onMouseLeave={!isMobile ? () => setIsOpen(false) : undefined}
     >
       <button
+        ref={buttonRef}
+        onClick={isMobile ? handleToggle : undefined}
         className="flex items-center gap-1.5 px-2 py-1.5 text-xs font-ui-latin font-bold text-black/80 hover:text-black transition-colors rounded-full hover:bg-black/5"
         aria-label="Select language"
         aria-expanded={isOpen}
@@ -45,25 +60,30 @@ export default function LanguageSelector() {
         />
       </button>
 
-      {/* Invisible hover bridge - always present to extend hover area */}
-      <div className="absolute right-0 top-full w-[120px] h-3" />
+      {/* Invisible hover bridge - only on desktop */}
+      {!isMobile && <div className="absolute right-0 top-full w-[120px] h-3" />}
 
       {/* Dropdown menu */}
       {isOpen && (
-        <div className="absolute right-0 top-[calc(100%+4px)] z-50 dropdown-panel min-w-[120px] overflow-hidden">
-          {languages.map((lang) => (
-            <button
-              key={lang.code}
-              onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full text-left px-4 py-2.5 text-sm font-ui-latin hover:bg-black/5 transition-colors ${
-                currentLocale === lang.code
-                  ? 'font-bold text-black bg-black/5'
-                  : 'font-medium text-black/80'
-              }`}
-            >
-              {lang.nativeLabel}
-            </button>
-          ))}
+        <div
+          className={`${isMobile ? 'mt-2' : 'absolute right-0 top-[calc(100%+4px)] z-[60]'} dropdown-panel min-w-[120px] overflow-hidden shadow-lg`}
+        >
+          {languages.map((lang) => {
+            const isSelected = currentLocale === lang.code
+            return (
+              <button
+                key={lang.code}
+                onClick={() => handleLanguageChange(lang.code)}
+                className={`w-full text-left px-4 py-2.5 text-sm font-ui-latin transition-colors ${
+                  isSelected
+                    ? 'font-bold text-black bg-primary/10 border-l-2 border-primary'
+                    : 'font-medium text-black/80 hover:bg-black/5'
+                }`}
+              >
+                {lang.nativeLabel}
+              </button>
+            )
+          })}
         </div>
       )}
     </div>
