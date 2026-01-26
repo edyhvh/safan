@@ -28,6 +28,12 @@ const CreditCardIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
+const TelegramIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M9.993 15.43 9.66 20.06c.506 0 .726-.217.99-.478l2.37-2.28 4.91 3.595c.902.498 1.54.235 1.76-.832l3.2-15.02c.293-1.326-.48-1.845-1.33-1.53L2.1 9.18c-1.29.49-1.27 1.19-.22 1.51l4.86 1.52 11.28-7.12c.53-.35 1.01-.16.61.19L9.993 15.43z" />
+  </svg>
+)
+
 export default function DonatePage() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center">
@@ -50,16 +56,21 @@ export default function DonatePage() {
             </a>
           </div>
           <p className="text-sm text-gray/70">
-            if you wanna know other methods to donate please contact me on
-            telegram{' '}
-            <a
-              href="https://t.me/edyhvh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-black transition-colors"
-            >
-              @edyhvh
-            </a>
+            if you wanna know other methods to donate please contact me on{' '}
+            <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-1 font-medium text-gray">
+                <TelegramIcon className="w-4 h-4" />
+                telegram
+              </span>
+              <a
+                href="https://t.me/edyhvh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-black transition-colors"
+              >
+                @edyhvh
+              </a>
+            </span>
           </p>
         </div>
       </div>
