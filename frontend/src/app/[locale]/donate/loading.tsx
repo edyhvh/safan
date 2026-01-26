@@ -3,7 +3,7 @@ export default function DonateLoading() {
     <div className="min-h-[60vh] flex items-center justify-center">
       <div className="text-center">
         <div className="space-y-6 font-ui-latin text-gray animate-pulse">
-          {/* Skeleton for wallet rows */}
+          {/* Skeleton rows */}
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="flex items-center justify-center gap-3">
               <div className="w-6 h-6 bg-gray/20 rounded" />

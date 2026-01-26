@@ -46,34 +46,41 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   return {
-    title: 'Shafan',
-    description: "Read Elias Hutter's Hebrew Besorah Translation",
+    title: 'Safan – Pure Hebrew for Scripture Study',
+    description:
+      'Read Tanakh and Besorah in original Hebrew with nikud. Fast, clean, distraction-free for deep study.',
+    metadataBase: new URL('https://shafan.xyz'),
     keywords: [
-      'Hebrew',
-      'New Testament',
-      'Bible',
-      'Elias Hutter',
-      'Shafan',
-      'Besorah',
-      'בשורה',
-      'Yeshua',
-      'Mashiaj',
-      'Mashiach',
-      'Tanaj',
-      'Tanakh',
-      'משיח',
-      'ישוע',
-      'ישועה',
+      'hebrew tanakh online',
+      'besorah hebrew hutter',
+      'nikud toggle',
+      'hebrew bible study',
+      'tanakh hebrew text',
+      'besorah hebrew',
     ],
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
-      title: 'Shafan',
-      description: "Read Elias Hutter's Hebrew Besorah Translation",
+      title: 'Safan – Pure Hebrew for Scripture Study',
+      description:
+        'Read Tanakh and Besorah in original Hebrew with nikud. Fast, clean, distraction-free for deep study.',
       type: 'website',
+      url: 'https://shafan.xyz',
+      images: [
+        {
+          url: '/og-image.png',
+          alt: 'Safan – Pure Hebrew for Scripture Study',
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
-      title: 'Shafan',
-      description: "Read Elias Hutter's Hebrew Besorah Translation",
+      card: 'summary_large_image',
+      title: 'Safan – Pure Hebrew for Scripture Study',
+      description:
+        'Read Tanakh and Besorah in original Hebrew with nikud. Fast, clean, distraction-free for deep study.',
+      images: ['/og-image.png'],
     },
   }
 }
