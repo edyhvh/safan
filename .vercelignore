@@ -1,0 +1,46 @@
+# Large directories that should never be deployed
+
+models/
+data/
+output/
+scripts/
+src/
+.venv/
+**pycache**/
+
+# Python files
+
+_.py
+_.pyc
+_.pyo
+_.pyd
+requirements.txt
+setup.py
+Makefile
+run.sh
+
+# Large files
+
+_.pt
+_.pth
+_.ckpt
+_.pdf
+
+# Build artifacts
+
+.next/
+node_modules/
+
+# OS/IDE
+
+.DS_Store
+.idea/
+.vscode/
+.cursor/
+.git/
+.github/
+
+# Documentation
+
+\*.md
+!README.md

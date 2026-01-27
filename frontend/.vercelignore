@@ -2,7 +2,18 @@
 .next/
 node_modules/
 
-# Large source files
+# Large directories from parent workspace
+../models/
+../data/
+../output/
+../scripts/
+../src/
+../.venv/
+
+# Large model files (but keep frontend images)
+*.pt
+*.pth
+*.ckpt
 *.pdf
 
 # OS/IDE
