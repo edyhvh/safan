@@ -146,7 +146,8 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
     info_follow: 'עקבו אחרי הפרויקט',
     info_youtube_title: 'בְּשׂוֹרַת יֵשׁוּעַ הַמָּשִׁיחַ',
     // Donate page
-    donate_contact_prefix: 'אם תרצה לדעת על דרכי תרומה נוספות, אפשר ליצור איתי קשר ב',
+    donate_contact_prefix:
+      'אם תרצה לדעת על דרכי תרומה נוספות, אפשר ליצור איתי קשר ב',
     donate_telegram_label: 'טלגרם',
     correction_warning_text:
       'ייתכן שתראו שגיאות במילים, אותיות או דקדוק. עזרו לנו לשפר',
