@@ -1,4 +1,4 @@
-# Shafan - שָׁפָן
+# Shafan - שפן
 
 **Shafan** is a comprehensive, free, and open-source platform for studying Hebrew Scriptures, featuring both the **Tanakh** (Hebrew Bible) and the **Besorah** (New Testament) with multiple Hebrew translations.
 
@@ -160,6 +160,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 **Built for digital humanities and Biblical scholarship**
 
-[Report an Issue](https://github.com/edyhvh/shafan/issues) · [Request Feature](https://github.com/edyhvh/shafan/issues) · [View Demo](https://shafan.vercel.app)
+[Report an Issue](https://github.com/edyhvh/shafan/issues) · [Request Feature](https://github.com/edyhvh/shafan/issues) · [View Demo](https://shafan.xyz)
 
 </div>
