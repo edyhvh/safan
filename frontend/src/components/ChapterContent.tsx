@@ -183,73 +183,72 @@ export default function ChapterContent({
   }
 
   return (
-    <>
+    <section className="mb-12" aria-labelledby="chapter-hebrew-letter">
       <ReadingControls />
 
-      <div className="mb-12">
-        <h2 className="font-bible-hebrew text-[64px] text-center mb-8 text-primary">
-          {hebrewLetter}
-        </h2>
+      <h2
+        id="chapter-hebrew-letter"
+        className="font-bible-hebrew text-[64px] text-center mb-8 text-primary"
+      >
+        {hebrewLetter}
+      </h2>
 
-        <div className={`${seferEnabled ? '' : 'space-y-8'}`} dir="rtl">
-          {seferEnabled ? (
-            // Sefer mode: continuous paragraph display
-            <p className="font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-primary text-right">
-              {verses.map((verse, index) => {
-                const isHighlighted = highlightedVerse === verse.number
-                return (
-                  <span
-                    key={verse.number}
-                    id={`verse-${verse.number}`}
-                    className={`scroll-mt-32 transition-all duration-500 ${
-                      isHighlighted
-                        ? 'verse-highlight-animate rounded px-1'
-                        : ''
-                    }`}
-                  >
-                    {verse.number > 0 && (
-                      <VerseNumber
-                        verseNumber={verse.number}
-                        className="text-muted ml-2"
-                      />
-                    )}
-                    <span className="font-bible-hebrew">
-                      {allPreferencesLoaded ? getDisplayText(verse) : '...'}
-                    </span>
-                    {index < verses.length - 1 && ' '}
-                  </span>
-                )
-              })}
-            </p>
-          ) : (
-            // Standard mode: separate verse blocks
-            verses.map((verse) => {
+      <article className={`${seferEnabled ? '' : 'space-y-8'}`} dir="rtl">
+        {seferEnabled ? (
+          // Sefer mode: continuous paragraph display
+          <p className="font-bible-hebrew text-[50px] md:text-[54px] leading-[1.9] text-primary text-right">
+            {verses.map((verse, index) => {
               const isHighlighted = highlightedVerse === verse.number
               return (
-                <div
+                <span
                   key={verse.number}
                   id={`verse-${verse.number}`}
-                  className={`font-bible-hebrew text-[32px] md:text-[36px] leading-[1.9] text-primary text-right scroll-mt-32 transition-all duration-500 ${
-                    isHighlighted
-                      ? 'verse-highlight-animate rounded-lg px-4 -mx-4'
-                      : ''
+                  className={`scroll-mt-32 transition-all duration-500 ${
+                    isHighlighted ? 'verse-highlight-animate rounded px-1' : ''
                   }`}
                 >
                   {verse.number > 0 && (
                     <VerseNumber
                       verseNumber={verse.number}
-                      className="text-muted ml-3"
+                      className="text-muted ml-2"
                     />
                   )}
                   <span className="font-bible-hebrew">
                     {allPreferencesLoaded ? getDisplayText(verse) : '...'}
                   </span>
-                </div>
+                  {index < verses.length - 1 && ' '}
+                </span>
               )
-            })
-          )}
-        </div>
-      </div>
-    </>
+            })}
+          </p>
+        ) : (
+          // Standard mode: separate verse blocks
+          verses.map((verse) => {
+            const isHighlighted = highlightedVerse === verse.number
+            return (
+              <div
+                key={verse.number}
+                id={`verse-${verse.number}`}
+                className={`font-bible-hebrew text-[50px] md:text-[54px] leading-[1.9] text-primary text-right scroll-mt-32 transition-all duration-500 ${
+                  isHighlighted
+                    ? 'verse-highlight-animate rounded-lg px-4 -mx-4'
+                    : ''
+                }`}
+              >
+                {verse.number > 0 && (
+                  <VerseNumber
+                    verseNumber={verse.number}
+                    className="text-muted ml-3"
+                  />
+                )}
+                <span className="font-bible-hebrew">
+                  {allPreferencesLoaded ? getDisplayText(verse) : '...'}
+                </span>
+              </div>
+            )
+          })
+        )}
+      </article>
+    </section>
   )
 }

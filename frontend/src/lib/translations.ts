@@ -11,6 +11,9 @@ type TranslationKey =
   | 'home'
   | 'nikud'
   | 'page_title'
+  | 'site_meta_title'
+  | 'site_meta_description'
+  | 'hebrew_bible_title'
   // Info page
   | 'info_title'
   | 'info_hutter_title'
@@ -25,6 +28,11 @@ type TranslationKey =
   | 'info_tanaj_text'
   | 'info_follow'
   | 'info_youtube_title'
+  // Donate page
+  | 'donate_contact_prefix'
+  | 'donate_telegram_label'
+  | 'donate_meta_title'
+  | 'donate_meta_description'
   // Correction warning
   | 'correction_warning_text'
   | 'correction_warning_link'
@@ -43,6 +51,10 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
     home: 'Home',
     nikud: 'Nikud',
     page_title: 'Hebrew Besorah',
+    site_meta_title: 'Shafan – Bible in Hebrew for Scripture Study',
+    site_meta_description:
+      'Read Tanakh and Besorah in Hebrew. Fast, clean, distraction-free for deep study.',
+    hebrew_bible_title: 'Bible in Hebrew',
     // Info page
     info_title: 'Info',
     info_hutter_title: 'Who was Elias Hutter?',
@@ -62,6 +74,13 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
       "This project also includes the Hebrew Bible (Tanakh) from the Masoretic Text, the authoritative Hebrew text of the Bible that has been meticulously preserved through centuries of careful transmission by Israel's scribes.",
     info_follow: 'Follow the project',
     info_youtube_title: "Yeshua the Messiah's Besorah",
+    // Donate page
+    donate_contact_prefix:
+      'if you wanna know other methods to donate please contact me on',
+    donate_telegram_label: 'telegram',
+    donate_meta_title: 'Support Shafan',
+    donate_meta_description:
+      'Help keep Shafan free and growing. Support the project and reach out for more ways to donate.',
     correction_warning_text:
       'You may see errors in words, letters, or grammar. Help us improve',
     correction_warning_link: 'here',
@@ -79,6 +98,10 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
     home: 'Inicio',
     nikud: 'Nikud',
     page_title: 'Besorah Hebrea',
+    site_meta_title: 'Shafan – Biblia en hebreo para estudio bíblico',
+    site_meta_description:
+      'Lee Tanaj y Besorah en hebreo. Rápido, limpio y sin distracciones para un estudio profundo.',
+    hebrew_bible_title: 'Biblia en hebreo',
     // Info page
     info_title: 'Info',
     info_hutter_title: '¿Quién fue Elias Hutter?',
@@ -98,6 +121,13 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
       'Este proyecto también incluye la Biblia hebrea (Tanaj) del Texto Masorético, el texto hebreo autorizado de la Biblia que ha sido meticulosamente preservado a través de siglos de transmisión cuidadosa por parte de escribas de Israel.',
     info_follow: 'Sigue el proyecto',
     info_youtube_title: 'La Besorah de Yeshúa el Mesías',
+    // Donate page
+    donate_contact_prefix:
+      'si quieres conocer otros métodos para donar por favor contáctame en',
+    donate_telegram_label: 'telegram',
+    donate_meta_title: 'Apoya Shafan',
+    donate_meta_description:
+      'Ayuda a mantener Shafan gratis y en crecimiento. Apoya el proyecto y contáctame para más formas de donar.',
     correction_warning_text:
       'Es posible que encuentres errores de palabras, letras o gramática. Ayúdanos a mejorar',
     correction_warning_link: 'aquí',
@@ -115,6 +145,10 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
     home: 'בית',
     nikud: 'ניקוד',
     page_title: 'בְּשׂוֹרָה עברית',
+    site_meta_title: 'Shafan – עברית טהורה ללימוד המקרא',
+    site_meta_description:
+      'קראו תנ״ך ובשורה בעברית. מהיר, נקי וללא הסחות ללימוד מעמיק.',
+    hebrew_bible_title: 'תנ״ך',
     // Info page
     info_title: 'מידע',
     info_hutter_title: 'מי היה אליאס הוטר?',
@@ -134,6 +168,13 @@ const translations: Record<Locale, Record<TranslationKey, string>> = {
       'פרויקט זה כולל גם את התנ״ך מהטקסט המסורתי, הטקסט העברי הרשמי של התנ״ך ששומר בקפידה במשך מאות שנים על ידי סופרי ישראל.',
     info_follow: 'עקבו אחרי הפרויקט',
     info_youtube_title: 'בְּשׂוֹרַת יֵשׁוּעַ הַמָּשִׁיחַ',
+    // Donate page
+    donate_contact_prefix:
+      'אם תרצה לדעת על דרכי תרומה נוספות, אפשר ליצור איתי קשר ב',
+    donate_telegram_label: 'טלגרם',
+    donate_meta_title: 'תמכו ב־Shafan',
+    donate_meta_description:
+      'עזרו לשמור את Shafan חופשי ומתפתח. תמכו בפרויקט ופנו אליי לעוד דרכי תרומה.',
     correction_warning_text:
       'ייתכן שתראו שגיאות במילים, אותיות או דקדוק. עזרו לנו לשפר',
     correction_warning_link: 'כאן',

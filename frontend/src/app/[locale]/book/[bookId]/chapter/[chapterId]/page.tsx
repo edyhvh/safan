@@ -6,6 +6,30 @@ import ChapterNavigation from '@/components/navigation/ChapterNavigation'
 import ChapterContent from '@/components/ChapterContent'
 import SaveLastBook from '@/components/navigation/SaveLastBook'
 import AuthorInfo from '@/components/AuthorInfo'
+import { Locale, locales } from '@/lib/locale'
+import { t } from '@/lib/translations'
+
+export const revalidate = 604800
+
+export async function generateStaticParams() {
+  const bookData = await Promise.all(
+    AVAILABLE_BOOKS.map(async (bookId) => {
+      const book = await loadBookServer(bookId)
+      const chapterCount = book?.chapters.length ?? 0
+      return { bookId, chapterCount }
+    })
+  )
+
+  return bookData.flatMap(({ bookId, chapterCount }) =>
+    locales.flatMap((locale) =>
+      Array.from({ length: chapterCount }, (_, index) => ({
+        locale,
+        bookId,
+        chapterId: String(index + 1),
+      }))
+    )
+  )
+}
 
 interface PageProps {
   params: Promise<{
@@ -22,17 +46,36 @@ export async function generateMetadata({ params }: PageProps) {
   // Runtime validation to prevent path traversal attacks
   if (!AVAILABLE_BOOKS.includes(bookId as BookName)) {
     return {
-      title: 'Shafan',
-      description: "Read Elias Hutter's Hebrew Besorah Translation",
+      title: 'Shafan – Pure Hebrew for Scripture Study',
+      description:
+        'Read Tanakh and Besorah in Hebrew. Fast, clean, distraction-free for deep study.',
+      keywords: [
+        'hebrew tanakh online',
+        'besorah hebrew hutter',
+        'hebrew bible study',
+        'tanakh hebrew text',
+        'besorah hebrew',
+      ],
+      robots: { index: true, follow: true },
       openGraph: {
-        title: 'Shafan',
-        description: "Read Elias Hutter's Hebrew Besorah Translation",
+        title: 'Shafan – Bible in Hebrew for Scripture Study',
+        description:
+          'Read Tanakh and Besorah in Hebrew. Fast, clean, distraction-free for deep study.',
         type: 'website',
+        url: 'https://shafan.xyz',
+        images: [
+          {
+            url: '/og-image.png',
+            alt: 'Shafan – Bible in Hebrew for Scripture Study',
+          },
+        ],
       },
       twitter: {
-        card: 'summary',
-        title: 'Shafan',
-        description: "Read Elias Hutter's Hebrew Besorah Translation",
+        card: 'summary_large_image',
+        title: 'Shafan – Bible in Hebrew for Scripture Study',
+        description:
+          'Read Tanakh and Besorah in Hebrew. Fast, clean, distraction-free for deep study.',
+        images: ['/og-image.png'],
       },
     }
   }
@@ -42,17 +85,36 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (isNaN(chapterNumber) || chapterNumber < 1) {
     return {
-      title: 'Shafan',
-      description: "Read Elias Hutter's Hebrew Besorah Translation",
+      title: 'Shafan – Pure Hebrew for Scripture Study',
+      description:
+        'Read Tanakh and Besorah in Hebrew. Fast, clean, distraction-free for deep study.',
+      keywords: [
+        'hebrew tanakh online',
+        'besorah hebrew hutter',
+        'hebrew bible study',
+        'tanakh hebrew text',
+        'besorah hebrew',
+      ],
+      robots: { index: true, follow: true },
       openGraph: {
-        title: 'Shafan',
-        description: "Read Elias Hutter's Hebrew Besorah Translation",
+        title: 'Shafan – Pure Hebrew for Scripture Study',
+        description:
+          'Read Tanakh and Besorah in Hebrew. Fast, clean, distraction-free for deep study.',
         type: 'website',
+        url: 'https://shafan.xyz',
+        images: [
+          {
+            url: '/og-image.png',
+            alt: 'Shafan – Pure Hebrew for Scripture Study',
+          },
+        ],
       },
       twitter: {
-        card: 'summary',
-        title: 'Shafan',
-        description: "Read Elias Hutter's Hebrew Besorah Translation",
+        card: 'summary_large_image',
+        title: 'Shafan – Pure Hebrew for Scripture Study',
+        description:
+          'Read Tanakh and Besorah in Hebrew. Fast, clean, distraction-free for deep study.',
+        images: ['/og-image.png'],
       },
     }
   }
@@ -66,20 +128,42 @@ export async function generateMetadata({ params }: PageProps) {
   const bookDisplayName =
     displayName[locale as 'he' | 'es' | 'en'] || displayName.en
 
-  const pageTitle = `${bookDisplayName} ${chapterNumber}`
+  const hebrewBibleLabel = t('hebrew_bible_title', locale as Locale)
+  const pageTitle = `${bookDisplayName} ${chapterNumber} – ${hebrewBibleLabel}`
+  const description =
+    'Read Tanakh and Besorah in Hebrew. Fast, clean, distraction-free for deep study.'
+  const canonicalUrl = `https://shafan.xyz/${locale}/book/${bookId}/chapter/${chapterNumber}`
 
   return {
     title: pageTitle,
-    description: "Read Elias Hutter's Hebrew Besorah Translation",
+    description,
+    keywords: [
+      `${bookDisplayName} ${chapterNumber}`,
+      `${bookDisplayName} Hebrew`,
+      'hebrew tanakh online',
+      'besorah hebrew hutter',
+    ],
+    robots: { index: true, follow: true },
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: pageTitle,
-      description: "Read Elias Hutter's Hebrew Besorah Translation",
+      description,
       type: 'website',
+      url: canonicalUrl,
+      images: [
+        {
+          url: '/og-image.png',
+          alt: 'Shafan – Pure Hebrew for Scripture Study',
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: pageTitle,
-      description: "Read Elias Hutter's Hebrew Besorah Translation",
+      description,
+      images: ['/og-image.png'],
     },
   }
 }

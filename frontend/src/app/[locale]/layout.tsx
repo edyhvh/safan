@@ -9,6 +9,8 @@ import {
 import '../globals.css'
 import Navbar from '@/components/Navbar'
 import CorrectionWarning from '@/components/CorrectionWarning'
+import { Locale } from '@/lib/locale'
+import { t } from '@/lib/translations'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -41,39 +43,63 @@ const assistant = Assistant({
 })
 
 export async function generateMetadata({
-  params: _params,
+  params,
 }: {
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
+  const brandName = 'shafan'
+  const { locale } = await params
+  const loc = (locale || 'he') as Locale
+  const description = t('site_meta_description', loc)
+  const canonicalUrl = `https://shafan.xyz/${loc}`
+  const openGraphLocaleMap: Record<Locale, string> = {
+    en: 'en_US',
+    es: 'es_ES',
+    he: 'he_IL',
+  }
+
   return {
-    title: 'Shafan',
-    description: "Read Elias Hutter's Hebrew Besorah Translation",
+    title: brandName,
+    description,
+    metadataBase: new URL('https://shafan.xyz'),
     keywords: [
-      'Hebrew',
-      'New Testament',
-      'Bible',
-      'Elias Hutter',
-      'Shafan',
-      'Besorah',
-      'בשורה',
-      'Yeshua',
-      'Mashiaj',
-      'Mashiach',
-      'Tanaj',
-      'Tanakh',
-      'משיח',
-      'ישוע',
-      'ישועה',
+      'hebrew tanakh online',
+      'besorah hebrew hutter',
+      'nikud toggle',
+      'hebrew bible study',
+      'tanakh hebrew text',
+      'besorah hebrew',
     ],
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        en: 'https://shafan.xyz/en',
+        es: 'https://shafan.xyz/es',
+        he: 'https://shafan.xyz/he',
+      },
+    },
     openGraph: {
-      title: 'Shafan',
-      description: "Read Elias Hutter's Hebrew Besorah Translation",
+      title: brandName,
+      description,
       type: 'website',
+      url: canonicalUrl,
+      locale: openGraphLocaleMap[loc],
+      images: [
+        {
+          url: '/og-image.png',
+          alt: brandName,
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
-      title: 'Shafan',
-      description: "Read Elias Hutter's Hebrew Besorah Translation",
+      card: 'summary_large_image',
+      title: brandName,
+      description,
+      images: ['/og-image.png'],
     },
   }
 }
