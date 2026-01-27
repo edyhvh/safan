@@ -90,8 +90,9 @@ While our focus is on display, text quality still matters:
 ### 🌐 Internationalization
 
 We support Hebrew (RTL), Spanish, and English. Help us add:
+
 - Portuguese
-- Arabic  
+- Arabic
 - Farsi
 - French
 - German
@@ -101,6 +102,7 @@ Open an issue to discuss translation approach before starting work.
 ### 📚 Documentation
 
 Improve README files, add code comments, or create guides for:
+
 - Setting up development environment
 - Understanding the frontend architecture
 - Contributing design improvements
@@ -137,14 +139,14 @@ Improve README files, add code comments, or create guides for:
 
 ## Priority Areas for Improvement
 
-| Area | Examples | Impact |
-|------|----------|--------|
-| **Typography** | Font rendering, spacing, RTL alignment | High |
-| **Performance** | Load time, bundle size, rendering speed | High |
-| **Mobile UX** | Touch gestures, responsive layout | High |
+| Area              | Examples                                  | Impact |
+| ----------------- | ----------------------------------------- | ------ |
+| **Typography**    | Font rendering, spacing, RTL alignment    | High   |
+| **Performance**   | Load time, bundle size, rendering speed   | High   |
+| **Mobile UX**     | Touch gestures, responsive layout         | High   |
 | **Accessibility** | Screen readers, keyboard nav, ARIA labels | Medium |
-| **Features** | Search, bookmarks, verse sharing | Medium |
-| **Visual Polish** | Animations, transitions, color schemes | Low |
+| **Features**      | Search, bookmarks, verse sharing          | Medium |
+| **Visual Polish** | Animations, transitions, color schemes    | Low    |
 
 ## Questions or Need Help?
 
@@ -163,4 +165,3 @@ Improve README files, add code comments, or create guides for:
 ---
 
 **Thank you for helping make Hebrew text more beautiful and accessible! 🙏**
-
