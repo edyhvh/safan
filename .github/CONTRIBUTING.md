@@ -87,18 +87,6 @@ While our focus is on display, text quality still matters:
 - **Suggest features**: Ideas for toggling nikud, teamim, or alternative texts
 - **Data structure**: Proposals for better JSON structure for performance
 
-### 🌐 Internationalization
-
-We support Hebrew (RTL), Spanish, and English. Help us add:
-
-- Portuguese
-- Arabic
-- Farsi
-- French
-- German
-
-Open an issue to discuss translation approach before starting work.
-
 ### 📚 Documentation
 
 Improve README files, add code comments, or create guides for:
